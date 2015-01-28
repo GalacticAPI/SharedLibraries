@@ -1,0 +1,4 @@
+!*.dll
+/Release/SharePoint/2010/*.dll
+/Release/Oracle/ODP.NET/2.x/x64/*.dll
+/Release/MSSQL/11.0/*.dll
