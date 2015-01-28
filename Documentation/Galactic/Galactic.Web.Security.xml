@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Galactic.Web.Security</name>
+    </assembly>
+    <members>
+        <member name="M:Galactic.Web.Security.ActiveDirectoryRoleProvider.Initialize(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Takes as input the name of the provider and a NameValueCollection of configuration settings.
+            Used to set property values for the provider instance including implementation-specific values
+            and options specified in the configuration file (Machine.config or Web.config).
+            </summary>
+            <param name="name">The name of the provider.</param>
+            <param name="config">Collection of configuration settings.</param>
+        </member>
+        <member name="M:Galactic.Web.Security.ActiveDirectoryRoleProvider.AddUsersToRoles(System.String[],System.String[])">
+            <summary>
+            Adds the specified user names to the specified roles for the configured applicationName.
+            </summary>
+            <param name="usernames">A string array of user names to be added to the specified roles.</param>
+            <param name="roleNames">A string array of the role names to add the specified user names to.</param>
+        </member>
+        <member name="M:Galactic.Web.Security.ActiveDirectoryRoleProvider.CalculateMaxRoleNameLength">
+            <summary>
+            Calculates the maximum length that a role name may be.
+            </summary>
+            <returns>The maximum length in characters that a role name may be.</returns>
+        </member>
+        <member name="M:Galactic.Web.Security.ActiveDirectoryRoleProvider.CreateRole(System.String)">
+            <summary>
+            Adds a new role to the data source for the configured applicationName.
+            </summary>
+            <param name="roleName">The name of the role to create.</param>
+        </member>
+        <member name="M:Galactic.Web.Security.ActiveDirectoryRoleProvider.DeleteRole(System.String,System.Boolean)">
+            <summary>
+            Removes a role from the data source for the configured applicationName.
+            </summary>
+            <param name="roleName">The name of the role to delete.</param>
+            <param name="throwOnPopulatedRole">A boolean indicating whether an exception should be thrown if there are still users contained in the role.</param>
+            <returns>True if the role was deleted, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.Web.Security.ActiveDirectoryRoleProvider.FindUsersInRole(System.String,System.String)">
+            <summary>
+            Gets an array of user names in a role where the user name contains the specified user name to match.
+            </summary>
+            <param name="roleName">The role to search in.</param>
+            <param name="usernameToMatch">The username to search for.</param>
+            <returns>A string array containing the names of all the users where the user name matches usernameToMatch and the user is a member of the specified role.</returns>
+        </member>
+        <member name="M:Galactic.Web.Security.ActiveDirectoryRoleProvider.GetAllRoles">
+            <summary>
+            Gets a list of all the roles for the configured applicationName.
+            </summary>
+            <returns>A string array containing the names of all the roles stored in the data source for the configured applicationName.</returns>
+        </member>
+        <member name="M:Galactic.Web.Security.ActiveDirectoryRoleProvider.GetGroupDN(System.String)">
+            <summary>
+            Gets the distinguished name of the group that is mapped to the application's role in Active Directory.
+            Groups are named using the following format: [{groupPrefix}-]{applicationName}-{roleName}[-{groupSuffix}]
+            (groupPrefix and groupSuffix are optional)
+            </summary>
+            <param name="roleName">The name of the role.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Galactic.Web.Security.ActiveDirectoryRoleProvider.GetGroupName(System.String)">
+            <summary>
+            Returns the correct mapped name for a role's group in Active Directory.
+            </summary>
+            <param name="roleName">The name of the role.</param>
+            <returns>The name the group should have in Active Directory, or null if the name could not be generated.</returns>
+        </member>
+        <member name="M:Galactic.Web.Security.ActiveDirectoryRoleProvider.GetRolesForUser(System.String)">
+            <summary>
+            Gets a list of the roles that a specified user is in for the configured applicationName. 
+            </summary>
+            <param name="username">The user to return a list of roles for.</param>
+            <returns>A string array containing the names of all the roles that the specified user is in for the configured applicationName.</returns>
+        </member>
+        <member name="M:Galactic.Web.Security.ActiveDirectoryRoleProvider.GetRoleName(System.String)">
+            <summary>
+            Returns the name of a role given its group's name in Active Directory.
+            </summary>
+            <param name="groupName">The name of the group.</param>
+            <returns>The name the role, or null if the name could not be generated.</returns>
+        </member>
+        <member name="M:Galactic.Web.Security.ActiveDirectoryRoleProvider.GetMembers(System.String)">
+            <summary>
+            Gets a list of SAM Account Names for the security principals that belong to the role.
+            </summary>
+            <param name="roleName">The name of the role to find the membership for.</param>
+            <returns>A list of SAM Account Names for the security principals in the role.</returns>
+        </member>
+        <member name="M:Galactic.Web.Security.ActiveDirectoryRoleProvider.GetUsersInRole(System.String)">
+            <summary>
+            Gets a list of users in the specified role for the configured applicationName.
+            </summary>
+            <param name="roleName">The name of the role to get the list of users for.</param>
+            <returns>A string array containing the names of all the users who are members of the specified role for the configured applicationName.</returns>
+        </member>
+        <member name="M:Galactic.Web.Security.ActiveDirectoryRoleProvider.IsUserInRole(System.String,System.String)">
+            <summary>
+            Gets a value indicating whether the specified user is in the specified role for the configured applicationName.
+            </summary>
+            <param name="username">The user name to search for.</param>
+            <param name="roleName">The role to search in.</param>
+            <returns>true if the specified user is in the specified role for the configured applicationName; otherwise, false.</returns>
+        </member>
+        <member name="M:Galactic.Web.Security.ActiveDirectoryRoleProvider.RemoveMember(System.String,System.String)">
+            <summary>
+            Removes a members (group or user) from a role.
+            </summary>
+            <param name="memberName">The name of the user or group to remove from the role.</param>
+            <param name="roleName">The name of the role to remove the user or group from.</param>
+            <returns>True if the member was removed. False, otherwise.</returns>
+        </member>
+        <member name="M:Galactic.Web.Security.ActiveDirectoryRoleProvider.RemoveUsersFromRoles(System.String[],System.String[])">
+            <summary>
+            Removes the specified user names from the specified roles for the configured applicationName.
+            </summary>
+            <param name="usernames">A string array of user names to be removed from the specified roles.</param>
+            <param name="roleNames">A string array of role names to remove the specified user names from.</param>
+        </member>
+        <member name="M:Galactic.Web.Security.ActiveDirectoryRoleProvider.RoleExists(System.String)">
+            <summary>
+            Gets a value indicating whether the specified role name already exists in the role data source for the configured applicationName.
+            </summary>
+            <param name="roleName">The name of the role to search for in the data source.</param>
+            <returns>true if the role name already exists in the data source for the configured applicationName; otherwise, false.</returns>
+        </member>
+        <member name="P:Galactic.Web.Security.ActiveDirectoryRoleProvider.ApplicationName">
+            <summary>
+            The name of the application using the role information specified in the configuration file (Web.config).
+            The ApplicationName is stored in the data source with related user information and used when querying for user information.
+            This property is read-write and defaults to the ApplicationPath if not specified explicitly.
+            </summary>
+        </member>
+        <member name="P:Galactic.Web.Security.ActiveDirectoryRoleProvider.MaxRoleNameLength">
+            <summary>
+            The maximum number of characters that a role name may contain.
+            </summary>
+        </member>
+    </members>
+</doc>

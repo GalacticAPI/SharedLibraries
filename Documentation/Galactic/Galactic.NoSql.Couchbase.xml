@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Galactic.NoSql.Couchbase</name>
+    </assembly>
+    <members>
+        <member name="T:Galactic.NoSql.Couchbase.CouchbaseUtility">
+            <summary>
+            Provides various utility methods for use with Couchbase servers.
+            </summary>
+        </member>
+        <member name="M:Galactic.NoSql.Couchbase.CouchbaseUtility.#ctor(Couchbase.Configuration.CouchbaseClientConfiguration)">
+            <summary>
+            Creates a utility object that can be used to perform operations against a Couchbase server.
+            </summary>
+            <param name="config">A Couchbase configuration object initialized with information on how to connect to the server.</param>
+        </member>
+        <member name="M:Galactic.NoSql.Couchbase.CouchbaseUtility.#ctor(System.String,System.String)">
+            <summary>
+            Creates a utility object that can be used to perform operations against a Couchbase server.
+            </summary>
+            <param name="configurationFolderPath">The path to the folder containing the encrypted configuration file containing information required to establish the connection to the server.</param>
+            <param name="configurationItemName">The name of configuration item containing the information required to connect to the server. (Typically it's filename without the extension.)</param>
+        </member>
+        <member name="M:Galactic.NoSql.Couchbase.CouchbaseUtility.AddOrReplace(System.String,System.Object)">
+            <summary>
+            Adds or replaces a document in the store with the specified id.
+            </summary>
+            <param name="id">The id of the document to add or replace.</param>
+            <param name="document">The document to add or replace.</param>
+            <returns>True if the document was added or replaced, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.NoSql.Couchbase.CouchbaseUtility.Delete(System.String)">
+            <summary>
+            Deletes the specified id and it's associated document from the database.
+            </summary>
+            <param name="id">The name of the id to delete.</param>
+            <returns>True if the id/document was deleted, false if there was an error or it could not otherwise be deleted.</returns>
+        </member>
+        <member name="M:Galactic.NoSql.Couchbase.CouchbaseUtility.Dispose">
+            <summary>
+            Releases all resources associated with the client's connection to the Couchbase server.
+            </summary>
+        </member>
+        <member name="M:Galactic.NoSql.Couchbase.CouchbaseUtility.Get(System.String)">
+            <summary>
+            Gets a document from the database with the specified id.
+            </summary>
+            <param name="id">The id of the document to retrieve.</param>
+            <returns>The document with the specified id, or null if there was an error, or the id does not exist.</returns>
+        </member>
+        <member name="M:Galactic.NoSql.Couchbase.CouchbaseUtility.LogException(System.Exception,Galactic.EventLog.EventLog)">
+            <summary>
+            Logs an exception to the event log.
+            </summary>
+            <param name="e">The exception to log.</param>
+            <param name="log">The event log to log the execption to.</param>
+            <returns>True if the exception was logged successfully. False otherwise.</returns>
+        </member>
+    </members>
+</doc>

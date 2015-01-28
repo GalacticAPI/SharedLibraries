@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Galactic.Configuration</name>
+    </assembly>
+    <members>
+        <member name="T:Galactic.Configuration.ConfigurationItem">
+            <summary>
+            Manages files containing strings used as an alternative to placing configuration information
+            in an application's web.config or application.config files.
+            This approaches allows for easier management of these items as they don't require a restart of the
+            application to manipulate and save the configuration information.
+            The strings can be (optionally) encrypted.
+            </summary>
+        </member>
+        <member name="M:Galactic.Configuration.ConfigurationItem.#ctor(System.String,System.String,System.Boolean,System.String,Galactic.EventLog.EventLog,System.Boolean)">
+            <summary>
+            Loads a configuration item with the specified name from its file located
+            in a folder at the supplied path.
+            </summary>
+            <param name="folderPath">The path of the folder containing the configuration item.</param>
+            <param name="name">The name of the configuration item.</param>
+            <param name="encrypted">Whether to store the item in an encrypted format.</param>
+            <param name="value">(Optional) The value of the configuration item. (Supplying a null value will retrieve the value stored
+            in the item if it already exists).</param>
+            <param name="log">(Optional) The event log to log exceptions to. May be null for no logging.</param>
+            <param name="readOnly">Whether the configuration item should be opened for reading only. Default: true</param>
+        </member>
+        <member name="M:Galactic.Configuration.ConfigurationItem.Delete">
+            <summary>
+            Deletes the configuration item.
+            </summary>
+            <returns>True if the item was deleted, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.Configuration.ConfigurationItem.Get(Galactic.EventLog.EventLog)">
+            <summary>
+            Retrieves the value of a configuration item from its file.
+            </summary>
+            <param name="log">The event log to log exceptions to. May be null for no logging.</param>
+            <returns>The value of the configuration item or null if not found.</returns>
+        </member>
+        <member name="M:Galactic.Configuration.ConfigurationItem.LogException(System.Exception,Galactic.EventLog.IEventLog)">
+            <summary>
+            Logs an exception to the event log.
+            </summary>
+            <param name="e">The exception to log.</param>
+            <param name="log">The event log to log the exception to.</param>
+            <returns>True if the exception was logged successfully. False otherwise.</returns>
+        </member>
+        <member name="M:Galactic.Configuration.ConfigurationItem.Write(System.String,Galactic.EventLog.EventLog)">
+            <summary>
+            Writes a configuration item's value to a file.
+            </summary>
+            <param name="value">The value to write to the file.</param>
+            <param name="log">The event log to log exceptions to. May be null for no logging.</param>
+            <returns>True if the write was successful, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.Configuration.ConfigurationItem.SecureGet(Galactic.EventLog.EventLog)">
+            <summary>
+            Retrieves an AES 256 encrypted value from the configuration file.
+            </summary>
+            <param name="log">The event log to log exceptions to. May be null for no logging.</param>
+            <returns>The value or null if not found or it could not be decrypted.</returns>
+        </member>
+        <member name="M:Galactic.Configuration.ConfigurationItem.SecureWrite(System.String,Galactic.EventLog.EventLog)">
+            <summary>
+            Writes an AES 256 encrypted value to its configuration file.
+            </summary>
+            <param name="value">The value to write to the file.</param>
+            <param name="log">The event log to log execptions to. May be null for no logging.</param>
+            <returns>True if the write was successful, false otherwise.</returns>
+        </member>
+        <member name="P:Galactic.Configuration.ConfigurationItem.FilePath">
+            <summary>
+            The full path to the file containing the configuration item.
+            </summary>
+        </member>
+        <member name="P:Galactic.Configuration.ConfigurationItem.FolderPath">
+            <summary>
+            The path to the folder containing the configuration item.
+            </summary>
+        </member>
+        <member name="P:Galactic.Configuration.ConfigurationItem.Name">
+            <summary>
+            The name of the configuration item.
+            </summary>
+        </member>
+        <member name="P:Galactic.Configuration.ConfigurationItem.Encrypted">
+            <summary>
+            Whether the configuration item should be encrypted.
+            </summary>
+        </member>
+        <member name="P:Galactic.Configuration.ConfigurationItem.Value">
+            <summary>
+            The value of the configuration item.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,343 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Galactic.SharePoint</name>
+    </assembly>
+    <members>
+        <member name="M:Galactic.SharePoint.SharePointClient.#ctor(System.String,System.String)">
+            <summary>
+            Connects the client to SharePoint using the configuration in the specified configuration item.
+            </summary>
+            <param name="configurationItemDirectoryPath">The physical path to the directory where configuration item files can be found.</param>
+            <param name="configurationItemName">The name of the configuration item containing the SharePoint client configuration.</param>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointClient.Dispose">
+            <summary>
+            Closes the client connection to the server and frees up resources.
+            </summary>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointClient.GetDocumentLibraryByTitle(System.String,System.String)">
+            <summary>
+            Populates a SharePointDocumentLibrary object from the contents of SharePoint Document Library with the supplied title on the server.
+            </summary>
+            <param name="title">The title of the document library with the documents to retrieve.</param>
+            <param name="camlQuery">Optional: The XML representing the CAML query you'd like to make of the documents in
+            the document library. If not supplied, all documents will be retrieved.</param>
+            <returns>A SharePointDocumentLibrary representing the library on the server, or null if the library could not be found, the
+            user does not have sufficient permissions to access the library, or library's contents could otherwise not
+            be retrieved.</returns>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointClient.GetListByTitle(System.String,System.String)">
+            <summary>
+            Populates a SharePointList object from the contents of SharePoint List with the supplied title on the server.
+            </summary>
+            <param name="title">The title of the list with the list items to retrieve.</param>
+            <param name="camlQuery">Optional: The XML representing the CAML query you'd like to make of the list items in
+            the list. If not supplied, all items will be retrieved.</param>
+            <returns>A SharePointList representing the list on the server, or null if the list could not be found, the
+            user does not have sufficient permissions to access the list, or list's contents could otherwise not
+            be retrieved.</returns>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointClient.GetFileByUrl(System.String)">
+            <summary>
+            Gets a File object representing a file on the SharePoint server with the specified relative URL.
+            </summary>
+            <param name="relativeUrl">The relative URL of the file to retrieve from the base of the web application containing it.</param>
+            <returns>The File object representing the file at the specified URL or null if it does not
+            exist or otherwise couldn't be retrieved.</returns>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointClient.GetFolderByUrl(System.String)">
+            <summary>
+            Gets a Folder object representing a folder on the SharePoint server with the specified relative URL.
+            </summary>
+            <param name="relativeUrl">The relative URL of the folder to retrieve from the base of the web application containing it.</param>
+            <returns>The Folder object representing the folder at the specified URL or null if it does not
+            exist or otherwise couldn't be retrieved.</returns>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointClient.Load(Microsoft.SharePoint.Client.ClientRuntimeContext,Microsoft.SharePoint.Client.ClientObject)">
+            <summary>
+            Loads values within a specified SharePoint object from the server.
+            </summary>
+            <param name="context">The Client Rutime Context object representing the client connection with the server.</param>
+            <param name="obj">The object to populate the values of.</param>
+        </member>
+        <member name="T:Galactic.SharePoint.SharePointDocument">
+            <summary>
+            A class representing a Document within SharePoint.
+            </summary>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointListItem.#ctor(Microsoft.SharePoint.Client.ListItem)">
+            <summary>
+            Creates a SharePointListItem object from the underlying ListItem object.
+            </summary>
+            <param name="listItem">The base ListItem object representing this list item.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if a list item is not supplied.</exception>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointListItem.Delete">
+            <summary>
+            Deletes the item from the server.
+            </summary>
+            <returns>True if the item was deleted from the server, false if the item did not exist on the server,
+            or there was an error deleting it.</returns>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointListItem.GetLookupFieldValue(System.String)">
+            <summary>
+            Gets the value contained in a lookup field.
+            </summary>
+            <param name="fieldName">The name of the lookup field to get the value of.</param>
+            <returns>A KeyValuePair with the key equal to the ID of the lookup value, and the value equal to its value.
+            An pair with a negative ID is returned if the value could not be retrieved, or the field name was invalid.</returns>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointListItem.ToSharePointDocument">
+            <summary>
+            Converts this SharePointListItem to a SharePointDocument object.
+            </summary>
+            <returns>The SharePointDocument object corresponding to this list item.</returns>
+        </member>
+        <member name="P:Galactic.SharePoint.SharePointListItem.ListItem">
+            <summary>
+            A SharePoint ListItem object representing this SharePointListItem.
+            </summary>
+        </member>
+        <member name="P:Galactic.SharePoint.SharePointListItem.Fields">
+            <summary>
+            A list of all fields defined in the list item.
+            </summary>
+        </member>
+        <member name="P:Galactic.SharePoint.SharePointListItem.Id">
+            <summary>
+            The list item's identifier.
+            </summary>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointDocument.#ctor(Microsoft.SharePoint.Client.ListItem)">
+            <summary>
+            Creates a SharePointDocument object from the underlying ListItem object.
+            </summary>
+            <param name="listItem">The base ListItem object representing this document.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if a list item is not supplied.</exception>
+        </member>
+        <member name="P:Galactic.SharePoint.SharePointDocument.CreationTime">
+            <summary>
+            The date and time the document was created.
+            </summary>
+        </member>
+        <member name="P:Galactic.SharePoint.SharePointDocument.FileExtension">
+            <summary>
+            The file extension of the document.
+            </summary>
+        </member>
+        <member name="P:Galactic.SharePoint.SharePointDocument.FileSize">
+            <summary>
+            The size of the file in bytes.
+            </summary>
+        </member>
+        <member name="P:Galactic.SharePoint.SharePointDocument.LastModifiedTime">
+            <summary>
+            The date and time the document was last modified.
+            </summary>
+        </member>
+        <member name="P:Galactic.SharePoint.SharePointDocument.LastModifiedBy">
+            <summary>
+            The user who last modified the document.
+            </summary>
+        </member>
+        <member name="P:Galactic.SharePoint.SharePointDocument.Name">
+            <summary>
+            The name of the document.
+            </summary>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointList.#ctor(Microsoft.SharePoint.Client.List,Microsoft.SharePoint.Client.ListItemCollection)">
+            <summary>
+            Creates a SharePointList object from the underlying List object.
+            </summary>
+            <param name="list">The base List object representing this list.</param>
+            <param name="listItemCollection">A collection of ListItems that represents the items currently queried from the list.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if a list or listCollection is not supplied.</exception>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointList.Add(Galactic.SharePoint.SharePointListItem)">
+            <summary>
+            Adds an item to the list.
+            </summary>
+            <param name="item">The item to add.</param>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointList.Clear">
+            <summary>
+            Deletes all currently loaded items from the list.
+            </summary>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointList.Contains(Galactic.SharePoint.SharePointListItem)">
+            <summary>
+            Determines whether the supplied item is in the list.
+            </summary>
+            <param name="item">The item to search for.</param>
+            <returns>True if the item is in the list, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointList.CopyTo(Galactic.SharePoint.SharePointListItem[],System.Int32)">
+            <summary>
+            Copies the items in the list to an array, starting at the supplied index.
+            </summary>
+            <param name="array">The array to copy the items into.</param>
+            <param name="arrayIndex">The index within the array to place the copied items at.</param>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointList.Remove(Galactic.SharePoint.SharePointListItem)">
+            <summary>
+            Removes an item from the list.
+            </summary>
+            <param name="item">The item to remove.</param>
+            <returns>True if the item could be removed, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointList.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the list.
+            </summary>
+            <returns>An enumerator that iterates through the list.</returns>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointList.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the list.
+            </summary>
+            <returns>An enumerator that iterates through the list.</returns>
+        </member>
+        <member name="P:Galactic.SharePoint.SharePointList.Count">
+            <summary>
+            Gets the number of items in the list.
+            </summary>
+        </member>
+        <member name="P:Galactic.SharePoint.SharePointList.IsReadOnly">
+            <summary>
+            Indicates whether the list is read-only.
+            </summary>
+        </member>
+        <member name="P:Galactic.SharePoint.SharePointList.Items">
+            <summary>
+            The items in the list
+            </summary>
+        </member>
+        <member name="P:Galactic.SharePoint.SharePointList.LastItemDeleted">
+            <summary>
+            The date and time that the last item was deleted from the list.
+            </summary>
+        </member>
+        <member name="P:Galactic.SharePoint.SharePointList.LastItemModified">
+            <summary>
+            The date and time that the last item was modified in the list.
+            </summary>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointDocumentLibrary.#ctor(Microsoft.SharePoint.Client.List,Microsoft.SharePoint.Client.ListItemCollection)">
+            <summary>
+            Creates a SharePointDocumentLibrary object from the underlying List object.
+            </summary>
+            <param name="list">The base List object representing this document library.</param>
+            <param name="listItemCollection">A collection of ListItems that represents the items currently queried from the list.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if a list or folder is not supplied.</exception>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointDocumentLibrary.Add(Galactic.SharePoint.SharePointListItem)">
+            <summary>
+            Adds an item to the library.
+            </summary>
+            <param name="item">The item to add.</param>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointDocumentLibrary.Add(Galactic.SharePoint.SharePointDocument)">
+            <summary>
+            Adds a document to the library.
+            </summary>
+            <param name="document">The document to add.</param>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointDocumentLibrary.Contains(Galactic.SharePoint.SharePointDocument)">
+            <summary>
+            Determines whether the supplied document is in the library.
+            </summary>
+            <param name="document">The document to search for.</param>
+            <returns>True if the document is in the list, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointDocumentLibrary.ContainsDocumentWithName(System.String)">
+            <summary>
+            Determines whether a document with the supplied name is already in the library.
+            </summary>
+            <param name="name">The name of the file to search for in the library.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointDocumentLibrary.CopyTo(Galactic.SharePoint.SharePointDocument[],System.Int32)">
+            <summary>
+            Copies the documents in the library to an array, starting at the supplied index.
+            </summary>
+            <param name="array">The array to copy the items into.</param>
+            <param name="arrayIndex">The index within the array to place the copied documents at.</param>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointDocumentLibrary.Remove(Galactic.SharePoint.SharePointDocument)">
+            <summary>
+            Removes a document from the library.
+            </summary>
+            <param name="document">The document to remove.</param>
+            <returns>True if the document could be removed, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointDocumentLibrary.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the library.
+            </summary>
+            <returns>An enumerator that iterates through the library.</returns>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointDocumentLibrary.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the library.
+            </summary>
+            <returns>An enumerator that iterates through the library.</returns>
+        </member>
+        <member name="P:Galactic.SharePoint.SharePointDocumentLibrary.Documents">
+            <summary>
+            The documents in the list
+            </summary>
+        </member>
+        <member name="P:Galactic.SharePoint.SharePointDocumentLibrary.Folder">
+            <summary>
+            The SharePointFolder object for library's contents.
+            </summary>
+        </member>
+        <member name="T:Galactic.SharePoint.SharePointFolder">
+            <summary>
+            A class representing a folder within SharePoint.
+            </summary>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointFolder.#ctor(Microsoft.SharePoint.Client.Folder)">
+            <summary>
+            Creates a SharePointFolder object from the underlying Folder object.
+            </summary>
+            <param name="folder">The base Folder object representing this document.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if a folder is not supplied.</exception>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointFolder.UploadFile(System.String,System.IO.Stream,System.Int32,Galactic.SharePoint.SharePointClient,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Uploads a file to the folder.
+            </summary>
+            <param name="name">The name of the file to upload.</param>
+            <param name="stream">The IO stream object representing the file's contents.</param>
+            <param name="fileLength">The length of the file in bytes.</param>
+            <param name="client">The SharePoint client that will be used to upload the file.</param>
+            <param name="requiredFieldValues">Optional: A dictionary with values for fields that are required to be supplied
+            when uploading the file to the folder in SharePoint.</param>
+            <returns>True if the file could be uploaded, false otherwise.</returns>
+        </member>
+        <member name="P:Galactic.SharePoint.SharePointFolder.Url">
+            <summary>
+            The server relative URL of the folder.
+            </summary>
+        </member>
+        <member name="T:Galactic.SharePoint.SharePointUser">
+            <summary>
+            A class representing a user on a SharePoint system.
+            </summary>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointUser.#ctor(Microsoft.SharePoint.Client.User)">
+            <summary>
+            Creates a SharePointUser object from the underlying User object.
+            </summary>
+            <param name="user">The base User object representing this user.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if a user is not supplied.</exception>
+        </member>
+        <member name="P:Galactic.SharePoint.SharePointUser.UserName">
+            <summary>
+            The username of the user.
+            </summary>
+        </member>
+    </members>
+</doc>
