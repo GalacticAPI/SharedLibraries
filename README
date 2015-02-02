@@ -1,4 +1,4 @@
-This repository holds the latest debug and release DLLs of the Galactic API along with XML format documentation. It also acts as single location for placement of third-party DLLs that are necessary for various portions of the library to work (DnDNS, MS SQL, SharePoint, Oracle, etc.). In general, DLLs are only placed here if a suitable package is not available for it in NuGet. Third-party DLLs may require a separate download. These are noted in additional READMEs within the directory structure if required.
+This repository holds the latest debug and release DLLs of the Galactic API along with XML format documentation. It also acts as single location for placement of third-party DLLs that are necessary for various portions of the library to work (DnDNS, etc.). In general, DLLs are only placed here if a suitable package is not available for it in NuGet. Third-party DLLs may require a separate download. These are noted in additional READMEs within the directory structure if required.
 
 This repository should generally be placed at the same level in the directory structure as the Galactic project.
 
