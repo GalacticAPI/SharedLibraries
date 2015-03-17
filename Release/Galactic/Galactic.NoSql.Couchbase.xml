@@ -18,17 +18,19 @@
         <member name="M:Galactic.NoSql.Couchbase.CouchbaseUtility.#ctor(System.String,System.String)">
             <summary>
             Creates a utility object that can be used to perform operations against a Couchbase server.
+            Note:
+            Uses the authentication and bucket information from the supplied configuration item.
             </summary>
             <param name="configurationFolderPath">The path to the folder containing the encrypted configuration file containing information required to establish the connection to the server.</param>
             <param name="configurationItemName">The name of configuration item containing the information required to connect to the server. (Typically it's filename without the extension.)</param>
         </member>
-        <member name="M:Galactic.NoSql.Couchbase.CouchbaseUtility.AddOrReplace(System.String,System.Object)">
+        <member name="M:Galactic.NoSql.Couchbase.CouchbaseUtility.AddOrReplace(System.String,System.Dynamic.ExpandoObject)">
             <summary>
             Adds or replaces a document in the store with the specified id.
             </summary>
             <param name="id">The id of the document to add or replace.</param>
             <param name="document">The document to add or replace.</param>
-            <returns>True if the document was added or replaced, false otherwise.</returns>
+            <returns>The id of the document if it was added or replaced, null otherwise.</returns>
         </member>
         <member name="M:Galactic.NoSql.Couchbase.CouchbaseUtility.Delete(System.String)">
             <summary>

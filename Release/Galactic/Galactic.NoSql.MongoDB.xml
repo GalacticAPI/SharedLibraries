@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Galactic.NoSql.MongoDB</name>
+    </assembly>
+    <members>
+        <member name="T:Galactic.NoSql.MongoDB.MongoDBUtility">
+            <summary>
+            Provides various utility methods for use with MongoDB servers.
+            </summary>
+        </member>
+        <member name="F:Galactic.NoSql.MongoDB.MongoDBUtility.DEFAULT_COLLECTION">
+            <summary>
+            The name of the default collection used for adding documents if a collection
+            is not specified.
+            </summary>
+        </member>
+        <member name="M:Galactic.NoSql.MongoDB.MongoDBUtility.#ctor(System.String,System.String)">
+            <summary>
+            Creates a utility object that can be used to perform operations against a MongoDB server.
+            Note:
+            Uses the authentication and database information from the supplied configuration item.
+            </summary>
+            <param name="configurationFolderPath">The path to the folder containing the encrypted configuration file containing information required to establish the connection to the server.</param>
+            <param name="configurationItemName">The name of configuration item containing the information required to connect to the server. (Typically it's filename without the extension.)</param>
+        </member>
+        <member name="M:Galactic.NoSql.MongoDB.MongoDBUtility.AddOrReplace(System.String,System.Dynamic.ExpandoObject)">
+            <summary>
+            Adds or replaces a document within the default collection.
+            </summary>
+            <param name="id">The id of the document to add or replace. If null the document will be added with a newly generated id.</param>
+            <param name="document">The document to add or replace. Note: These must be able to be serialized as a BsonDocument.</param>
+            <returns>The id of the document if it was added or replaced, null otherwise.</returns>
+        </member>
+        <member name="M:Galactic.NoSql.MongoDB.MongoDBUtility.AddOrReplace(System.String,System.String,System.Dynamic.ExpandoObject)">
+            <summary>
+            Adds or replaces a document within the specified collection.
+            </summary>
+            <param name="id">The id of the document to add or replace. If null the document will be added with a newly generated id.</param>
+            <param name="collection">The name of the collection to add or replace the document within.</param>
+            <param name="document">The document to add or replace. Note: These must be able to be serialized as a BsonDocument.</param>
+            <returns>The id of the document if it was added or replaced, null otherwise.</returns>
+        </member>
+        <member name="M:Galactic.NoSql.MongoDB.MongoDBUtility.Delete(System.String)">
+            <summary>
+            Deletes the specified id and it's associated document from the default colleciton.
+            </summary>
+            <param name="id">The name of the id to delete.</param>
+            <returns>True if the id/document was deleted, false if there was an error or it could not otherwise be deleted.</returns>
+        </member>
+        <member name="M:Galactic.NoSql.MongoDB.MongoDBUtility.Delete(System.String,System.String)">
+            <summary>
+            Deletes the specified id and it's associated document from the specified collection.
+            </summary>
+            <param name="id">The name of the id to delete.</param>
+            <param name="collection">The name of the collection to delete the document in.</param>
+            <returns>True if the id/document was deleted, false if there was an error or it could not otherwise be deleted.</returns>
+        </member>
+        <member name="M:Galactic.NoSql.MongoDB.MongoDBUtility.Get(System.String)">
+            <summary>
+            Gets a document from the database with the specified id within the default collection.
+            </summary>
+            <param name="id">The id of the document to retrieve.</param>
+            <returns>The document with the specified id, or null if there was an error, or the id does not exist.</returns>
+        </member>
+        <member name="M:Galactic.NoSql.MongoDB.MongoDBUtility.Get(System.String,System.String)">
+            <summary>
+            Gets a document from the database with the specified id within the default collection.
+            </summary>
+            <param name="id">The id of the document to retrieve.</param>
+            <param name="collection">The name of the collection to get the document from.</param>
+            <returns>The document with the specified id, or null if there was an error, or the id does not exist.</returns>
+        </member>
+        <member name="M:Galactic.NoSql.MongoDB.MongoDBUtility.isCollectionNameValid(System.String)">
+            <summary>
+            Checks the syntax of a supplied collection name to see if it contains invalid characters.
+            </summary>
+            <param name="name">The collection name to check.</param>
+            <returns>True if the collection name is valid, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.NoSql.MongoDB.MongoDBUtility.LogException(System.Exception,Galactic.EventLog.EventLog)">
+            <summary>
+            Logs an exception to the event log.
+            </summary>
+            <param name="e">The exception to log.</param>
+            <param name="log">The event log to log the execption to.</param>
+            <returns>True if the exception was logged successfully. False otherwise.</returns>
+        </member>
+    </members>
+</doc>
