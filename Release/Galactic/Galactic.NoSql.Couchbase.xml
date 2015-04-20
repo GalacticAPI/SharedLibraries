@@ -51,6 +51,13 @@
             <param name="id">The id of the document to retrieve.</param>
             <returns>The document with the specified id, or null if there was an error, or the id does not exist.</returns>
         </member>
+        <member name="M:Galactic.NoSql.Couchbase.CouchbaseUtility.GetByQuery(System.Object)">
+            <summary>
+            Gets documents from the database that correspond to the supplied query.
+            </summary>
+            <param name="query">The query to use when finding documents.</param>
+            <returns>A list of documents that correspond to the query supplied, or an empty list if there was an error, or the query did not produce any results.</returns>
+        </member>
         <member name="M:Galactic.NoSql.Couchbase.CouchbaseUtility.LogException(System.Exception,Galactic.EventLog.EventLog)">
             <summary>
             Logs an exception to the event log.

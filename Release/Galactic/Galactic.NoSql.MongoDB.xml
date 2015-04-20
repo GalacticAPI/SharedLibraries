@@ -65,11 +65,26 @@
         </member>
         <member name="M:Galactic.NoSql.MongoDB.MongoDBUtility.Get(System.String,System.String)">
             <summary>
-            Gets a document from the database with the specified id within the default collection.
+            Gets a document from the database with the specified id within the specified collection.
             </summary>
             <param name="id">The id of the document to retrieve.</param>
             <param name="collection">The name of the collection to get the document from.</param>
             <returns>The document with the specified id, or null if there was an error, or the id does not exist.</returns>
+        </member>
+        <member name="M:Galactic.NoSql.MongoDB.MongoDBUtility.GetByQuery(System.Object)">
+            <summary>
+            Gets documents from the database that correspond to the supplied query.
+            </summary>
+            <param name="query">The query to use when finding documents.</param>
+            <returns>A list of documents that correspond to the query supplied, or an empty list if there was an error, or the query did not produce any results.</returns>
+        </member>
+        <member name="M:Galactic.NoSql.MongoDB.MongoDBUtility.GetByQuery(System.Object,System.String)">
+            <summary>
+            Gets documents from the database that correspond to the supplied query.
+            </summary>
+            <param name="query">The query to use when finding documents. (This implementation expects IMongoQuery objects.)</param>
+            <param name="collection">The name of the collection to get the document from.</param>
+            <returns>A list of documents that correspond to the query supplied, or an empty list if there was an error, or the query did not produce any results.</returns>
         </member>
         <member name="M:Galactic.NoSql.MongoDB.MongoDBUtility.isCollectionNameValid(System.String)">
             <summary>
