@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Galactic.LDAP</name>
+    </assembly>
+    <members>
+        <member name="F:Galactic.LDAP.LDAP.LDAP_PORT">
+            <summary>
+            The default unencrypted port used for LDAP servers.
+            </summary>
+        </member>
+        <member name="F:Galactic.LDAP.LDAP.LDAP_SSL_PORT">
+            <summary>
+            The default SSL encrypted port for LDAP servers.
+            </summary>
+        </member>
+        <member name="F:Galactic.LDAP.LDAP.DEFAULT_QUERY_PAGE_SIZE">
+            <summary>
+            The default size of pages returned when making large queries.
+            </summary>
+        </member>
+        <member name="M:Galactic.LDAP.LDAP.#ctor(System.Collections.Generic.List{System.String},System.Int32,System.DirectoryServices.Protocols.AuthType,System.String,System.Security.SecureString,System.String)">
+            <summary>
+            Establishes a connection with an LDAP server that can be used to query or modify its contents.
+            <param name="servers">A list of servers by fully qualified domain name, host name, ip address, or null.</param>
+            <param name="portNumber">The port number on the LDAP server that is listening for requests.</param>
+            <param name="authType">(Optional) The type of authentication to use when connecting with the server. By default this is set to Anonymous (i.e. no credentials required).</param>
+            <param name="userName">(Optional) The user name to use when connecting to the LDAP server.</param>
+            <param name="password">(Optional) The password to use with the user name provided to connect to the LDAP server.</param>
+            <param name="domainName">(Optional) The domain or computer name associated with the user credentials provided.</param>
+            </summary>
+        </member>
+        <member name="M:Galactic.LDAP.LDAP.Dispose">
+            <summary>
+            Closes the LDAP connection and frees all resources associated with it.
+            </summary>
+        </member>
+        <member name="M:Galactic.LDAP.LDAP.Search(System.String,System.Collections.Generic.List{System.String},System.String,System.DirectoryServices.Protocols.SearchScope,System.Int32,System.Boolean)">
+            <summary>
+            Searches the LDAP directory for entries that match the specified search filter.
+            </summary>
+            <param name="filter">The filter that defines the entries to find.</param>
+            <param name="attributes">(Optional) The attributes that should be returned in each entry found. </param>
+            <param name="baseDn">(Optional)The distinguished name of the base entry where the search will begin. (Typically an OU or the base DN of the directory.) If not supplied, the default values will be used. This base is used only for the duration of this search.</param>
+            <param name="scope">(Optional) The scope to use while searching. Defaults to Subtree. (Typically Base, just the object with the DN specified; OneLevel, just the child objects of the base object; or Subtree, the base object and all child objects) This scope is used only for the duration of this search.</param>
+            <param name="queryPageSize">(Optional) The query page size to specify when making large requests. Defaults to DEFAULT_QUERY_PAGE_SIZE.</param>
+            <param name="chaseReferrals">(Optional) Whether the search should chase object referrals to other servers if necessary. Defaults to true;</param>
+            <returns>A collection of search result entries found, or null if there was an error with the search.</returns>
+        </member>
+        <member name="M:Galactic.LDAP.LDAP.Add(System.String,System.DirectoryServices.Protocols.DirectoryAttribute[])">
+            <summary>
+            Adds an entry to the LDAP directory with the specified distinguished name and attributes.
+            </summary>
+            <param name="dn">The distinguished name of the entry to add.</param>
+            <param name="attributes">The attributes for the entry to add.</param>
+            <returns>True if added, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.LDAP.LDAP.AddOrReplaceAttribute(System.String,System.String,System.Object[])">
+            <summary>
+            Adds or Replaces an attribute's value in the specified entry in the directory.
+            </summary>
+            <param name="dn">The distinguished name of the entry to add or replace an attribute of.</param>
+            <param name="attributeName">The name of the attribute to add or replace a value for.</param>
+            <param name="values">The values associated with the attribute to add or replace.</param>
+            <returns>True if added or replaced, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.LDAP.LDAP.Delete(System.String)">
+            <summary>
+            Deletes an entry from the LDAP directory with the specified distinguished name.
+            </summary>
+            <param name="dn">The distinguished name of the entry to delete.</param>
+            <returns>True if deleted, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.LDAP.LDAP.DeleteAttribute(System.String,System.String,System.Object[])">
+            <summary>
+            Deletes an attribute's value in the specified entry in the directory.
+            </summary>
+            <param name="dn">The distinguished name of the entry to delete an attribute from.</param>
+            <param name="attributeName">The name of the attribute to delete.</param>
+            <param name="values">Optional: The specific values to delete (if desired). Supplying null will delete all values associated with the attribute.</param>
+            <returns>True if deleted, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.LDAP.LDAP.GetByteAttributeValue(System.String,System.DirectoryServices.Protocols.SearchResultEntry)">
+            <summary>
+            Gets the first byte array attribute value from the supplied entry.
+            </summary>
+            <param name="name">The name of the attribute to retrieve.</param>
+            <param name="entry">The SearchResultEntry to get the attribute value from.</param>
+            <returns>A first byte value held in the attribute, or null array if there was an error retrieving the value or the attribute was empty.</returns>
+        </member>
+        <member name="M:Galactic.LDAP.LDAP.GetByteAttributeValues(System.String,System.DirectoryServices.Protocols.SearchResultEntry)">
+            <summary>
+            Gets all byte array attribute values from the supplied entry.
+            </summary>
+            <param name="name">The name of the attribute to retrieve.</param>
+            <param name="entry">The SearchResultEntry to get the attribute value from.</param>
+            <returns>A list of byte values held in the attribute, or null if there was an error retrieving the values or the attribute was empty.</returns>
+        </member>
+        <member name="M:Galactic.LDAP.LDAP.GetEntryByDistinguishedName(System.String,System.Collections.Generic.List{System.String},System.String,System.DirectoryServices.Protocols.SearchScope)">
+            <summary>
+            Gets an entry from the directory with the specified distinguished name.
+            </summary>
+            <param name="dn">The distinguished name of the entry to retrieve.</param>
+            <param name="attributes">(Optional) The attributes that should be returned in each entry found. If not provided, all attributes are returned.</param>
+            <param name="baseDn">(Optional)The distinguished name of the base entry where the search will begin. (Typically an OU or the base DN of the directory.) If not supplied, the default values will be used. This base is used only for the duration of this search.</param>
+            <param name="scope">(Optional) The scope to use while searching. Defaults to Subtree. (Typically Base, just the object with the DN specified; OneLevel, just the child objects of the base object; or Subtree, the base object and all child objects) This scope is used only for the duration of this search.</param>
+            <returns>The entry with the specified distinguished name or null if the entry does not exist or there was an error in its retrieval.</returns>
+        </member>
+        <member name="M:Galactic.LDAP.LDAP.GetStringAttributeValue(System.String,System.DirectoryServices.Protocols.SearchResultEntry)">
+            <summary>
+            Gets the first string attribute value from the supplied entry.
+            </summary>
+            <param name="name">The name of the attribute to retrieve.</param>
+            <param name="entry">The SearchResultEntry to get the attribute value from.</param>
+            <returns>A first string value held in the attribute, or null if there was an error retrieving the value or the attribute was empty.</returns>
+        </member>
+        <member name="M:Galactic.LDAP.LDAP.GetStringAttributeValues(System.String,System.DirectoryServices.Protocols.SearchResultEntry)">
+            <summary>
+            Gets all string attribute values from the supplied entry.
+            </summary>
+            <param name="name">The name of the attribute to retrieve.</param>
+            <param name="entry">The SearchResultEntry to get the attribute value from.</param>
+            <returns>A list of string values held in the attribute, or null if there was an error retrieving the values or the attribute was empty.</returns>
+        </member>
+        <member name="M:Galactic.LDAP.LDAP.MoveRenameEntry(System.String,System.String,System.String)">
+            <summary>
+            Moves and / or renames an entry in the directory.
+            </summary>
+            <param name="distinguishedName">The distinguished name of the entry to move or rename.</param>
+            <param name="newParentDistinguishedName">The distinguished name of the entry's new parent entry in the directory (if moving), or its current parent entry (if renaming).</param>
+            <param name="newCommonName">The new common name of entry.</param>
+            <returns>True if moved or renamed, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.LDAP.LDAP.ReplaceAttribute(System.String,System.String,System.Object[])">
+            <summary>
+            Replace an attribute's value in the specified entry in the directory, or replaces all values in a multivalued entry.
+            </summary>
+            <param name="dn">The distinguished name of the entry to replace the attribute value of.</param>
+            <param name="attributeName">The name of the attribute to replace.</param>
+            <param name="values">The values associated with the attribute to replace.</param>
+            <returns>True if replaced, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.LDAP.LDAP.SetSearchBaseAndScope(System.String,System.DirectoryServices.Protocols.SearchScope)">
+            <summary>
+            Sets the object that is the base for all searches, as well as the scope of the searches.
+            This only needs to be set if you need to search somewhere other than the base of the directory, or with a scope other than subtree.
+            </summary>
+            <param name="distinguishedName">The distinguished name of the object where searches will begin. (Typically an OU or the base DN of the directory.)</param>
+            <param name="scope">(Optional) The scope to use while searching. Defaults to Subtree. (Typically Base, just the object with the DN specified; OneLevel, just the child objects of the base object; or Subtree, the base object and all child objects)</param>
+            <returns>True if the search base and scope were set, false otherwise.</returns>
+        </member>
+        <member name="P:Galactic.LDAP.LDAP.NamingContexts">
+            <summary>
+            The Naming Contexts (The base DNs that this server hosts.) for the LDAP server as defined in the RootDSE entry.
+            </summary>
+        </member>
+        <member name="P:Galactic.LDAP.LDAP.AlternateServers">
+            <summary>
+            A list of other servers that can fulfill LDAP requests if the one we're connected to becomes unavailable.
+            May be null if there are no other servers available.
+            </summary>
+        </member>
+        <member name="P:Galactic.LDAP.LDAP.RootDSE">
+            <summary>
+            The rootDSE entry for the connected LDAP server.
+            </summary>
+        </member>
+    </members>
+</doc>

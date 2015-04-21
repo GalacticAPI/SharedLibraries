@@ -1,0 +1,237 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Galactic.Sql.Oracle</name>
+    </assembly>
+    <members>
+        <member name="T:Galactic.Sql.Oracle.OracleStoredProcedure">
+            <summary>
+            An SQL Stored Procedure.
+            </summary>
+        </member>
+        <member name="F:Galactic.Sql.Oracle.OracleStoredProcedure.MAX_NVARCHAR_SIZE">
+            <summary>
+            The value for MAX sized nvarchar parameters.
+            </summary>
+        </member>
+        <member name="F:Galactic.Sql.Oracle.OracleStoredProcedure.MAX_VARCHAR_SIZE">
+            <summary>
+            The value for MAX sized varchar parameters.
+            </summary>
+        </member>
+        <member name="M:Galactic.Sql.Oracle.OracleStoredProcedure.#ctor(System.String,System.String,Galactic.EventLog.EventLog)">
+            <summary>
+            Creates a stored procedure.
+            </summary>
+            <param name="connectionString">The connection string for the SQL database to which the procedure belongs.</param>
+            <param name="procedureName">The name of the procedure.</param>
+            <param name="log">An event log to log exceptions to. May be null if no exception logging is desired.</param>
+        </member>
+        <member name="M:Galactic.Sql.Oracle.OracleStoredProcedure.AddBooleanParameter(System.String,System.Nullable{System.Boolean},Galactic.Sql.StoredProcedure.ParameterType)">
+            <summary>
+            Adds a boolean parameter to the procedure.
+            </summary>
+            <param name="name">The name of the parameter to add.</param>
+            <param name="value">The value of the parameter to add.</param>
+            <param name="direction">The direction of the parameter. Use one of the class parameter constants. Defaults to IN.</param>
+            <returns>True if the parameter is added, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.Sql.Oracle.OracleStoredProcedure.AddInt32Parameter(System.String,System.Nullable{System.Int32},Galactic.Sql.StoredProcedure.ParameterType)">
+            <summary>
+            Adds a 32-bit integer parameter to the procedure.
+            </summary>
+            <param name="name">The name of the parameter to add.</param>
+            <param name="value">The value of the parameter to add.</param>
+            <param name="direction">The direction of the parameter. Use one of the class parameter constants. Defaults to IN.</param>
+            <returns>True if the parameter is added, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.Sql.Oracle.OracleStoredProcedure.AddInt64Parameter(System.String,System.Nullable{System.Int64},Galactic.Sql.StoredProcedure.ParameterType)">
+            <summary>
+            Adds a 64-bit integer parameter to the procedure.
+            </summary>
+            <param name="name">The name of the parameter to add.</param>
+            <param name="value">The value of the parameter to add.</param>
+            <param name="direction">The direction of the parameter. Use one of the class parameter constants. Defaults to IN.</param>
+            <returns>True if the parameter is added, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.Sql.Oracle.OracleStoredProcedure.AddDateTimeParameter(System.String,System.DateTime,Galactic.Sql.StoredProcedure.ParameterType)">
+            <summary>
+            Adds a date and time parameter to the procedure.
+            </summary>
+            <param name="name">The name of the parameter to add.</param>
+            <param name="value">The value of the parameter to add.</param>
+            <param name="direction">The direction of the parameter. Use one of the class parameter constants.</param>
+            <returns>True if the parameter is added, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.Sql.Oracle.OracleStoredProcedure.AddNCharParameter(System.String,System.String,System.Int32,Galactic.Sql.StoredProcedure.ParameterType)">
+            <summary>
+            Adds an Unicode fixed length character parameter to the procedure.
+            Strings longer than Sql.MAX_NVARCHAR_LENGTH and the length argument are truncated to fit.
+            </summary>
+            <param name="name">The name of the parameter to add.</param>
+            <param name="value">The value of the parameter to add.</param>
+            <param name="length">The length of the variable character parameter.</param>
+            <param name="direction">The direction of the parameter. Use one of the class parameter constants. Defaults to IN.</param>
+            <returns>True if the parameter is added, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.Sql.Oracle.OracleStoredProcedure.AddNVarCharParameter(System.String,System.String,System.Int32,Galactic.Sql.StoredProcedure.ParameterType)">
+            <summary>
+            Adds an Unicode variable character parameter to the procedure.
+            Strings longer than Sql.MAX_NVARCHAR_LENGTH and the length argument are truncated to fit.
+            </summary>
+            <param name="name">The name of the parameter to add.</param>
+            <param name="value">The value of the parameter to add.</param>
+            <param name="length">The length of the variable character parameter.</param>
+            <param name="direction">The direction of the parameter. Use one of the class parameter constants. Defaults to IN.</param>
+            <returns>True if the parameter is added, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.Sql.Oracle.OracleStoredProcedure.AddVarCharParameter(System.String,System.String,System.Int32,Galactic.Sql.StoredProcedure.ParameterType)">
+            <summary>
+            Adds an Non-Unicode variable character parameter to the procedure.
+            Strings longer than Sql.MAX_VARCHAR_LENGTH and the length argument are truncated to fit.
+            </summary>
+            <param name="name">The name of the parameter to add.</param>
+            <param name="value">The value of the parameter to add.</param>
+            <param name="length">The length of the variable character parameter.</param>
+            <param name="direction">The direction of the parameter. Use one of the class parameter constants. Defaults to IN.</param>
+            <returns>True if the parameter is added, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.Sql.Oracle.OracleStoredProcedure.GetParameter(System.String)">
+            <summary>
+            Gets a parameter's value from the procedure.
+            </summary>
+            <param name="name">The name of the parameter to get.</param>
+            <returns>The object that matches the value of the parameter, null if the parameter could not be found.</returns>
+        </member>
+        <member name="M:Galactic.Sql.Oracle.OracleStoredProcedure.GetParamName(System.String)">
+            <summary>
+            Prepends a @ to the name of the parameter for use in SQL calls.
+            </summary>
+            <param name="name">The name of the parameter.</param>
+            <returns>The parameter name with a @ prepended.</returns>
+        </member>
+        <member name="P:Galactic.Sql.Oracle.OracleStoredProcedure.Connection">
+            <summary>
+            The connection to the database.
+            </summary>
+        </member>
+        <member name="P:Galactic.Sql.Oracle.OracleStoredProcedure.Command">
+            <summary>
+            The command to be sent to the database.
+            </summary>
+        </member>
+        <member name="T:Galactic.Sql.Oracle.OracleUtility">
+            <summary>
+            Provides various utility methods for use with Oracle databases.
+            </summary>
+        </member>
+        <member name="F:Galactic.Sql.Oracle.OracleUtility.DefaultPortNumber">
+            <summary>
+            The default port number for Oracle database client connections.
+            </summary>
+        </member>
+        <member name="M:Galactic.Sql.Oracle.OracleUtility.BuildConnectionString(System.String,System.String,System.String,System.Boolean,System.Boolean,System.String)">
+            <summary>
+            Builds a connection string using TNS.
+            </summary>
+            <param name="addressName">The address name of the database to connect to, as defined in the tnsnames.ora file.</param>
+            <param name="accountName">The name of the account to use when connecting to the database server.</param>
+            <param name="password">The password for the account.</param>
+            <param name="trustedConnection">Whether to use integrated security to create a trusted connection with the
+            database server. An accountName and password are not required for a trusted connection, the Windows account
+            running the application will be used.</param>
+            <param name="loadBalancing">Whether connection should be optimized for RAC databases.</param>
+            <param name="dbaPrivilege">The database system level privilege to make the connection with. DBAPrivilege defines all valid values.
+            Use NONE for non-system connections</param>
+            <returns>The built connection string, or null if the string could not be built.</returns>
+        </member>
+        <member name="M:Galactic.Sql.Oracle.OracleUtility.BuildConnectionString(System.String,System.Int32,System.String,System.String,System.String,System.Boolean,System.Boolean,System.String)">
+            <summary>
+            Builds a connection string.
+            </summary>
+            <param name="hostName">The name of the database server.</param>
+            <param name="portNumber">The port number to use when connecting to the database server.</param>
+            <param name="serviceName">The name of the service on the database server.</param>
+            <param name="accountName">The name of the account to use when connecting to the database server.</param>
+            <param name="password">The password for the account.</param>
+            <param name="trustedConnection">Whether to use integrated security to create a trusted connection with the
+            database server. An accountName and password are not required for a trusted connection, the Windows account
+            running the application will be used.</param>
+            <param name="loadBalancing">Whether connection should be optimized for RAC databases.</param>
+            <param name="dbaPrivilege">The database system level privilege to make the connection with. DBAPrivilege defines all valid values.
+            Use NONE for non-system connections</param>
+            <returns>The built connection string, or null if the string could not be built.</returns>
+        </member>
+        <member name="M:Galactic.Sql.Oracle.OracleUtility.BuildConnectionStringFromDataSource(System.String,System.String,System.String,System.Boolean,System.Boolean,System.String)">
+            <summary>
+            Builds a connection string.
+            </summary>
+            <param name="dataSource">The data source field of the connection string to build.</param>
+            <param name="accountName">The name of the account to use when connecting to the database server.</param>
+            <param name="password">The password for the account.</param>
+            <param name="trustedConnection">Whether to use integrated security to create a trusted connection with the
+            database server. An accountName and password are not required for a trusted connection, the Windows account
+            running the application will be used.</param>
+            <param name="loadBalancing">Whether connection should be optimized for RAC databases.</param>
+            <param name="dbaPrivilege">The database system level privilege to make the connection with. DBAPrivilege defines all valid values.
+            Use NONE for non-system connections</param>
+            <returns>The built connection string, or null if the string could not be built.</returns>
+        </member>
+        <member name="M:Galactic.Sql.Oracle.OracleUtility.LogException(Oracle.DataAccess.Client.OracleException,Galactic.EventLog.EventLog)">
+            <summary>
+            Logs an Oracle exception to the event log.
+            </summary>
+            <param name="e">The exception to log.</param>
+            <param name="log">The event log to log the execption to.</param>
+            <returns>True if the exception was logged successfully. False otherwise.</returns>
+        </member>
+        <member name="M:Galactic.Sql.Oracle.OracleUtility.ExecuteNonQuery(System.String,System.String,Galactic.EventLog.EventLog)">
+            <summary>
+            Executes the non-query PL/SQL command provided.
+            </summary>
+            <param name="command">The PL/SQL command text to execute.</param>
+            <param name="connectionString">The connection string of the database to execute the script against.</param>
+            <param name="log">The event log to log execptions to. May be null for no logging.</param>
+            <returns>True if the command ran, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.Sql.Oracle.OracleUtility.ExecuteQuery(System.String,System.String,Galactic.EventLog.EventLog,System.Exception@)">
+            <summary>
+            Executes the PL/SQL query provided.
+            </summary>
+            <param name="query">The PL/SQL query text to execute.</param>
+            <param name="connectionString">The connection string of the database to execute the script against.</param>
+            <param name="log">The event log to log execptions to. May be null for no logging.</param>
+            <param name="exception">Outputs an exception if there was one during the processing of the query. Null otherwise.</param>
+            <returns>A list of rows of data returned from the query.</returns>
+        </member>
+        <member name="M:Galactic.Sql.Oracle.OracleUtility.ExecuteQuery(System.String,System.String,Galactic.EventLog.EventLog)">
+            <summary>
+            Executes the PL/SQL query provided.
+            </summary>
+            <param name="query">The PL/SQL query text to execute.</param>
+            <param name="connectionString">The connection string of the database to execute the script against.</param>
+            <param name="log">The event log to log execptions to. May be null for no logging.</param>
+            <returns>A list of rows of data returned from the query.</returns>
+        </member>
+        <member name="P:Galactic.Sql.Oracle.OracleUtility.MAX_NCHAR_LENGTH">
+            <summary>
+            The maximum length of a NCHAR field in the database.
+            </summary>
+        </member>
+        <member name="P:Galactic.Sql.Oracle.OracleUtility.MAX_NVARCHAR_LENGTH">
+            <summary>
+            The maximum length of a NVARCHAR field in the database.
+            </summary>
+        </member>
+        <member name="P:Galactic.Sql.Oracle.OracleUtility.MAX_VARCHAR_LENGTH">
+            <summary>
+            The maximum length of a VARCHAR field in the database.
+            </summary>
+        </member>
+        <member name="T:Galactic.Sql.Oracle.OracleUtility.DBAPrivilege">
+            <summary>
+            A list of valid DBAPriviliege Oracle system level privilege constants.
+            </summary>
+        </member>
+    </members>
+</doc>

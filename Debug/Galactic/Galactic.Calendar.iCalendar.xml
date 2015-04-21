@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Galactic.Calendar.iCalendar</name>
+    </assembly>
+    <members>
+        <member name="T:Galactic.Calendar.iCalendar.iCalendarUtility">
+            <summary>
+            Provides various utility methods for use with iCalendars.
+            Uses the DDay.iCal library. http://www.ddaysoftware.com/Pages/Projects/DDay.iCal/
+            </summary>
+        </member>
+        <member name="M:Galactic.Calendar.iCalendar.iCalendarUtility.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:Galactic.Calendar.iCalendar.iCalendarUtility.#ctor(System.String,System.String)">
+            <summary>
+            Creates the utility class that allows for loading iCalendar files.
+            </summary>
+            <param name="configurationItemDirectoryPath">The physical path to the directory where configuration item files can be found.</param>
+            <param name="configurationItemName">The name of the configuration item containing the iCalendar configuration.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if one of the parameters provided is empty, null, or whitespace.</exception>
+            <exception cref="T:System.ArgumentException">Thrown if there was an error reading the configuration data.</exception>
+            <remarks>Configuration data has the following format: Name|URI|username|password
+            Username and password can be empty if they are not required.
+            The configuration file should list one calendar per line.</remarks>
+        </member>
+        <member name="M:Galactic.Calendar.iCalendar.iCalendarUtility.GetCalendar(System.String,System.DateTime,System.DateTime)">
+            <summary>
+            Gets a calendar from the provider.
+            </summary>
+            <param name="name">The name of the calendar to retrieve.</param>
+            <param name="startDate">Events starting on or after this date will be included in the list returned.</param>
+            <param name="endDate">Events starting on or before this date will be included in the list returned.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if a name that is empty, null,
+            or full of whitespace is provided.</exception>
+            <returns>The calendar with the supplied name, or null if a calendar of that name does not exist
+            or could not be retrieved.</returns>
+            <remarks>This method only returns the first calendar in iCalendar files that contain multiple calendars.</remarks>
+        </member>
+        <member name="M:Galactic.Calendar.iCalendar.iCalendarUtility.GetCalendarText(Galactic.Calendar.Calendar)">
+            <summary>
+            Returns the text of the iCalendar feed associated with the calendar object supplied.
+            </summary>
+            <param name="calendar">The object to get the iCalendar feed text of.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if a calendar is not provided.</exception>
+            <returns>The text of the iCalendar feed associated with the calendar supplied.</returns>
+        </member>
+        <member name="M:Galactic.Calendar.iCalendar.iCalendarUtility.SaveCalendar(Galactic.Calendar.Calendar)">
+            <summary>
+            Saves the supplied calendar to its file location specified in the configuration file.
+            </summary>
+            <param name="calendar">The calendar object to save.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if a calendar is not provided.</exception>
+            <returns>Always returns true. (The iCalendar serializer does not report whether it was successful.)</returns>
+        </member>
+        <member name="M:Galactic.Calendar.iCalendar.iCalendarUtility.SaveCalendar(Galactic.Calendar.Calendar,System.String)">
+            <summary>
+            Saves the supplied calendar object as an iCalendar file at the supplied path.
+            </summary>
+            <param name="calendar">The calendar object to save.</param>
+            <param name="path">The path to save the iCalendar file at.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if a calendar is not provided, or a path was not provided.</exception>
+            <returns>Always returns true. (The iCalendar serializer does not report whether it was successful.)</returns>
+        </member>
+        <member name="M:Galactic.Calendar.iCalendar.iCalendarUtility.ToIICalendar(Galactic.Calendar.Calendar)">
+            <summary>
+            Converts a Calendar to an IICalendar.
+            </summary>
+            <param name="calendar">The calendar object to convert.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if a calendar is not provided.</exception>
+            <returns>The converted IICalendar, or null if the calendar couldn't be converted.</returns>
+        </member>
+        <member name="P:Galactic.Calendar.iCalendar.iCalendarUtility.CalendarNames">
+            <summary>
+            A list of the names of calendars available via the calendar provider.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,179 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Galactic.Sql.MSSql</name>
+    </assembly>
+    <members>
+        <member name="T:Galactic.Sql.MSSql.MSStoredProcedure">
+            <summary>
+            An SQL Stored Procedure.
+            </summary>
+        </member>
+        <member name="F:Galactic.Sql.MSSql.MSStoredProcedure.MAX_NVARCHAR_SIZE">
+            <summary>
+            The value for MAX sized nvarchar parameters.
+            Used to create nvarchar parameter values of greater than MSSqlUtility.MAX_NVARCHAR_LENGTH.
+            </summary>
+        </member>
+        <member name="F:Galactic.Sql.MSSql.MSStoredProcedure.MAX_VARCHAR_SIZE">
+            <summary>
+            The value for MAX sized varchar parameters.
+            Used to create nvarchar parameter values of greater than MSSqlUtility.MAX_VARCHAR_LENGTH.
+            </summary>
+        </member>
+        <member name="M:Galactic.Sql.MSSql.MSStoredProcedure.#ctor(System.String,System.String,Galactic.EventLog.EventLog)">
+            <summary>
+            Creates a stored procedure.
+            </summary>
+            <param name="connectionString">The connection string for the SQL database to which the procedure belongs.</param>
+            <param name="procedureName">The name of the procedure.</param>
+            <param name="log">An event log to log exceptions to. May be null if no exception logging is desired.</param>
+        </member>
+        <member name="M:Galactic.Sql.MSSql.MSStoredProcedure.AddBooleanParameter(System.String,System.Nullable{System.Boolean},Galactic.Sql.StoredProcedure.ParameterType)">
+            <summary>
+            Adds a boolean parameter to the procedure.
+            </summary>
+            <param name="name">The name of the parameter to add.</param>
+            <param name="value">The value of the parameter to add.</param>
+            <param name="direction">The direction of the parameter. Use one of the class parameter constants. Defaults to IN.</param>
+            <returns>True if the parameter is added, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.Sql.MSSql.MSStoredProcedure.AddInt32Parameter(System.String,System.Nullable{System.Int32},Galactic.Sql.StoredProcedure.ParameterType)">
+            <summary>
+            Adds a 32-bit integer parameter to the procedure.
+            </summary>
+            <param name="name">The name of the parameter to add.</param>
+            <param name="value">The value of the parameter to add.</param>
+            <param name="direction">The direction of the parameter. Use one of the class parameter constants.</param>
+            <returns>True if the parameter is added, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.Sql.MSSql.MSStoredProcedure.AddInt64Parameter(System.String,System.Nullable{System.Int64},Galactic.Sql.StoredProcedure.ParameterType)">
+            <summary>
+            Adds a 64-bit integer parameter to the procedure.
+            </summary>
+            <param name="name">The name of the parameter to add.</param>
+            <param name="value">The value of the parameter to add.</param>
+            <param name="direction">The direction of the parameter. Use one of the class parameter constants. Defaults to IN.</param>
+            <returns>True if the parameter is added, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.Sql.MSSql.MSStoredProcedure.AddDateTimeParameter(System.String,System.DateTime,Galactic.Sql.StoredProcedure.ParameterType)">
+            <summary>
+            Adds a date and time parameter to the procedure.
+            </summary>
+            <param name="name">The name of the parameter to add.</param>
+            <param name="value">The value of the parameter to add.</param>
+            <param name="direction">The direction of the parameter. Use one of the class parameter constants.</param>
+            <returns>True if the parameter is added, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.Sql.MSSql.MSStoredProcedure.AddNCharParameter(System.String,System.String,System.Int32,Galactic.Sql.StoredProcedure.ParameterType)">
+            <summary>
+            Adds an Unicode fixed length character parameter to the procedure.
+            Strings longer than SqlUtility.MAX_NCHAR_LENGTH and the length argument are truncated to fit.
+            </summary>
+            <param name="name">The name of the parameter to add.</param>
+            <param name="value">The value of the parameter to add.</param>
+            <param name="length">The length of the fixed length character parameter.</param>
+            <param name="direction">The direction of the parameter. Use one of the class parameter constants. Defaults to IN.</param>
+            <returns>True if the parameter is added, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.Sql.MSSql.MSStoredProcedure.AddNVarCharParameter(System.String,System.String,System.Int32,Galactic.Sql.StoredProcedure.ParameterType)">
+            <summary>
+            Adds an Unicode variable character parameter to the procedure.
+            Strings longer than SqlUtility.MAX_NVARCHAR_LENGTH and the length argument are truncated to fit.
+            </summary>
+            <param name="name">The name of the parameter to add.</param>
+            <param name="value">The value of the parameter to add.</param>
+            <param name="length">The length of the variable character parameter.</param>
+            <param name="direction">The direction of the parameter. Use one of the class parameter constants. Defaults to IN.</param>
+            <returns>True if the parameter is added, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.Sql.MSSql.MSStoredProcedure.AddVarCharParameter(System.String,System.String,System.Int32,Galactic.Sql.StoredProcedure.ParameterType)">
+            <summary>
+            Adds an Non-Unicode variable character parameter to the procedure.
+            Strings longer than SqlUtility.MAX_VARCHAR_LENGTH and the length argument are truncated to fit.
+            </summary>
+            <param name="name">The name of the parameter to add.</param>
+            <param name="value">The value of the parameter to add.</param>
+            <param name="length">The length of the variable character parameter.</param>
+            <param name="direction">The direction of the parameter. Use one of the class parameter constants. Defaults to IN.</param>
+            <returns>True if the parameter is added, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.Sql.MSSql.MSStoredProcedure.GetParameter(System.String)">
+            <summary>
+            Gets a parameter's value from the procedure.
+            </summary>
+            <param name="name">The name of the parameter to get.</param>
+            <returns>The object that matches the value of the parameter, null if the parameter could not be found.</returns>
+        </member>
+        <member name="M:Galactic.Sql.MSSql.MSStoredProcedure.GetParamName(System.String)">
+            <summary>
+            Prepends a @ to the name of the parameter for use in SQL calls.
+            </summary>
+            <param name="name">The name of the parameter.</param>
+            <returns>The parameter name with a @ prepended.</returns>
+        </member>
+        <member name="P:Galactic.Sql.MSSql.MSStoredProcedure.Connection">
+            <summary>
+            The connection to the database.
+            </summary>
+        </member>
+        <member name="P:Galactic.Sql.MSSql.MSStoredProcedure.Command">
+            <summary>
+            The command to be sent to the database.
+            </summary>
+        </member>
+        <member name="T:Galactic.Sql.MSSql.MSSqlUtility">
+            <summary>
+            Provides various utility methods for use with Microsoft SQL databases.
+            </summary>
+        </member>
+        <member name="M:Galactic.Sql.MSSql.MSSqlUtility.BuildConnectionString(System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Builds a connection string.
+            </summary>
+            <param name="serverName">The name of the database server.</param>
+            <param name="instanceName">The name of the instance on the database server, if needed.</param>
+            <param name="databaseName">The name of the database on the server.</param>
+            <param name="accountName">The account for the database server.</param>
+            <param name="password">The password for the account.</param>
+            <param name="trustedConnection">Whether to use integrated security to create a trusted connection with the
+            database server. An accountName and password are not required for a trusted connection, the Windows account
+            running the application will be used.</param>
+            <param name="management">Whether this connection string will be used for creating or deleting the database.</param>
+            <returns>The built connection string, or null if the string could not be built.</returns>
+        </member>
+        <member name="M:Galactic.Sql.MSSql.MSSqlUtility.ExecuteNonQuery(System.String,System.String,Galactic.EventLog.EventLog)">
+            <summary>
+            Executes the non-query TSQL command provided.
+            </summary>
+            <param name="command">The TSQL command text to execute.</param>
+            <param name="connectionString">The connection string of the database to execute the script against.</param>
+            <param name="log">The event log to log execptions to. May be null for no logging.</param>
+            <returns>True if the command ran, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.Sql.MSSql.MSSqlUtility.ExecuteQuery(System.String,System.String,Galactic.EventLog.EventLog)">
+            <summary>
+            Executes the TSQL query provided.
+            </summary>
+            <param name="query">The TSQL query text to execute.</param>
+            <param name="connectionString">The connection string of the database to execute the script against.</param>
+            <param name="log">The event log to log execptions to. May be null for no logging.</param>
+            <returns>A list of rows of data returned from the query.</returns>
+        </member>
+        <member name="P:Galactic.Sql.MSSql.MSSqlUtility.MAX_NCHAR_LENGTH">
+            <summary>
+            The maximum length of a NCHAR field in the database.
+            </summary>
+        </member>
+        <member name="P:Galactic.Sql.MSSql.MSSqlUtility.MAX_NVARCHAR_LENGTH">
+            <summary>
+            The maximum length of a NVARCHAR field in the database.
+            </summary>
+        </member>
+        <member name="P:Galactic.Sql.MSSql.MSSqlUtility.MAX_VARCHAR_LENGTH">
+            <summary>
+            The maximum length of a VARCHAR field in the database.
+            </summary>
+        </member>
+    </members>
+</doc>

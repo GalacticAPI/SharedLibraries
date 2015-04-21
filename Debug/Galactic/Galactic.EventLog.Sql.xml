@@ -1,0 +1,269 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Galactic.EventLog.Sql</name>
+    </assembly>
+    <members>
+        <member name="T:Galactic.EventLog.Sql.SqlEventLog">
+            <summary>
+            SqlEventLog is a class that logs activity to a SQL Database table.
+            </summary>
+        </member>
+        <member name="M:Galactic.EventLog.Sql.SqlEventLog.#ctor(System.String,System.Type)">
+            <summary>
+            Creates a new SQL event log.
+            </summary>
+            <param name="connectionString">The connection string to use for this event log.</param>
+            <param name="storedProcedureType">The type of stored procedure used for the event log.</param>
+        </member>
+        <member name="M:Galactic.EventLog.Sql.SqlEventLog.CreateStoredProcedure(System.String,System.String,Galactic.EventLog.EventLog,System.Type)">
+            <summary>
+            Create a stored procedure of the desired database type.
+            </summary>
+            <param name="connectionString">The connection string used to connect with the database.</param>
+            <param name="procedureName">The name of the stored procedure.</param>
+            <param name="log">An event log used for logging with the stored procedure.</param>
+            <param name="storedProcedureType">The type of stored procedure to create.</param>
+            <returns>A stored procedure of the appropriate type for the database, or null if an error occurred or not enough information was supplied to create the procedure.</returns>
+        </member>
+        <member name="M:Galactic.EventLog.Sql.SqlEventLog.Find(System.String,System.Nullable{Galactic.EventLog.Event.SeverityLevels},System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Finds events that match the filters provided.
+            See each parameter for information on how to filter the search.
+            </summary>
+            <param name="source">Searches for all events with sources that match the string provided. Returns events of all sources on a null or empty string.</param>
+            <param name="severity">Searches for events with the specified severity level. Returns events of all severity levels on null.</param>
+            <param name="category">Searches for events with categories that match the string provided. Returns events of all categories on a null or empty string.</param>
+            <param name="begin">Returns events with a date/time on or after the date/time supplied. Does not put a lower range on event dates on a null date/time.</param>
+            <param name="end">Returns events with a date/time on or before the date/time supplied. Does not put an upper range on event dates on a null date/time.</param>
+            <returns>A list of events sorted from earliest to latest that match the given search parameters.</returns>
+        </member>
+        <member name="M:Galactic.EventLog.Sql.SqlEventLog.Log(Galactic.EventLog.Event)">
+            <summary>
+            Logs the event to the event log.
+            </summary>
+            <param name="eventToLog">The event to log.</param>
+            <returns>True if the event was logged successfully. False otherwise.</returns>
+        </member>
+        <member name="M:Galactic.EventLog.Sql.SqlEventLog.AddCategory(System.String)">
+            <summary>
+            Adds an event category to the log.
+            Categories help to classify the type of event that occurred.
+            </summary>
+            <param name="name">The name of the event category.</param>
+            <returns>True if the event category was added, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.EventLog.Sql.SqlEventLog.AddEvent(System.String,System.String,Galactic.EventLog.Event.SeverityLevels,System.String)">
+            <summary>
+            Adds an event to the log.
+            </summary>
+            <param name="source">A name for the source of the event.</param>
+            <param name="category">A category that classifies the type of event.</param>
+            <param name="severityLevel">The importance of the event.</param>
+            <param name="details">A detailed description of the event.</param>
+            <returns>True if the event was added, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.EventLog.Sql.SqlEventLog.AddSeverityLevel(System.String)">
+            <summary>
+            Adds an event severity level to the log.
+            Severity levels help to identify the importance of an event.
+            </summary>
+            <param name="name">The name for the severity level</param>
+            <returns>True if the event severity level was added, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.EventLog.Sql.SqlEventLog.AddSource(System.String)">
+            <summary>
+            Adds an event source to the log.
+            Event sources identify where the event originated.
+            </summary>
+            <param name="name">The name of the event source.</param>
+            <returns>True if the event source was added, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.EventLog.Sql.SqlEventLog.DeleteCategory(System.Int32)">
+            <summary>
+            Deletes an event category from the log.
+            </summary>
+            <param name="id">The id of the event category in the database to delete.</param>
+            <returns>True if the event category was deleted, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.EventLog.Sql.SqlEventLog.DeleteEvent(System.DateTime,System.Int32)">
+            <summary>
+            Deletes an event from the log.
+            </summary>
+            <param name="date">The date/time of the event to delete.</param>
+            <param name="sourceId">The ID of the source of the event to delete.</param>
+            <returns>True if the event was deleted, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.EventLog.Sql.SqlEventLog.DeleteSeverityLevel(System.Int32)">
+            <summary>
+            Deletes an event severity level from the log.
+            </summary>
+            <param name="id">The id of the event severity level in the database to delete.</param>
+            <returns>True if the event severity level was deleted, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.EventLog.Sql.SqlEventLog.DeleteSource(System.Int32)">
+            <summary>
+            Deletes an event source from the log.
+            Note: Deleting an event source, deletes all events originating from this source in the log.
+            </summary>
+            <param name="id">The ID of the event source in the database to delete.</param>
+            <returns>True if the event source was deleted, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.EventLog.Sql.SqlEventLog.ExecuteAddByNameStoredProcedure(System.String,System.String,System.Int32)">
+            <summary>
+            Executes a stored procedure that requires a name to add an item to the log.
+            </summary>
+            <param name="name">The value of the name to add.</param>
+            <param name="procedureName">The name of the procedure that adds the item to the database.</param>
+            <param name="nameParameterLength">The maximum allowable length of a name value in the database.</param>
+            <returns>True if the procedure executed successfully, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.EventLog.Sql.SqlEventLog.ExecuteDeleteByIdStoredProcedure(System.Int32,System.String)">
+            <summary>
+            Executes a stored procedure that requires an ID to delete an item from the log.
+            </summary>
+            <param name="id">The id of the item to delete.</param>
+            <param name="procedureName">The name of the procedure that deletes the item to the database.</param>
+            <returns>True if the procedure executed successfully, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.EventLog.Sql.SqlEventLog.ExecuteGetByIdAndNameStoredProcedure(System.Int32,System.String,System.String,System.Int32)">
+            <summary>
+            Executes a stored procedure that retrieves items from the log based upon their id or name.
+            </summary>
+            <param name="id">The id of the items to get. Provide a 0 ID to return items with any ID from the log.</param>
+            <param name="name">The name of the items to get. Provide and empty or null string to return items with any name from the log.</param>
+            <param name="procedureName">The name of the procedure that deletes the item to the database.</param>
+            <param name="nameParameterLength">The maximum allowable length of a name value in the database.</param>
+            <returns>A list of items that match the criteria provided, or null on an error.</returns>
+        </member>
+        <member name="M:Galactic.EventLog.Sql.SqlEventLog.ExecuteUpdateByIdAndNameStoredProcedure(System.Int32,System.String,System.String,System.Int32)">
+            <summary>
+            Executes a stored procedure that updates a named item in the log.
+            </summary>
+            <param name="id">The ID of the item to update.</param>
+            <param name="name">The name value for the item.</param>
+            <param name="procedureName">The name of the procedure that updates the item in the database.</param>
+            <param name="nameParameterLength">The maximum allowable length of a name value in the database.</param>
+            <returns>True if the procedure executed successfully, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.EventLog.Sql.SqlEventLog.GetCategories(System.Int32,System.String)">
+            <summary>
+            Gets event categories from the log that match the specified criteria.
+            Note: See parameter descriptions for information on filtering your results.
+            </summary>
+            <param name="id">The ID of the event category in the database. Provide a 0 ID to return event categories with any ID from the log.</param>
+            <param name="name">The name of the event category to return. Provide and empty or null string to return event categories with any name from the log.</param>
+            <returns>A list of categories that match the criteria provided.</returns>
+        </member>
+        <member name="M:Galactic.EventLog.Sql.SqlEventLog.GetEvents(System.Int32,System.Int32,System.Int32,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>
+            Gets events from the log that match specified criteria.
+            Note: See parameter descriptions for information on filtering your results.
+            </summary>
+            <param name="sourceId">The ID of the source from which events originated in the database. Provide a 0 ID to return events with any ID from the log.</param>
+            <param name="categoryId">The ID of the category to which an event belongs in the database. Provide a 0 ID to return events with any ID from the log.</param>
+            <param name="severityId">The ID of the severity level to which an event belongs in the database. Provide a 0 ID to return events with any ID from the log.</param>
+            <param name="begin">Return events that occur on or after this date. Provide a null date to specify no lower bound on the date of events to return.</param>
+            <param name="end">Returns events that occur on or before this date. Provide a null date to specify no upper bound on the date of events to return.</param>
+            <returns>A list of events that match the criteria provided.</returns>
+        </member>
+        <member name="M:Galactic.EventLog.Sql.SqlEventLog.GetSeverityLevels(System.Int32,System.String)">
+            <summary>
+            Gets event severity levels from the log that match the specified criteria.
+            Note: See parameter descriptions for information on filtering your results.
+            </summary>
+            <param name="id">The ID of the event severity level in the database. Provide a 0 ID to return event severity levels with any ID from the log.</param>
+            <param name="name">The name of the event severity level to return. Provide an empty or null string to return event severity levels with any name from the log.</param>
+            <returns>A list of event severity levels that match the criteria provided.</returns>
+        </member>
+        <member name="M:Galactic.EventLog.Sql.SqlEventLog.GetSources(System.Int32,System.String)">
+            <summary>
+            Gets event sources from the log that match the specified criteria.
+            Note: See parameter descriptions for information on filtering your results.
+            </summary>
+            <param name="id">The ID of the event source in the database. Provide a 0 ID to return event sources with any ID from the log.</param>
+            <param name="name">The name of the event source to return. Provide an empty or null string to return event sources with any name from the log.</param>
+            <returns>A list of event sources that match the criteria provided.</returns>
+        </member>
+        <member name="M:Galactic.EventLog.Sql.SqlEventLog.UpdateCategory(System.Int32,System.String)">
+            <summary>
+            Updates the attributes of an existing event category.
+            </summary>
+            <param name="id">The ID of the event category in the database.</param>
+            <param name="name">The name to give the event category.</param>
+            <returns>True if the update succeeded, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.EventLog.Sql.SqlEventLog.UpdateEvent(System.DateTime,System.Int32,System.String,System.Nullable{Galactic.EventLog.Event.SeverityLevels},System.String)">
+            <summary>
+            Updates the attributes of an existing event.
+            </summary>
+            <param name="date">The date/time of the event to modify.</param>
+            <param name="sourceId">The source ID of the event to modify.</param>
+            <param name="category">A category that classifies the type of event.</param>
+            <param name="severityLevel">The importance of the event. Provide a null to keep its current value.</param>
+            <param name="details">The new details text assigned to the event. Provide an empty or null string to keep its current value.</param>
+            <returns>True if the update succeeded, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.EventLog.Sql.SqlEventLog.UpdateSeverityLevel(System.Int32,System.String)">
+            <summary>
+            Updates the attributes of an existing event severity level.
+            </summary>
+            <param name="id">The ID of the event severity level in the database.</param>
+            <param name="name">The name to give the event severity level.</param>
+            <returns>True if the update succeeded, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.EventLog.Sql.SqlEventLog.UpdateSource(System.Int32,System.String)">
+            <summary>
+            Updates the attributes of an existing event source.
+            </summary>
+            <param name="id">The ID of the event source in the database.</param>
+            <param name="name">The name to give the event source.</param>
+            <returns>True if the update succeeded, false otherwise.</returns>
+        </member>
+        <member name="T:Galactic.EventLog.Sql.SqlEventLogEvent">
+            <summary>
+            SqlEventLogEvent is a lightweight data class containing properties that describe events in an SqlEventLog database.
+            </summary>
+        </member>
+        <member name="P:Galactic.EventLog.Sql.SqlEventLogEvent.Date">
+            <summary>
+            The date of the event.
+            </summary>
+        </member>
+        <member name="P:Galactic.EventLog.Sql.SqlEventLogEvent.Source">
+            <summary>
+            The source of this event in the database.
+            </summary>
+        </member>
+        <member name="P:Galactic.EventLog.Sql.SqlEventLogEvent.Category">
+            <summary>
+            The category this event belongs to in the database.
+            </summary>
+        </member>
+        <member name="P:Galactic.EventLog.Sql.SqlEventLogEvent.SeverityLevel">
+            <summary>
+            The severity level this event is tagged as in the database.
+            </summary>
+        </member>
+        <member name="P:Galactic.EventLog.Sql.SqlEventLogEvent.Details">
+            <summary>
+            The details text of this event.
+            </summary>
+        </member>
+        <member name="T:Galactic.EventLog.Sql.SqlEventLogNamedItem">
+            <summary>
+            SqlEventLogNamedItem is a lightweight data class containing properties that describe items that contain an Id and Name in an SqlEventLog database.
+            </summary>
+        </member>
+        <member name="F:Galactic.EventLog.Sql.SqlEventLogNamedItem.Id">
+            <summary>
+            The ID of the item in the database.
+            </summary>
+        </member>
+        <member name="F:Galactic.EventLog.Sql.SqlEventLogNamedItem.Name">
+            <summary>
+            The name of the item.
+            </summary>
+        </member>
+    </members>
+</doc>

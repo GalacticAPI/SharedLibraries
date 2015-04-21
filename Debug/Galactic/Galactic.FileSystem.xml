@@ -1,0 +1,436 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Galactic.FileSystem</name>
+    </assembly>
+    <members>
+        <member name="T:Galactic.FileSystem.Directory">
+            <summary>
+            A utility class for manipulating directories on the file system.
+            </summary>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.AddAccessRule(System.String,System.Security.AccessControl.DirectorySecurity@,System.Security.AccessControl.FileSystemAccessRule,System.Boolean)">
+            <summary>
+            Adds an access rule to the directory at the supplied path.
+            </summary>
+            <param name="path">The path to the directory to add the rule to.</param>
+            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
+            <param name="rule">The rule to add to the directory.</param>
+            <param name="commitChanges">Indicates whether changes should be commited to this directory. Useful when combining multiple commands.</param>
+            <returns>True if the rule was added. False if the directory does not exist, the rule is null, or the process does not have access to
+            the specified path, or does not have sufficient access to change the ACL entry of the directory, or the operating system is not Windows
+            2000 or later.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.BlockInheritance(System.String,System.Security.AccessControl.DirectorySecurity@,System.Boolean,System.Boolean)">
+            <summary>
+            Blocks inheritance on this directory.
+            </summary>
+            <param name="path">The path to the directory to block inheritance on.</param>
+            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
+            <param name="addInheritedPermissions">If true, copies the directory's inherited permissions as explicit permissions on the directory.</param>
+            <param name="commitChanges">Indicates whether changes should be commited to this entry. Useful when combining multiple commands.</param>
+            <returns>True if inheritance was blocked on the directory, false if the directory does not exist, or inheritance could not be
+            blocked.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.Clone(System.String,System.String)">
+            <summary>
+            Clones a directory to a new location. Does not copy any files or folders beneath it.
+            </summary>
+            <param name="path">The path of the directory to clone.</param>
+            <param name="newPath">The destination path to clone the directory to.</param>
+            <returns>True if the directory was cloned. False otherwise.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.CommitChanges(System.String,System.Security.AccessControl.DirectorySecurity@)">
+            <summary>
+            Commits any pending changes to the directory specified by the supplied path.
+            </summary>
+            <param name="path">The path to the directory to commit changes on.</param>
+            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
+            <returns>True if the changes were commited. False if the directory does not exist,
+            or the current process does not have sufficient access to the specified path, or the
+            current operating system in not Windows 2000 or later.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.Create(System.String)">
+            <summary>
+            Creates a directory at the specified path.
+            </summary>
+            <param name="path">The path of the directory to create.</param>
+            <returns>True if the directory was created or already exists.
+            False if an error occured and the directory could not be created.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.Delete(System.String,System.Boolean)">
+            <summary>
+            Deletes a directory at the specified path.
+            </summary>
+            <param name="path">The path of the directory to delete.</param>
+            <param name="recursive">Recursively delete the files an subfolders of the directory.</param>
+            <returns>True if the directory was deleted or did not exist, false if an error occured
+            and the directory could not be deleted.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.Exists(System.String)">
+            <summary>
+            Checks whether the directory at the specified path exists on the file system.
+            </summary>
+            <param name="path">The path to the directory to check.</param>
+            <returns>True if it exists, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.GetListing(System.String,System.Boolean)">
+            <summary>
+            Gets a list of the contents of a directory at the specified path.
+            </summary>
+            <param name="path">The path of the directory to get a list of the contents of.</param>
+            <param name="getSubDirs">Whether to obtain a list of the contents of all subdirectories as well.</param>
+            <returns>An array of strings with the names of directories and files under the supplied path.
+            Null if the path is invalid, does not exist, or the current process does not have permission
+            to get the directory listing.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.GetSecurityObject(System.String)">
+            <summary>
+            Gets the DirectorySecurity object for the directory specified by the supplied path.
+            </summary>
+            <param name="path">The path to the directory to retrieve the security object for.</param>
+            <returns>The security object for the directory specified. Null if the directory does not exist,
+            an I/O Error occurred, the current operating system is not Windows 2000 or later,
+            the path specified is read-only, or the process does not have permission to complete the operation.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.GiveAccess(System.DirectoryServices.DirectoryEntry,System.String,System.Security.AccessControl.DirectorySecurity@,System.Security.AccessControl.FileSystemRights,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Gives access to the entry supplied on the target directory.
+            </summary>
+            <param name="entry">The entry to give access.</param>
+            <param name="path">The path to the directory to have access granted on.</param>
+            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
+            <param name="rights">The access rights to grant on the target directory.</param>
+            <param name="applyToSubfolders">Indicates whether this directory's permissions apply to subfolders beneath it.</param>
+            <param name="applyToFiles">Indicates whether this directory's permissions apply to files beneath it.</param>
+            <param name="commitChanges">Indicates whether changes should be commited to this directory. Useful when combining multiple commands.</param>
+            <returns>True if access was granted. False otherwise.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.GiveAccess(Galactic.FileSystem.Directory.AccessRights,System.DirectoryServices.DirectoryEntry,System.String,System.Security.AccessControl.DirectorySecurity@,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Gives the supplied data access rights to the entry supplied on the target directory.
+            </summary>
+            <param name="rights">The rights to apply to the target directory.</param>
+            <param name="entry">The entry to give data access.</param>
+            <param name="path">The path to the directory to have access granted on.</param>
+            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
+            <param name="applyToSubfolders">Indicates whether this directory's permissions apply to subfolders beneath it.</param>
+            <param name="applyToFiles">Indicates whether this directory's permissions apply to files beneath it.</param>
+            <param name="commitChanges">Indicates whether changes should be commited to this directory. Useful when combining multiple commands.</param>
+            <returns>True if access was granted. False otherwise.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.GiveAccess(Galactic.FileSystem.Directory.AccessRights,System.DirectoryServices.DirectoryEntry,System.String,System.Security.AccessControl.DirectorySecurity@,System.Boolean)">
+            <summary>
+            Gives the supplied data access rights to the entry supplied on the target directory.
+            Applies inherited permissions to folders and files beneath the target directory.
+            </summary>
+            <param name="rights">The rights to apply to the target directory.</param>
+            <param name="entry">The entry to give data access.</param>
+            <param name="path">The path to the directory to have access granted on.</param>
+            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
+            <param name="commitChanges">Indicates whether changes should be commited to this directory. Useful when combining multiple commands.</param>
+            <returns>True if access was granted. False otherwise.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.Move(System.String,System.String)">
+            <summary>
+            Moves a directory to a new location.
+            </summary>
+            <param name="path">The path of the directory to move.</param>
+            <param name="newPath">The path to the new location to move the directory.</param>
+            <returns>True if the directory was moved. False otherwise.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.RemoveAllAccessRules(System.String,System.Security.AccessControl.DirectorySecurity@,System.Boolean)">
+            <summary>
+            Removes all access rules from the supplied directory.
+            </summary>
+            <param name="path">The path to the directory to remove all access rules from.</param>
+            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
+            <param name="commitChanges">Indicates whether changes should be commited to this directory. Useful when combining multiple commands.</param>
+            <returns>True if all rules were removed. False if an error occurred.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.RemoveAllExplicitAccessRules(System.String,System.Security.AccessControl.DirectorySecurity@,System.Boolean)">
+            <summary>
+            Removes all explicit access rules from the supplied directory.
+            </summary>
+            <param name="path">The path to the directory to have access removed on.</param>
+            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
+            <param name="commitChanges">Indicates whether changes should be commited to this directory. Useful when combining multiple commands.</param>
+            <returns>True if access was removed. False otherwise.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.SetOwner(System.String,System.Security.AccessControl.DirectorySecurity@,System.DirectoryServices.DirectoryEntry,System.Boolean)">
+            <summary>
+            Sets the owner of a directory.
+            </summary>
+            <param name="path">The path to the directory to have the ownership set on.</param>
+            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
+            <param name="owner">The directy entry that should take ownership of the entry.</param>
+            <param name="commitChanges">Indicates whether changes should be commited to this entry. Useful when combining multiple commands.</param>
+            <returns>True if the ownership could be set. False otherwise.</returns>
+        </member>
+        <member name="T:Galactic.FileSystem.Directory.AccessRights">
+            <summary>
+            Valid access rights that may be applied to directories.
+            </summary>
+        </member>
+        <member name="F:Galactic.FileSystem.Directory.AccessRights.CreateFilesWriteData">
+            <summary>
+            Create files/write data.
+            </summary>
+        </member>
+        <member name="F:Galactic.FileSystem.Directory.AccessRights.FullControl">
+            <summary>
+            Full control.
+            </summary>
+        </member>
+        <member name="F:Galactic.FileSystem.Directory.AccessRights.ListFolderReadData">
+            <summary>
+            List folder/read data.
+            </summary>
+        </member>
+        <member name="F:Galactic.FileSystem.Directory.AccessRights.Modify">
+            <summary>
+            Modify.
+            </summary>
+        </member>
+        <member name="F:Galactic.FileSystem.Directory.AccessRights.Read">
+            <summary>
+            Read.
+            </summary>
+        </member>
+        <member name="F:Galactic.FileSystem.Directory.AccessRights.ReadAttributes">
+            <summary>
+            Read attributes.
+            </summary>
+        </member>
+        <member name="F:Galactic.FileSystem.Directory.AccessRights.ReadExtendedAttributes">
+            <summary>
+            Read extended attributes.
+            </summary>
+        </member>
+        <member name="F:Galactic.FileSystem.Directory.AccessRights.ReadPermissions">
+            <summary>
+            Read permissions.
+            </summary>
+        </member>
+        <member name="F:Galactic.FileSystem.Directory.AccessRights.TraverseFolderExecuteFile">
+            <summary>
+            Traverse folder / execute file permissions.
+            </summary>
+        </member>
+        <member name="T:Galactic.FileSystem.File">
+            <summary>
+            A utility class for manipulating files on the file system.
+            </summary>
+        </member>
+        <member name="M:Galactic.FileSystem.File.#ctor(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Creates or opens a file at the supplied path location.
+            </summary>
+            <param name="path">The path to the location to create or open the file at.</param>
+            <param name="overwrite">Whether to overwrite the contents of an existing file.</param>
+            <param name="readOnly">Whether the file should be opened as read-only.</param>
+            <exception cref="T:System.UnauthorizedAccessException">Thrown if the caller does not have the required permissions to create or open the file,
+            or the file is read-only.</exception>
+            <exception cref="T:System.IO.PathTooLongException">Thrown if the specified path, file name, or both exceeds the system-defined maximum length.
+            For example, on Windows-based patforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
+            <exception cref="T:System.IO.DirectoryNotFoundException">Thrown if the specified path is invalid (for example, it is on an unmapped drive).</exception>
+            <exception cref="T:System.IO.IOException">Thrown if an I/O error occurred while creating the file.</exception>
+            <exception cref="T:System.IO.FileNotFoundException">Thrown if opening an existing file and it could not be found at the specified path.</exception>
+            <exception cref="T:System.NotSupportedException">Thrown if the path is in an invalid format.</exception>
+            <exception cref="T:System.ArgumentNullException">Thrown if the path was not supplied.</exception>
+        </member>
+        <member name="M:Galactic.FileSystem.File.Close">
+            <summary>
+            Closes this file.
+            </summary>
+        </member>
+        <member name="M:Galactic.FileSystem.File.Create(System.String)">
+            <summary>
+            Creates or overwrites a file at the supplied path location.
+            </summary>
+            <param name="path">The path to the location to create the file at.</param>
+            <returns>A FileStream of the file created or null if an error occurred.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.File.Create(System.String,System.Boolean)">
+            <summary>
+            Creates or overwrites a file at the supplied path location.
+            </summary>
+            <param name="path">The path to the location to create the file at.</param>
+            <param name="throwExceptions">Whether to throw exceptions during file creation / opening.</param>
+            <returns>A FileStream of the file created or null if an error occurred.</returns>
+            <exception cref="T:System.UnauthorizedAccessException">Thrown if the caller does not have the required permissions to create or open the file,
+            or the file is read-only.</exception>
+            <exception cref="T:System.IO.PathTooLongException">Thrown if the specified path, file name, or both exceeds the system-defined maximum length.
+            For example, on Windows-based patforms, paths must be less than 248 characters, and file names must be less than 260 characters.</exception>
+            <exception cref="T:System.IO.DirectoryNotFoundException">Thrown if the specified path is invalid (for example, it is on an unmapped drive).</exception>
+            <exception cref="T:System.IO.IOException">Thrown if an I/O error occurred while creating the file.</exception>
+            <exception cref="T:System.NotSupportedException">Thrown if the path is in an invalid format.</exception>
+            <exception cref="T:System.ArgumentNullException">Thrown if the path was not supplied.</exception>
+        </member>
+        <member name="M:Galactic.FileSystem.File.Delete">
+            <summary>
+            Deletes this file.
+            </summary>
+            <returns>True if the file was deleted, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.File.Delete(System.String)">
+            <summary>
+            Deletes the file at the specified path.
+            </summary>
+            <param name="path">The path to the file to delete.</param>
+            <returns>True if the file was deleted, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.File.Dispose">
+            <summary>
+            Frees the resources used by this file.
+            </summary>
+        </member>
+        <member name="M:Galactic.FileSystem.File.Exists">
+            <summary>
+            Checks whether this file exists on the file system.
+            </summary>
+            <returns>True if it exists, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.File.Exists(System.String)">
+            <summary>
+            Checks whether the file at the specified path exists on the file system.
+            </summary>
+            <param name="path">The path to the file to check.</param>
+            <returns>True if it exists, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.File.GetReader(System.String)">
+            <summary>
+            Opens and gets a StreamReader for the file at the supplied path.
+            </summary>
+            <param name="path">The path to the file to get a StreamReader for.</param>
+            <returns>A StreamReader for the file.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.File.GetSecurityObject(System.String)">
+            <summary>
+            Gets the FileSecurity object for the file specified by the supplied path.
+            </summary>
+            <param name="path">The path to the file to retrieve the security object for.</param>
+            <returns>The security object for the file specified. Null if the file does not exist,
+            an I/O error occurred, or the process does not have the permissions required to
+            complete the operation.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.File.Move(System.String)">
+            <summary>
+            Moves this file to a new location.
+            </summary>
+            <param name="newPath">The destination path to move the file to.</param>
+            <returns>True if the file was moved. False otherwise.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.File.Move(System.String,System.String)">
+            <summary>
+            Moves a file to a new location.
+            </summary>
+            <param name="path">The path of the file to move.</param>
+            <param name="newPath">The destination path to move the file to.</param>
+            <returns>True if the file was moved. False otherwise.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.File.Open(System.String,System.Boolean)">
+            <summary>
+            Opens a file at the supplied path location.
+            </summary>
+            <param name="path">The path to the location to open the file at.</param>
+            <param name="readOnly">Whether to open the file as read-only.</param>
+            <returns>A FileStream of the file created or null if an error occurred.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.File.Open(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Opens a file at the supplied path location.
+            </summary>
+            <param name="path">The path to the location to open the file at.</param>
+            <param name="readOnly">Whether to open the file as read-only.</param>
+            <param name="throwExceptions">Whether to throw exceptions while opening.</param>
+            <returns>A FileStream of the file created or null if an error occurred.</returns>
+            <exception cref="T:System.UnauthorizedAccessException">Thrown if the caller does not have the required permissions to create or open the file,
+            or the file is read-only.</exception>
+            <exception cref="T:System.IO.FileNotFoundException">Thrown if a file could not be found to open at the specified path.</exception>
+            <exception cref="T:System.ArgumentNullException">Thrown if the path was not supplied.</exception>
+        </member>
+        <member name="M:Galactic.FileSystem.File.ReadAllAsText">
+            <summary>
+            Reads the entire contents of this text file, and returns it as a string.
+            </summary>
+            <returns>The contents of this text file as a string, null if it could not be read or there
+            was an error while reading.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.File.ReadAllAsText(System.String)">
+            <summary>
+            Reads the entire contents of a text file, and returns it as a string.
+            </summary>
+            <param name="path">The path to the file to read.</param>
+            <returns>The contents of the text file as a string, null if it could not be read or there
+            was an error while reading.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.File.ReadAllAsText(System.IO.FileStream)">
+            <summary>
+            Reads the entire contents of a text file, and returns it as a string.
+            </summary>
+            <param name="stream">The file stream to read from.</param>
+            <returns>The text read, null if an error occurred while reading.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.File.ReadLine">
+            <summary>
+            Reads a line of text from this file.
+            </summary>
+            <returns>The line of text read, null if an error occurred while reading.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.File.ReadLine(System.IO.FileStream,System.IO.StreamReader@)">
+            <summary>
+            Reads a line of text from a file's stream.
+            </summary>
+            <param name="stream">The file stream to read from.</param>
+            <param name="reader">A stream reader used when reading from the file. Useful for successive calls to ReadLine.</param>
+            <returns>The line of text read, null if an error occurred while reading.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.File.RemoveAllExplicitAccessRules(System.Boolean)">
+            <summary>
+            Removes all explicit access rules from this file.
+            </summary>
+            <param name="commitChanges">Indicates whether changes should be commited to this file. Useful when combining multiple commands.</param>
+            <returns>True if access was removed. False otherwise.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.File.RemoveAllExplicitAccessRules(System.String,System.Security.AccessControl.FileSecurity@,System.Boolean)">
+            <summary>
+            Removes all explicit access rules from the supplied file.
+            </summary>
+            <param name="path">The path to the file to have access removed on.</param>
+            <param name="security">The FileSecurity object of the file once changed.</param>
+            <param name="commitChanges">Indicates whether changes should be commited to this file. Useful when combining multiple commands.</param>
+            <returns>True if access was removed. False otherwise.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.File.WriteLine(System.String)">
+            <summary>
+            Writes a line of text to the file.
+            </summary>
+            <param name="line">The line of text to write.</param>
+            <returns>True if the line was written, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.File.WriteLine(System.IO.FileStream,System.String)">
+            <summary>
+            Writes a line of text to the specified file stream.
+            </summary>
+            <param name="stream">The file stream to write to.</param>
+            <param name="line">The line of text to write.</param>
+            <returns>True if the line was written, false otherwise.</returns>
+        </member>
+        <member name="P:Galactic.FileSystem.File.Path">
+            <summary>
+            The path to the file on the file system.
+            </summary>
+        </member>
+        <member name="P:Galactic.FileSystem.File.ReadOnly">
+            <summary>
+            Whether the file is opened as read-only.
+            </summary>
+        </member>
+        <member name="P:Galactic.FileSystem.File.Security">
+            <summary>
+            The FileSecurity object for this file.
+            </summary>
+        </member>
+    </members>
+</doc>

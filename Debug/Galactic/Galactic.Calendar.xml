@@ -1,0 +1,173 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Galactic.Calendar</name>
+    </assembly>
+    <members>
+        <member name="T:Galactic.Calendar.Calendar">
+            <summary>
+            Calendar is a class that contains data about a calendar and its events.
+            </summary>
+        </member>
+        <member name="M:Galactic.Calendar.Calendar.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="P:Galactic.Calendar.Calendar.Name">
+            <summary>
+            The name of the calendar.
+            </summary>
+        </member>
+        <member name="P:Galactic.Calendar.Calendar.Description">
+            <summary>
+            A description of the calendar.
+            </summary>
+        </member>
+        <member name="P:Galactic.Calendar.Calendar.Events">
+            <summary>
+            The list of events associated with the calendar.
+            </summary>
+        </member>
+        <member name="T:Galactic.Calendar.CalendarUtility">
+            <summary>
+            Provides various utility methods for use with Calendars.
+            </summary>
+        </member>
+        <member name="M:Galactic.Calendar.CalendarUtility.GetCalendar(System.String,System.DateTime,System.DateTime)">
+            <summary>
+            Gets a calendar from the provider.
+            </summary>
+            <param name="name">The name of the calendar to retrieve.</param>
+            <param name="startDate">Events starting on or after this date will be included in the list returned.</param>
+            <param name="endDate">Events starting on or before this date will be included in the list returned.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if an name that is empty, null,
+            or full of whitespace is provided.</exception>
+            <returns>The calendar with the supplied name, or null if a calendar of that name does not exist
+            or could not be retrieved.</returns>
+        </member>
+        <member name="M:Galactic.Calendar.CalendarUtility.SaveCalendar(Galactic.Calendar.Calendar)">
+            <summary>
+            Saves a calendar to the provider.
+            </summary>
+            <param name="calendar">The calendar object to save.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if a calendar is not provided.</exception>
+            <returns>True if the save was successful, false otherwise.</returns>
+        </member>
+        <member name="P:Galactic.Calendar.CalendarUtility.CalendarNames">
+            <summary>
+            A list of the names of calendars available via the calendar provider.
+            </summary>
+        </member>
+        <member name="T:Galactic.Calendar.Event">
+            <summary>
+            Event is a class that provides data about an event on a calendar.
+            </summary>
+        </member>
+        <member name="M:Galactic.Calendar.Event.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="P:Galactic.Calendar.Event.Title">
+            <summary>
+            The event's title.
+            </summary>
+        </member>
+        <member name="P:Galactic.Calendar.Event.Description">
+            <summary>
+            A description of the event.
+            </summary>
+        </member>
+        <member name="P:Galactic.Calendar.Event.Location">
+            <summary>
+            The event's location.
+            </summary>
+        </member>
+        <member name="P:Galactic.Calendar.Event.LocationUrl">
+            <summary>
+            A URL providing more information about the event's location.
+            </summary>
+        </member>
+        <member name="P:Galactic.Calendar.Event.Canceled">
+            <summary>
+            Whether the event has been canceled.
+            </summary>
+        </member>
+        <member name="P:Galactic.Calendar.Event.NoEndTime">
+            <summary>
+            Indicates that the event does not have an end time specified.
+            </summary>
+        </member>
+        <member name="P:Galactic.Calendar.Event.Priority">
+            <summary>
+            The priority of the event on the calendar.
+            </summary>
+        </member>
+        <member name="P:Galactic.Calendar.Event.StartDate">
+            <summary>
+            The date and time the event starts.
+            </summary>
+        </member>
+        <member name="P:Galactic.Calendar.Event.EndDate">
+            <summary>
+            The date and time the event ends.
+            </summary>
+        </member>
+        <member name="P:Galactic.Calendar.Event.AllDayEvent">
+            <summary>
+            Whether the event lasts all day long.
+            </summary>
+        </member>
+        <member name="P:Galactic.Calendar.Event.ContactName">
+            <summary>
+            The name of the contact person for this event.
+            </summary>
+        </member>
+        <member name="P:Galactic.Calendar.Event.ContactEmail">
+            <summary>
+            The e-mail address of the contact person for this event.
+            </summary>
+        </member>
+        <member name="P:Galactic.Calendar.Event.ContactPhone">
+            <summary>
+            The phone number of the contact person for this event.
+            </summary>
+        </member>
+        <member name="P:Galactic.Calendar.Event.Reoccurring">
+            <summary>
+            Whether the event is reoccurring.
+            </summary>
+        </member>
+        <member name="P:Galactic.Calendar.Event.LastUpdated">
+            <summary>
+            The date and time that the event was last updated.
+            </summary>
+        </member>
+        <member name="P:Galactic.Calendar.Event.LastUpdatedBy">
+            <summary>
+            The name of the last person to update the event.
+            </summary>
+        </member>
+        <member name="P:Galactic.Calendar.Event.DetailsLastUpdated">
+            <summary>
+            The date and time that the event details were last updated.
+            </summary>
+        </member>
+        <member name="P:Galactic.Calendar.Event.DetailsLastUpdatedBy">
+            <summary>
+            The name of the last person to update the event details.
+            </summary>
+        </member>
+        <member name="P:Galactic.Calendar.Event.OnMultipleCalendars">
+            <summary>
+            Whether the event is on multiple calendars.
+            </summary>
+        </member>
+        <member name="T:Galactic.Calendar.Event.PriorityLevels">
+            <summary>
+            The priority of events on the calendar.
+            </summary>
+        </member>
+    </members>
+</doc>
