@@ -318,6 +318,14 @@
             <param name="newCommonName">(Optional: Required only if renaming) The new common name (if renaming).</param>
             <returns>True if the object was moved or renamed, false otherwise.</returns>
         </member>
+        <member name="M:Galactic.ActiveDirectory.ActiveDirectory.SetSearchBase(System.String)">
+            <summary>
+            Sets the object that is the base for all searches within Active Directory.
+            This only needs to be set if you need to search somewhere other than the base of the directory.
+            </summary>
+            <param name="distinguishedName">The distinguished name of the object where searches will begin. (Typically an OU or the base DN of the directory.)</param>
+            <returns>True if the search base was set, false otherwise.</returns>
+        </member>
         <member name="M:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControlContains(System.Int64,Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl)">
             <summary>
             Tests whether an integer contains a UserAccountControl flag.
