@@ -13,6 +13,31 @@
             The strings can be (optionally) encrypted.
             </summary>
         </member>
+        <member name="P:Galactic.Configuration.ConfigurationItem.FilePath">
+            <summary>
+            The full path to the file containing the configuration item.
+            </summary>
+        </member>
+        <member name="P:Galactic.Configuration.ConfigurationItem.FolderPath">
+            <summary>
+            The path to the folder containing the configuration item.
+            </summary>
+        </member>
+        <member name="P:Galactic.Configuration.ConfigurationItem.Name">
+            <summary>
+            The name of the configuration item.
+            </summary>
+        </member>
+        <member name="P:Galactic.Configuration.ConfigurationItem.Encrypted">
+            <summary>
+            Whether the configuration item should be encrypted.
+            </summary>
+        </member>
+        <member name="P:Galactic.Configuration.ConfigurationItem.Value">
+            <summary>
+            The value of the configuration item.
+            </summary>
+        </member>
         <member name="M:Galactic.Configuration.ConfigurationItem.#ctor(System.String,System.String,System.Boolean,System.String,Galactic.EventLog.EventLog,System.Boolean)">
             <summary>
             Loads a configuration item with the specified name from its file located
@@ -69,31 +94,6 @@
             <param name="value">The value to write to the file.</param>
             <param name="log">The event log to log execptions to. May be null for no logging.</param>
             <returns>True if the write was successful, false otherwise.</returns>
-        </member>
-        <member name="P:Galactic.Configuration.ConfigurationItem.FilePath">
-            <summary>
-            The full path to the file containing the configuration item.
-            </summary>
-        </member>
-        <member name="P:Galactic.Configuration.ConfigurationItem.FolderPath">
-            <summary>
-            The path to the folder containing the configuration item.
-            </summary>
-        </member>
-        <member name="P:Galactic.Configuration.ConfigurationItem.Name">
-            <summary>
-            The name of the configuration item.
-            </summary>
-        </member>
-        <member name="P:Galactic.Configuration.ConfigurationItem.Encrypted">
-            <summary>
-            Whether the configuration item should be encrypted.
-            </summary>
-        </member>
-        <member name="P:Galactic.Configuration.ConfigurationItem.Value">
-            <summary>
-            The value of the configuration item.
-            </summary>
         </member>
     </members>
 </doc>

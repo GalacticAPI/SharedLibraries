@@ -9,11 +9,6 @@
             Calendar is a class that contains data about a calendar and its events.
             </summary>
         </member>
-        <member name="M:Galactic.Calendar.Calendar.#ctor">
-            <summary>
-            Default constructor.
-            </summary>
-        </member>
         <member name="P:Galactic.Calendar.Calendar.Name">
             <summary>
             The name of the calendar.
@@ -29,9 +24,19 @@
             The list of events associated with the calendar.
             </summary>
         </member>
+        <member name="M:Galactic.Calendar.Calendar.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
         <member name="T:Galactic.Calendar.CalendarUtility">
             <summary>
             Provides various utility methods for use with Calendars.
+            </summary>
+        </member>
+        <member name="P:Galactic.Calendar.CalendarUtility.CalendarNames">
+            <summary>
+            A list of the names of calendars available via the calendar provider.
             </summary>
         </member>
         <member name="M:Galactic.Calendar.CalendarUtility.GetCalendar(System.String,System.DateTime,System.DateTime)">
@@ -54,19 +59,14 @@
             <exception cref="T:System.ArgumentNullException">Thrown if a calendar is not provided.</exception>
             <returns>True if the save was successful, false otherwise.</returns>
         </member>
-        <member name="P:Galactic.Calendar.CalendarUtility.CalendarNames">
-            <summary>
-            A list of the names of calendars available via the calendar provider.
-            </summary>
-        </member>
         <member name="T:Galactic.Calendar.Event">
             <summary>
             Event is a class that provides data about an event on a calendar.
             </summary>
         </member>
-        <member name="M:Galactic.Calendar.Event.#ctor">
+        <member name="T:Galactic.Calendar.Event.PriorityLevels">
             <summary>
-            Default constructor.
+            The priority of events on the calendar.
             </summary>
         </member>
         <member name="P:Galactic.Calendar.Event.Title">
@@ -164,9 +164,9 @@
             Whether the event is on multiple calendars.
             </summary>
         </member>
-        <member name="T:Galactic.Calendar.Event.PriorityLevels">
+        <member name="M:Galactic.Calendar.Event.#ctor">
             <summary>
-            The priority of events on the calendar.
+            Default constructor.
             </summary>
         </member>
     </members>

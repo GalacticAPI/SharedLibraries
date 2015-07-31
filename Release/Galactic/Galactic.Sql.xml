@@ -9,6 +9,21 @@
             An Interface for SQL Stored Procedures.
             </summary>
         </member>
+        <member name="P:Galactic.Sql.IStoredProcedure.Name">
+            <summary>
+            The name of the stored procedure.
+            </summary>
+        </member>
+        <member name="P:Galactic.Sql.IStoredProcedure.Connection">
+            <summary>
+            The connection to the database.
+            </summary>
+        </member>
+        <member name="P:Galactic.Sql.IStoredProcedure.Command">
+            <summary>
+            The command to be sent to the database.
+            </summary>
+        </member>
         <member name="M:Galactic.Sql.IStoredProcedure.AddParameter(System.String,System.Object,System.Data.DbType,System.Type,Galactic.Sql.StoredProcedure.ParameterType,System.Nullable{System.Int32})">
             <summary>
             Adds a parameter to the procedure.
@@ -117,26 +132,26 @@
             <param name="name">The name of the parameter.</param>
             <returns>The parameter name with a @ prepended.</returns>
         </member>
-        <member name="P:Galactic.Sql.IStoredProcedure.Name">
-            <summary>
-            The name of the stored procedure.
-            </summary>
-        </member>
-        <member name="P:Galactic.Sql.IStoredProcedure.Connection">
-            <summary>
-            The connection to the database.
-            </summary>
-        </member>
-        <member name="P:Galactic.Sql.IStoredProcedure.Command">
-            <summary>
-            The command to be sent to the database.
-            </summary>
-        </member>
         <member name="T:Galactic.Sql.SqlRow">
             <summary>
             SqlRow is a data class that contains a row from a SQL Database table.
             It is used in conjunction with StoredProcedure to return results from a procedure.
             </summary>
+        </member>
+        <member name="P:Galactic.Sql.SqlRow.Item(System.String)">
+            <summary>
+            Get or set the row's column values via their name.
+            </summary>
+            <param name="fieldName">The name of the field value to get or set.</param>
+            <returns>The value of the field.</returns>
+        </member>
+        <member name="P:Galactic.Sql.SqlRow.Item(System.Int32)">
+            <summary>
+            Get or set the row's column values via the column's index.
+            </summary>
+            <param name="columnIndex">The index value of the column</param>
+            <returns>The value of the field.</returns>
+            <exception cref="T:System.IndexOutOfRangeException">The column index number specified was outside the range contained by this row.</exception>
         </member>
         <member name="M:Galactic.Sql.SqlRow.#ctor">
             <summary>
@@ -180,24 +195,24 @@
             <param name="columnIndex">The column index number of the field to set the value of.</param>
             <param name="value">The value to set the field to.</param>
         </member>
-        <member name="P:Galactic.Sql.SqlRow.Item(System.String)">
-            <summary>
-            Get or set the row's column values via their name.
-            </summary>
-            <param name="fieldName">The name of the field value to get or set.</param>
-            <returns>The value of the field.</returns>
-        </member>
-        <member name="P:Galactic.Sql.SqlRow.Item(System.Int32)">
-            <summary>
-            Get or set the row's column values via the column's index.
-            </summary>
-            <param name="columnIndex">The index value of the column</param>
-            <returns>The value of the field.</returns>
-            <exception cref="T:System.IndexOutOfRangeException">The column index number specified was outside the range contained by this row.</exception>
-        </member>
         <member name="T:Galactic.Sql.SqlUtility">
             <summary>
             Provides various utility methods for use with SQL databases.
+            </summary>
+        </member>
+        <member name="P:Galactic.Sql.SqlUtility.MAX_NCHAR_LENGTH">
+            <summary>
+            The maximum length of a NCHAR field in the database.
+            </summary>
+        </member>
+        <member name="P:Galactic.Sql.SqlUtility.MAX_NVARCHAR_LENGTH">
+            <summary>
+            The maximum length of a NVARCHAR field in the database.
+            </summary>
+        </member>
+        <member name="P:Galactic.Sql.SqlUtility.MAX_VARCHAR_LENGTH">
+            <summary>
+            The maximum length of a VARCHAR field in the database.
             </summary>
         </member>
         <member name="M:Galactic.Sql.SqlUtility.LogException(System.Exception,Galactic.EventLog.EventLog)">
@@ -253,29 +268,59 @@
             <param name="log">The event log to log execptions to. May be null for no logging.</param>
             <returns>A list of rows of data returned from the query.</returns>
         </member>
-        <member name="P:Galactic.Sql.SqlUtility.MAX_NCHAR_LENGTH">
-            <summary>
-            The maximum length of a NCHAR field in the database.
-            </summary>
-        </member>
-        <member name="P:Galactic.Sql.SqlUtility.MAX_NVARCHAR_LENGTH">
-            <summary>
-            The maximum length of a NVARCHAR field in the database.
-            </summary>
-        </member>
-        <member name="P:Galactic.Sql.SqlUtility.MAX_VARCHAR_LENGTH">
-            <summary>
-            The maximum length of a VARCHAR field in the database.
-            </summary>
-        </member>
         <member name="T:Galactic.Sql.StoredProcedure">
             <summary>
             An SQL Stored Procedure.
             </summary>
         </member>
+        <member name="T:Galactic.Sql.StoredProcedure.ParameterType">
+            <summary>
+            The type of parameter used by the stored procedure.
+            </summary>
+        </member>
+        <member name="F:Galactic.Sql.StoredProcedure.ParameterType.In">
+            <summary>
+            A parameter that provides data to the procedure.
+            </summary>
+        </member>
+        <member name="F:Galactic.Sql.StoredProcedure.ParameterType.Out">
+            <summary>
+            A parameter that returns data from a procedure.
+            </summary>
+        </member>
+        <member name="F:Galactic.Sql.StoredProcedure.ParameterType.InOut">
+            <summary>
+            A parameter that provides and returns data from a procedure.
+            </summary>
+        </member>
+        <member name="F:Galactic.Sql.StoredProcedure.ParameterType.Return">
+            <summary>
+            The return value of a procedure.
+            </summary>
+        </member>
         <member name="F:Galactic.Sql.StoredProcedure.log">
             <summary>
             The event log that will receive events from this logger.
+            </summary>
+        </member>
+        <member name="P:Galactic.Sql.StoredProcedure.Log">
+            <summary>
+            The event log that will receive events from this logger.
+            </summary>
+        </member>
+        <member name="P:Galactic.Sql.StoredProcedure.Name">
+            <summary>
+            The name of the stored procedure.
+            </summary>
+        </member>
+        <member name="P:Galactic.Sql.StoredProcedure.Connection">
+            <summary>
+            The connection to the database.
+            </summary>
+        </member>
+        <member name="P:Galactic.Sql.StoredProcedure.Command">
+            <summary>
+            The command to be sent to the database.
             </summary>
         </member>
         <member name="M:Galactic.Sql.StoredProcedure.AddParameter(System.String,System.Object,System.Data.DbType,System.Type,Galactic.Sql.StoredProcedure.ParameterType,System.Nullable{System.Int32})">
@@ -393,51 +438,6 @@
             </summary>
             <param name="e">The exception to log.</param>
             <returns>True if the exception was logged successfully. False otherwise.</returns>
-        </member>
-        <member name="P:Galactic.Sql.StoredProcedure.Log">
-            <summary>
-            The event log that will receive events from this logger.
-            </summary>
-        </member>
-        <member name="P:Galactic.Sql.StoredProcedure.Name">
-            <summary>
-            The name of the stored procedure.
-            </summary>
-        </member>
-        <member name="P:Galactic.Sql.StoredProcedure.Connection">
-            <summary>
-            The connection to the database.
-            </summary>
-        </member>
-        <member name="P:Galactic.Sql.StoredProcedure.Command">
-            <summary>
-            The command to be sent to the database.
-            </summary>
-        </member>
-        <member name="T:Galactic.Sql.StoredProcedure.ParameterType">
-            <summary>
-            The type of parameter used by the stored procedure.
-            </summary>
-        </member>
-        <member name="F:Galactic.Sql.StoredProcedure.ParameterType.In">
-            <summary>
-            A parameter that provides data to the procedure.
-            </summary>
-        </member>
-        <member name="F:Galactic.Sql.StoredProcedure.ParameterType.Out">
-            <summary>
-            A parameter that returns data from a procedure.
-            </summary>
-        </member>
-        <member name="F:Galactic.Sql.StoredProcedure.ParameterType.InOut">
-            <summary>
-            A parameter that provides and returns data from a procedure.
-            </summary>
-        </member>
-        <member name="F:Galactic.Sql.StoredProcedure.ParameterType.Return">
-            <summary>
-            The return value of a procedure.
-            </summary>
         </member>
     </members>
 </doc>

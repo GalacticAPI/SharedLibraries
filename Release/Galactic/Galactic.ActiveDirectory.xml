@@ -32,6 +32,218 @@
             Windows 2000 DCs do not support this value and default to a maximum of 1000;
             </summary>
         </member>
+        <member name="T:Galactic.ActiveDirectory.ActiveDirectory.GroupType">
+            <summary>
+            GroupType enumerates the type of group objects in Active Directory.
+            </summary>
+        </member>
+        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.GroupType.Universal">
+            <summary>
+            Specifies a group that can contain accounts from any domain, global
+            groups from any domain, and other universal groups. This type of group
+            cannot contain domain local groups.
+            </summary>
+        </member>
+        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.GroupType.DomainLocal">
+            <summary>
+            Specifies a group that can contain accounts from any domain, other domain
+            local groups from the same domain, global groups from any domain, and
+            universal groups. This type of group should not be included in access-control
+            lists of resouces in other domains. This type of group is intended for use
+            with the LDAP provider.
+            </summary>
+        </member>
+        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.GroupType.Global">
+            <summary>
+            Specifies a group that can contain accounts from the domain and other global
+            groups from the same domain. This type of group can be exported to a different
+            domain.
+            </summary>
+        </member>
+        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.GroupType.Security">
+            <summary>
+            Specifies a group that is security enabled. This group can be used to apply an
+            access-control list on an Active Directory object or a file system.
+            </summary>
+        </member>
+        <member name="T:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl">
+            <summary>
+            Flags for use with the UserAccountControl and ms-DS-User-Account-Control-Computed properties of a user.
+            </summary>
+        </member>
+        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.Script">
+            <summary>
+            The logon script will be run.
+            </summary>
+        </member>
+        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.Accountdisable">
+            <summary>
+            The user account is disabled.
+            </summary>
+        </member>
+        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.HomedirRequired">
+            <summary>
+            The home folder is required.
+            </summary>
+        </member>
+        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.Lockout">
+            <summary>
+            Only available via ms-DS-User-Account-Control-Computed attribute.
+            </summary>
+        </member>
+        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.PasswdNotreqd">
+            <summary>
+            No password is required.
+            </summary>
+        </member>
+        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.PasswdCantChange">
+            <summary>
+            The user cannot change the password. This is a permission on the user's object.
+            For information about how to set this permission, visit the following Web site:
+            http://msdn2.microsoft.com/en-us/library/aa746398.aspx
+            </summary>
+        </member>
+        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.EncryptedTextPwdAllowed">
+            <summary>
+            The user can send an encrypted password.
+            </summary>
+        </member>
+        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.TempDuplicateAccount">
+            <summary>
+            This is an account for users whose primary account is in another domain. This
+            account provides user access to this domain, but not to any domain that trusts
+            this domain. This is sometimes referred to as a local user account.
+            </summary>
+        </member>
+        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.NormalAccount">
+            <summary>
+            This is a default account type that represents a typical user.
+            </summary>
+        </member>
+        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.InterdomainTrustAccount">
+            <summary>
+            This is a permit to trust an account for a system domain that trusts other domains.
+            </summary>
+        </member>
+        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.WorkstationTrustAccount">
+            <summary>
+            This is a computer account for a computer that is running Microsoft Windows NT 4.0
+            Workstation, Microsoft Windows NT 4.0 Server, Microsoft Windowser 2000 Professional,
+            or Widnows 2000 Server and is a member of this domain.
+            </summary>
+        </member>
+        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.ServerTrustAccount">
+            <summary>
+            This is a computer account for a domain controller that is a member of this domain.
+            </summary>
+        </member>
+        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.DontExpirePassword">
+            <summary>
+            Represents the password, which should never expire on the account.
+            </summary>
+        </member>
+        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.MNSLogonAccount">
+            <summary>
+            This is an MNS logon account.
+            </summary>
+        </member>
+        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.SmartcardRequired">
+            <summary>
+            When this flag is set, it forces the user to log on by using a smart card.
+            </summary>
+        </member>
+        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.TrustedForDelgation">
+            <summary>
+            When this flag is set, the service account (the user or computer account) under which
+            a service runs is trusted for Kerberos delegation. Any such service can impersonate
+            a client requesting the service. To enable a service for Kerberos delegation, you must
+            set this flag on the userAccountControl property of the service account.
+            </summary>
+        </member>
+        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.NotDelegated">
+            <summary>
+            When this flag is set, the security context of the user is not delegated to a service
+            even if the service account is set as trusted for Kerberos delegation.
+            </summary>
+        </member>
+        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.UseDESKeyOnly">
+            <summary>
+            (Windows 2000/Windows Server 2003) Restrict this principal to use only Data Encryption 
+            Standard (DES) encryption for keys.
+            </summary>
+        </member>
+        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.DontReqPreauth">
+            <summary>
+            (Windows 2000/Windows Server 2003) This account does not require Kerberos pre-authentication
+            for logging on.
+            </summary>
+        </member>
+        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.PasswordExpired">
+            <summary>
+            Only available via ms-DS-User-Account-Control-Computed attribute.
+            (Windows 2000/Windows Server 2003) The user's password has expired.
+            </summary>
+        </member>
+        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.TrustedToAuthForDelegation">
+            <summary>
+            (Windows 2000/Windows Server 2003) The account is enabled for delegation. This is a security-sensitive
+            setting. Accounts that have this option enabled should be tightly controlled. Thsi setting lets a service
+            that runs under the account assume a client's identity and authenticate as that user to other remote servers
+            on the network.
+            </summary>
+        </member>
+        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.PartialSecretsAccount">
+            <summary>
+            Only available via ms-DS-User-Account-Control-Computed attribute.
+            (Windows Server 2008/Windows Server 2008 R2) The account is a read-only domain controller (RODC). This is a
+            security-sensitive setting. Removing this setting from an RODC compromises security on that server.
+            </summary>
+        </member>
+        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.UseAESKeys">
+            <summary>
+            Only available via ms-DS-User-Account-Control-Computed attribute.
+            </summary>
+        </member>
+        <member name="P:Galactic.ActiveDirectory.ActiveDirectory.DistinguishedName">
+            <summary>
+            The base distinguished name (DN) of Active Directory.
+            </summary>
+        </member>
+        <member name="P:Galactic.ActiveDirectory.ActiveDirectory.Name">
+            <summary>
+            The domain name of the Active Directory.
+            </summary>
+        </member>
+        <member name="P:Galactic.ActiveDirectory.ActiveDirectory.NTName">
+            <summary>
+            The NT style domain name of the Active Directory.
+            </summary>
+        </member>
+        <member name="P:Galactic.ActiveDirectory.ActiveDirectory.WellKnownSid_System">
+            <summary>
+            The SYSTEM sid.
+            </summary>
+        </member>
+        <member name="P:Galactic.ActiveDirectory.ActiveDirectory.AdministratorsGroupDN">
+            <summary>
+            The distinguished name of the Administrators group for this domain.
+            </summary>
+        </member>
+        <member name="P:Galactic.ActiveDirectory.ActiveDirectory.DomainAdminsGroupDN">
+            <summary>
+            The distinguished name of the Domain Administrators group for this domain.
+            </summary>
+        </member>
+        <member name="P:Galactic.ActiveDirectory.ActiveDirectory.DomainUsersGroupDN">
+            <summary>
+            The distinguished name of the Domain Users group for this domain.
+            </summary>
+        </member>
+        <member name="P:Galactic.ActiveDirectory.ActiveDirectory.EnterpriseAdminsGroupDN">
+            <summary>
+            The distinguished name of the Enterprise Administrators group for this domain.
+            </summary>
+        </member>
         <member name="M:Galactic.ActiveDirectory.ActiveDirectory.#ctor(System.String,System.String)">
             <summary>
             Binds to Active Directory using the configuration in the specified configuration item.
@@ -333,221 +545,40 @@
             <param name="accountControlValue">The integer to test.</param>
             <param name="flag">The UserAccountControl flag to look for.</param>
         </member>
-        <member name="P:Galactic.ActiveDirectory.ActiveDirectory.DistinguishedName">
-            <summary>
-            The base distinguished name (DN) of Active Directory.
-            </summary>
-        </member>
-        <member name="P:Galactic.ActiveDirectory.ActiveDirectory.Name">
-            <summary>
-            The domain name of the Active Directory.
-            </summary>
-        </member>
-        <member name="P:Galactic.ActiveDirectory.ActiveDirectory.NTName">
-            <summary>
-            The NT style domain name of the Active Directory.
-            </summary>
-        </member>
-        <member name="P:Galactic.ActiveDirectory.ActiveDirectory.WellKnownSid_System">
-            <summary>
-            The SYSTEM sid.
-            </summary>
-        </member>
-        <member name="P:Galactic.ActiveDirectory.ActiveDirectory.AdministratorsGroupDN">
-            <summary>
-            The distinguished name of the Administrators group for this domain.
-            </summary>
-        </member>
-        <member name="P:Galactic.ActiveDirectory.ActiveDirectory.DomainAdminsGroupDN">
-            <summary>
-            The distinguished name of the Domain Administrators group for this domain.
-            </summary>
-        </member>
-        <member name="P:Galactic.ActiveDirectory.ActiveDirectory.DomainUsersGroupDN">
-            <summary>
-            The distinguished name of the Domain Users group for this domain.
-            </summary>
-        </member>
-        <member name="P:Galactic.ActiveDirectory.ActiveDirectory.EnterpriseAdminsGroupDN">
-            <summary>
-            The distinguished name of the Enterprise Administrators group for this domain.
-            </summary>
-        </member>
-        <member name="T:Galactic.ActiveDirectory.ActiveDirectory.GroupType">
-            <summary>
-            GroupType enumerates the type of group objects in Active Directory.
-            </summary>
-        </member>
-        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.GroupType.Universal">
-            <summary>
-            Specifies a group that can contain accounts from any domain, global
-            groups from any domain, and other universal groups. This type of group
-            cannot contain domain local groups.
-            </summary>
-        </member>
-        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.GroupType.DomainLocal">
-            <summary>
-            Specifies a group that can contain accounts from any domain, other domain
-            local groups from the same domain, global groups from any domain, and
-            universal groups. This type of group should not be included in access-control
-            lists of resouces in other domains. This type of group is intended for use
-            with the LDAP provider.
-            </summary>
-        </member>
-        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.GroupType.Global">
-            <summary>
-            Specifies a group that can contain accounts from the domain and other global
-            groups from the same domain. This type of group can be exported to a different
-            domain.
-            </summary>
-        </member>
-        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.GroupType.Security">
-            <summary>
-            Specifies a group that is security enabled. This group can be used to apply an
-            access-control list on an Active Directory object or a file system.
-            </summary>
-        </member>
-        <member name="T:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl">
-            <summary>
-            Flags for use with the UserAccountControl and ms-DS-User-Account-Control-Computed properties of a user.
-            </summary>
-        </member>
-        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.Script">
-            <summary>
-            The logon script will be run.
-            </summary>
-        </member>
-        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.Accountdisable">
-            <summary>
-            The user account is disabled.
-            </summary>
-        </member>
-        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.HomedirRequired">
-            <summary>
-            The home folder is required.
-            </summary>
-        </member>
-        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.Lockout">
-            <summary>
-            Only available via ms-DS-User-Account-Control-Computed attribute.
-            </summary>
-        </member>
-        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.PasswdNotreqd">
-            <summary>
-            No password is required.
-            </summary>
-        </member>
-        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.PasswdCantChange">
-            <summary>
-            The user cannot change the password. This is a permission on the user's object.
-            For information about how to set this permission, visit the following Web site:
-            http://msdn2.microsoft.com/en-us/library/aa746398.aspx
-            </summary>
-        </member>
-        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.EncryptedTextPwdAllowed">
-            <summary>
-            The user can send an encrypted password.
-            </summary>
-        </member>
-        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.TempDuplicateAccount">
-            <summary>
-            This is an account for users whose primary account is in another domain. This
-            account provides user access to this domain, but not to any domain that trusts
-            this domain. This is sometimes referred to as a local user account.
-            </summary>
-        </member>
-        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.NormalAccount">
-            <summary>
-            This is a default account type that represents a typical user.
-            </summary>
-        </member>
-        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.InterdomainTrustAccount">
-            <summary>
-            This is a permit to trust an account for a system domain that trusts other domains.
-            </summary>
-        </member>
-        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.WorkstationTrustAccount">
-            <summary>
-            This is a computer account for a computer that is running Microsoft Windows NT 4.0
-            Workstation, Microsoft Windows NT 4.0 Server, Microsoft Windowser 2000 Professional,
-            or Widnows 2000 Server and is a member of this domain.
-            </summary>
-        </member>
-        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.ServerTrustAccount">
-            <summary>
-            This is a computer account for a domain controller that is a member of this domain.
-            </summary>
-        </member>
-        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.DontExpirePassword">
-            <summary>
-            Represents the password, which should never expire on the account.
-            </summary>
-        </member>
-        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.MNSLogonAccount">
-            <summary>
-            This is an MNS logon account.
-            </summary>
-        </member>
-        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.SmartcardRequired">
-            <summary>
-            When this flag is set, it forces the user to log on by using a smart card.
-            </summary>
-        </member>
-        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.TrustedForDelgation">
-            <summary>
-            When this flag is set, the service account (the user or computer account) under which
-            a service runs is trusted for Kerberos delegation. Any such service can impersonate
-            a client requesting the service. To enable a service for Kerberos delegation, you must
-            set this flag on the userAccountControl property of the service account.
-            </summary>
-        </member>
-        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.NotDelegated">
-            <summary>
-            When this flag is set, the security context of the user is not delegated to a service
-            even if the service account is set as trusted for Kerberos delegation.
-            </summary>
-        </member>
-        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.UseDESKeyOnly">
-            <summary>
-            (Windows 2000/Windows Server 2003) Restrict this principal to use only Data Encryption 
-            Standard (DES) encryption for keys.
-            </summary>
-        </member>
-        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.DontReqPreauth">
-            <summary>
-            (Windows 2000/Windows Server 2003) This account does not require Kerberos pre-authentication
-            for logging on.
-            </summary>
-        </member>
-        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.PasswordExpired">
-            <summary>
-            Only available via ms-DS-User-Account-Control-Computed attribute.
-            (Windows 2000/Windows Server 2003) The user's password has expired.
-            </summary>
-        </member>
-        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.TrustedToAuthForDelegation">
-            <summary>
-            (Windows 2000/Windows Server 2003) The account is enabled for delegation. This is a security-sensitive
-            setting. Accounts that have this option enabled should be tightly controlled. Thsi setting lets a service
-            that runs under the account assume a client's identity and authenticate as that user to other remote servers
-            on the network.
-            </summary>
-        </member>
-        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.PartialSecretsAccount">
-            <summary>
-            Only available via ms-DS-User-Account-Control-Computed attribute.
-            (Windows Server 2008/Windows Server 2008 R2) The account is a read-only domain controller (RODC). This is a
-            security-sensitive setting. Removing this setting from an RODC compromises security on that server.
-            </summary>
-        </member>
-        <member name="F:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl.UseAESKeys">
-            <summary>
-            Only available via ms-DS-User-Account-Control-Computed attribute.
-            </summary>
-        </member>
         <member name="F:Galactic.ActiveDirectory.ActiveDirectoryObject.AttributeNames">
             <summary>
             The list of Attributes that should be retrieved when searching for the entry in AD.
+            </summary>
+        </member>
+        <member name="P:Galactic.ActiveDirectory.ActiveDirectoryObject.CommonName">
+            <summary>
+            The Common Name (CN) of the object in Active Directory.
+            </summary>
+        </member>
+        <member name="P:Galactic.ActiveDirectory.ActiveDirectoryObject.CreateTimeStamp">
+            <summary>
+            The time the object was created in UTC.
+            </summary>
+        </member>
+        <member name="P:Galactic.ActiveDirectory.ActiveDirectoryObject.DistinguishedName">
+            <summary>
+            The Distinguished Name (DN) of the object in Active Directory.
+            </summary>
+        </member>
+        <member name="P:Galactic.ActiveDirectory.ActiveDirectoryObject.GUID">
+            <summary>
+            The GUID of the object in Active Directory.
+            </summary>
+        </member>
+        <member name="P:Galactic.ActiveDirectory.ActiveDirectoryObject.OrganizationalUnit">
+            <summary>
+            The distinguished name of the organizational unit or parent object containing the object.
+            </summary>
+        </member>
+        <member name="P:Galactic.ActiveDirectory.ActiveDirectoryObject.SchemaClasses">
+            <summary>
+            The schema class types that identify the type of object this is in Active Directory.
+            Examples: group, user, etc.
             </summary>
         </member>
         <member name="M:Galactic.ActiveDirectory.ActiveDirectoryObject.#ctor(Galactic.ActiveDirectory.ActiveDirectory,System.Guid)">
@@ -681,46 +712,182 @@
             <param name="other">The other ActiveDirectoryObject to compare this one to.</param>
             <returns>-1 if the object supplied comes before this one in the sort order, 0 if they occur at the same position, 1 if the object supplied comes after this one in the sort order</returns>
         </member>
-        <member name="P:Galactic.ActiveDirectory.ActiveDirectoryObject.CommonName">
-            <summary>
-            The Common Name (CN) of the object in Active Directory.
-            </summary>
-        </member>
-        <member name="P:Galactic.ActiveDirectory.ActiveDirectoryObject.CreateTimeStamp">
-            <summary>
-            The time the object was created in UTC.
-            </summary>
-        </member>
-        <member name="P:Galactic.ActiveDirectory.ActiveDirectoryObject.DistinguishedName">
-            <summary>
-            The Distinguished Name (DN) of the object in Active Directory.
-            </summary>
-        </member>
-        <member name="P:Galactic.ActiveDirectory.ActiveDirectoryObject.GUID">
-            <summary>
-            The GUID of the object in Active Directory.
-            </summary>
-        </member>
-        <member name="P:Galactic.ActiveDirectory.ActiveDirectoryObject.OrganizationalUnit">
-            <summary>
-            The distinguished name of the organizational unit or parent object containing the object.
-            </summary>
-        </member>
-        <member name="P:Galactic.ActiveDirectory.ActiveDirectoryObject.SchemaClasses">
-            <summary>
-            The schema class types that identify the type of object this is in Active Directory.
-            Examples: group, user, etc.
-            </summary>
-        </member>
         <member name="T:Galactic.ActiveDirectory.Group">
             <summary>
             Group is a class that allows for the query and manipulation of
             Active Directory group objects.
             </summary>
         </member>
+        <member name="F:Galactic.ActiveDirectory.Group.AttributeNames">
+            <summary>
+            The list of specific attributes that should be retrieved when searching for the entry in AD. The attributes of parent objects should be included as well.
+            </summary>
+        </member>
+        <member name="P:Galactic.ActiveDirectory.Group.AllUserMembers">
+            <summary>
+            Does a recursive lookup to find all users that are a member of this
+            group by way of subgroup membership.
+            </summary>
+        </member>
+        <member name="P:Galactic.ActiveDirectory.Group.GroupMembers">
+            <summary>
+            Groups that are members of the group.
+            </summary>
+        </member>
+        <member name="P:Galactic.ActiveDirectory.Group.Members">
+            <summary>
+            The members of the group.
+            </summary>
+        </member>
+        <member name="P:Galactic.ActiveDirectory.Group.UserMembers">
+            <summary>
+            Users who are members of the group.
+            </summary>
+        </member>
+        <member name="M:Galactic.ActiveDirectory.Group.#ctor(Galactic.ActiveDirectory.ActiveDirectory,System.Guid)">
+            <summary>
+            Gets a group object from Active Directory with the supplied GUID.
+            </summary>
+            <param name="ad">An Active Directory object used to query and manipulate the directory object.</param>
+            <param name="guid">The GUID of the user.</param>
+        </member>
+        <member name="M:Galactic.ActiveDirectory.Group.#ctor(Galactic.ActiveDirectory.ActiveDirectory,System.DirectoryServices.Protocols.SearchResultEntry)">
+            <summary>
+            Gets a group object from a supplied search result entry.
+            </summary>
+            <param name="ad">An Active Directory object used to manipulate the group.</param>
+            <param name="entry">The SearchResultEntry object containing attributes necessary to populate the object.</param>
+        </member>
+        <member name="M:Galactic.ActiveDirectory.Group.AddMembers(System.Collections.Generic.List{Galactic.ActiveDirectory.SecurityPrincipal})">
+            <summary>
+            Adds security principals to the group.
+            </summary>
+            <param name="principals">The principals to add.</param>
+            <returns>True if the principals were added, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.ActiveDirectory.Group.ClearMembership">
+            <summary>
+            Clears all members from this group.
+            </summary>
+            <returns>True if all members were cleared, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.ActiveDirectory.Group.Create(Galactic.ActiveDirectory.ActiveDirectory,System.String,System.String,System.UInt32,System.Collections.Generic.List{System.DirectoryServices.Protocols.DirectoryAttribute})">
+            <summary>
+            Creates a new group within Active Directory given it's proposed name, the distinguished name of the OU to place it in, and other optional attributes.
+            </summary>
+            <param name="ad">An Active Directory object used to create the group.</param>
+            <param name="sAMAccountName">The proposed SAM Account name for the group.</param>
+            <param name="ouDn">The distinguished name for the OU to place the group within.</param>
+            <param name="type">A uint from the ActiveDirectory.GroupType enum representing the type of group to create.</param>
+            <param name="additionalAttributes">Optional: Additional attributes to set when creating the group.</param>
+            <returns>The newly created group object.</returns>
+        </member>
+        <member name="M:Galactic.ActiveDirectory.Group.Delete(Galactic.ActiveDirectory.ActiveDirectory,System.Guid)">
+            <summary>
+            Deletes a group from Active Directory.
+            </summary>
+            <param name="ad">An Active Directory object used to delete the group.</param>
+            <param name="guid">The GUID of the group.</param>
+            <returns>True if the group was deleted, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.ActiveDirectory.Group.RemoveMember(Galactic.ActiveDirectory.SecurityPrincipal)">
+            <summary>
+            Removes a security principal from the group.
+            </summary>
+            <param name="principal">The principal to remove.</param>
+            <returns>True if the principal was removed, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.ActiveDirectory.Group.RemoveMembers(System.Collections.Generic.List{Galactic.ActiveDirectory.SecurityPrincipal})">
+            <summary>
+            Removes security principals from the group.
+            </summary>
+            <param name="principals">The principals to remove.</param>
+            <returns>True if the principals were removed, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.ActiveDirectory.Group.Equals(Galactic.ActiveDirectory.Group,Galactic.ActiveDirectory.Group)">
+            <summary>
+            Checks whether x and y are equal (using GUIDs).
+            </summary>
+            <param name="x">The first Group to check.</param>
+            <param name="y">The second Group to check against.</param>
+            <returns>True if the objects are equal, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.ActiveDirectory.Group.GetHashCode(Galactic.ActiveDirectory.Group)">
+            <summary>
+            Generates a hash code for the Group supplied.
+            </summary>
+            <param name="obj">The Group to generate a hash code for.</param>
+            <returns>An integer hash code for the object.</returns>
+        </member>
+        <member name="M:Galactic.ActiveDirectory.Group.CompareTo(Galactic.ActiveDirectory.Group)">
+            <summary>
+            Compares this Group to another Group.
+            </summary>
+            <param name="other">The other Group to compare this one to.</param>
+            <returns>-1 if the object supplied comes before this one in the sort order, 0 if they occur at the same position, 1 if the object supplied comes after this one in the sort order</returns>
+        </member>
         <member name="F:Galactic.ActiveDirectory.SecurityPrincipal.AttributeNames">
             <summary>
             The list of specific attributes that should be retrieved when searching for the entry in AD. The attributes of parent objects should be included as well.
+            </summary>
+        </member>
+        <member name="P:Galactic.ActiveDirectory.SecurityPrincipal.Description">
+            <summary>
+            A description of the security principal.
+            </summary>
+        </member>
+        <member name="P:Galactic.ActiveDirectory.SecurityPrincipal.EMailAddress">
+            <summary>
+            The principal's e-mail address.
+            </summary>
+        </member>
+        <member name="P:Galactic.ActiveDirectory.SecurityPrincipal.EmailAddresses">
+            <summary>
+            A list of the principal's e-mail addresses.
+            </summary>
+        </member>
+        <member name="P:Galactic.ActiveDirectory.SecurityPrincipal.ExchangeAlias">
+            <summary>
+            The principal's Microsoft Exchange Alias.
+            </summary>
+        </member>
+        <member name="P:Galactic.ActiveDirectory.SecurityPrincipal.Groups">
+            <summary>
+            The distinguished names of groups that this principal is a member of.
+            </summary>
+        </member>
+        <member name="P:Galactic.ActiveDirectory.SecurityPrincipal.IsGroup">
+            <summary>
+            Indicates if this principal is a Group.
+            </summary>
+        </member>
+        <member name="P:Galactic.ActiveDirectory.SecurityPrincipal.IsUser">
+            <summary>
+            Indicates if this principal is a User.
+            </summary>
+        </member>
+        <member name="P:Galactic.ActiveDirectory.SecurityPrincipal.PrimaryEmailAddress">
+            <summary>
+            The principal's primary e-mail address.
+            </summary>
+        </member>
+        <member name="P:Galactic.ActiveDirectory.SecurityPrincipal.SAMAccountName">
+            <summary>
+            The principal's SAM Account Name.
+            </summary>
+        </member>
+        <member name="P:Galactic.ActiveDirectory.SecurityPrincipal.TargetAddress">
+            <summary>
+            The principal's target e-mail address. Used by Exchange for routing e-mail to its
+            final destination which may lie outside of the organization. Allows for an object
+            to appear in the GAL even though its e-mail address may be outside of Exchange.
+            Also used when routing e-mail to the Microsoft Office365 cloud from an on-premises
+            Exchange server.
+            </summary>
+        </member>
+        <member name="P:Galactic.ActiveDirectory.SecurityPrincipal.UserPrincipalName">
+            <summary>
+            The User Principal Name of the principal.
             </summary>
         </member>
         <member name="M:Galactic.ActiveDirectory.SecurityPrincipal.#ctor(Galactic.ActiveDirectory.ActiveDirectory,System.Guid)">
@@ -807,173 +974,6 @@
             <param name="other">The other SecurityPrincipal to compare this one to.</param>
             <returns>-1 if the object supplied comes before this one in the sort order, 0 if they occur at the same position, 1 if the object supplied comes after this one in the sort order</returns>
         </member>
-        <member name="P:Galactic.ActiveDirectory.SecurityPrincipal.Description">
-            <summary>
-            A description of the security principal.
-            </summary>
-        </member>
-        <member name="P:Galactic.ActiveDirectory.SecurityPrincipal.EMailAddress">
-            <summary>
-            The principal's e-mail address.
-            </summary>
-        </member>
-        <member name="P:Galactic.ActiveDirectory.SecurityPrincipal.EmailAddresses">
-            <summary>
-            A list of the principal's e-mail addresses.
-            </summary>
-        </member>
-        <member name="P:Galactic.ActiveDirectory.SecurityPrincipal.ExchangeAlias">
-            <summary>
-            The principal's Microsoft Exchange Alias.
-            </summary>
-        </member>
-        <member name="P:Galactic.ActiveDirectory.SecurityPrincipal.Groups">
-            <summary>
-            The distinguished names of groups that this principal is a member of.
-            </summary>
-        </member>
-        <member name="P:Galactic.ActiveDirectory.SecurityPrincipal.IsGroup">
-            <summary>
-            Indicates if this principal is a Group.
-            </summary>
-        </member>
-        <member name="P:Galactic.ActiveDirectory.SecurityPrincipal.IsUser">
-            <summary>
-            Indicates if this principal is a User.
-            </summary>
-        </member>
-        <member name="P:Galactic.ActiveDirectory.SecurityPrincipal.PrimaryEmailAddress">
-            <summary>
-            The principal's primary e-mail address.
-            </summary>
-        </member>
-        <member name="P:Galactic.ActiveDirectory.SecurityPrincipal.SAMAccountName">
-            <summary>
-            The principal's SAM Account Name.
-            </summary>
-        </member>
-        <member name="P:Galactic.ActiveDirectory.SecurityPrincipal.TargetAddress">
-            <summary>
-            The principal's target e-mail address. Used by Exchange for routing e-mail to its
-            final destination which may lie outside of the organization. Allows for an object
-            to appear in the GAL even though its e-mail address may be outside of Exchange.
-            Also used when routing e-mail to the Microsoft Office365 cloud from an on-premises
-            Exchange server.
-            </summary>
-        </member>
-        <member name="P:Galactic.ActiveDirectory.SecurityPrincipal.UserPrincipalName">
-            <summary>
-            The User Principal Name of the principal.
-            </summary>
-        </member>
-        <member name="F:Galactic.ActiveDirectory.Group.AttributeNames">
-            <summary>
-            The list of specific attributes that should be retrieved when searching for the entry in AD. The attributes of parent objects should be included as well.
-            </summary>
-        </member>
-        <member name="M:Galactic.ActiveDirectory.Group.#ctor(Galactic.ActiveDirectory.ActiveDirectory,System.Guid)">
-            <summary>
-            Gets a group object from Active Directory with the supplied GUID.
-            </summary>
-            <param name="ad">An Active Directory object used to query and manipulate the directory object.</param>
-            <param name="guid">The GUID of the user.</param>
-        </member>
-        <member name="M:Galactic.ActiveDirectory.Group.#ctor(Galactic.ActiveDirectory.ActiveDirectory,System.DirectoryServices.Protocols.SearchResultEntry)">
-            <summary>
-            Gets a group object from a supplied search result entry.
-            </summary>
-            <param name="ad">An Active Directory object used to manipulate the group.</param>
-            <param name="entry">The SearchResultEntry object containing attributes necessary to populate the object.</param>
-        </member>
-        <member name="M:Galactic.ActiveDirectory.Group.AddMembers(System.Collections.Generic.List{Galactic.ActiveDirectory.SecurityPrincipal})">
-            <summary>
-            Adds security principals to the group.
-            </summary>
-            <param name="principals">The principals to add.</param>
-            <returns>True if the principals were added, false otherwise.</returns>
-        </member>
-        <member name="M:Galactic.ActiveDirectory.Group.ClearMembership">
-            <summary>
-            Clears all members from this group.
-            </summary>
-            <returns>True if all members were cleared, false otherwise.</returns>
-        </member>
-        <member name="M:Galactic.ActiveDirectory.Group.Create(Galactic.ActiveDirectory.ActiveDirectory,System.String,System.String,System.UInt32,System.Collections.Generic.List{System.DirectoryServices.Protocols.DirectoryAttribute})">
-            <summary>
-            Creates a new group within Active Directory given it's proposed name, the distinguished name of the OU to place it in, and other optional attributes.
-            </summary>
-            <param name="ad">An Active Directory object used to create the group.</param>
-            <param name="sAMAccountName">The proposed SAM Account name for the group.</param>
-            <param name="ouDn">The distinguished name for the OU to place the group within.</param>
-            <param name="type">A uint from the ActiveDirectory.GroupType enum representing the type of group to create.</param>
-            <param name="additionalAttributes">Optional: Additional attributes to set when creating the group.</param>
-            <returns>The newly created group object.</returns>
-        </member>
-        <member name="M:Galactic.ActiveDirectory.Group.Delete(Galactic.ActiveDirectory.ActiveDirectory,System.Guid)">
-            <summary>
-            Deletes a group from Active Directory.
-            </summary>
-            <param name="ad">An Active Directory object used to delete the group.</param>
-            <param name="guid">The GUID of the group.</param>
-            <returns>True if the group was deleted, false otherwise.</returns>
-        </member>
-        <member name="M:Galactic.ActiveDirectory.Group.RemoveMember(Galactic.ActiveDirectory.SecurityPrincipal)">
-            <summary>
-            Removes a security principal from the group.
-            </summary>
-            <param name="principal">The principal to remove.</param>
-            <returns>True if the principal was removed, false otherwise.</returns>
-        </member>
-        <member name="M:Galactic.ActiveDirectory.Group.RemoveMembers(System.Collections.Generic.List{Galactic.ActiveDirectory.SecurityPrincipal})">
-            <summary>
-            Removes security principals from the group.
-            </summary>
-            <param name="principals">The principals to remove.</param>
-            <returns>True if the principals were removed, false otherwise.</returns>
-        </member>
-        <member name="M:Galactic.ActiveDirectory.Group.Equals(Galactic.ActiveDirectory.Group,Galactic.ActiveDirectory.Group)">
-            <summary>
-            Checks whether x and y are equal (using GUIDs).
-            </summary>
-            <param name="x">The first Group to check.</param>
-            <param name="y">The second Group to check against.</param>
-            <returns>True if the objects are equal, false otherwise.</returns>
-        </member>
-        <member name="M:Galactic.ActiveDirectory.Group.GetHashCode(Galactic.ActiveDirectory.Group)">
-            <summary>
-            Generates a hash code for the Group supplied.
-            </summary>
-            <param name="obj">The Group to generate a hash code for.</param>
-            <returns>An integer hash code for the object.</returns>
-        </member>
-        <member name="M:Galactic.ActiveDirectory.Group.CompareTo(Galactic.ActiveDirectory.Group)">
-            <summary>
-            Compares this Group to another Group.
-            </summary>
-            <param name="other">The other Group to compare this one to.</param>
-            <returns>-1 if the object supplied comes before this one in the sort order, 0 if they occur at the same position, 1 if the object supplied comes after this one in the sort order</returns>
-        </member>
-        <member name="P:Galactic.ActiveDirectory.Group.AllUserMembers">
-            <summary>
-            Does a recursive lookup to find all users that are a member of this
-            group by way of subgroup membership.
-            </summary>
-        </member>
-        <member name="P:Galactic.ActiveDirectory.Group.GroupMembers">
-            <summary>
-            Groups that are members of the group.
-            </summary>
-        </member>
-        <member name="P:Galactic.ActiveDirectory.Group.Members">
-            <summary>
-            The members of the group.
-            </summary>
-        </member>
-        <member name="P:Galactic.ActiveDirectory.Group.UserMembers">
-            <summary>
-            Users who are members of the group.
-            </summary>
-        </member>
         <member name="T:Galactic.ActiveDirectory.User">
             <summary>
             User is a class that allows for the query and manipulation of
@@ -984,98 +984,6 @@
             <summary>
             The list of specific attributes that should be retrieved when searching for the entry in AD. The attributes of parent objects should be included as well.
             </summary>
-        </member>
-        <member name="M:Galactic.ActiveDirectory.User.#ctor(Galactic.ActiveDirectory.ActiveDirectory,System.Guid)">
-            <summary>
-            Gets a user object from Active Directory with the supplied GUID.
-            </summary>
-            <param name="ad">An Active Directory object used to query and manipulate the user.</param>
-            <param name="guid">The GUID of the user.</param>
-        </member>
-        <member name="M:Galactic.ActiveDirectory.User.#ctor(Galactic.ActiveDirectory.ActiveDirectory,System.DirectoryServices.Protocols.SearchResultEntry)">
-            <summary>
-            Gets a user object from a supplied search result entry.
-            </summary>
-            <param name="ad">An Active Directory object used to manipulate the user.</param>
-            <param name="entry">The SearchResultEntry object containing attributes necessary to populate the object.</param>
-        </member>
-        <member name="M:Galactic.ActiveDirectory.User.Create(Galactic.ActiveDirectory.ActiveDirectory,System.String,System.String,System.Collections.Generic.List{System.DirectoryServices.Protocols.DirectoryAttribute})">
-            <summary>
-            Creates a new user within Active Directory given it's proposed name, the distinguished name of the OU to place it in, and other optional attributes.
-            </summary>
-            <param name="ad">An Active Directory object used to create the user.</param>
-            <param name="sAMAccountName">The proposed SAM Account name for the user.</param>
-            <param name="ouDn">The distinguished name for the OU to place the user within.</param>
-            <param name="additionalAttributes">Optional: Additional attribute values to set when creating the user.</param>
-            <returns>The newly created user object.</returns>
-        </member>
-        <member name="M:Galactic.ActiveDirectory.User.Disable">
-            <summary>
-            Disables the user's account for authentication if it is enabled.
-            </summary>
-            <returns>True if the account is disabled successfully or was not enabled. False if the account could not be disabled.</returns>
-        </member>
-        <member name="M:Galactic.ActiveDirectory.User.Enable">
-            <summary>
-            Enables the user's account for authentication if it is disabled.
-            </summary>
-            <returns>True if the account is enabled successfully or was not disabled. False if the account could not be enabled.</returns>
-        </member>
-        <member name="M:Galactic.ActiveDirectory.User.GetAllUsers(Galactic.ActiveDirectory.ActiveDirectory)">
-            <summary>
-            Gets all users in the Active Directory.
-            </summary>
-            <param name="ad">The Active Directory to retrieve users from.</param>
-            <returns>A list of all users in the Active Directory.</returns>
-        </member>
-        <member name="M:Galactic.ActiveDirectory.User.SetPassword(System.String)">
-            <summary>
-            Sets the password of the user.
-            </summary>
-            <param name="password">The new password to use for the user.</param>
-            <returns>True if the password was set, false otherwise.</returns>
-        </member>
-        <member name="M:Galactic.ActiveDirectory.User.Unlock">
-            <summary>
-            Unlocks the user's account if it is locked.
-            </summary>
-            <returns>True if the account is unlocked successfully or was not locked. False if the account could not be unlocked.</returns>
-        </member>
-        <member name="M:Galactic.ActiveDirectory.User.SetUserAccountControlFlag(Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl)">
-            <summary>
-            Sets a flag in the user's User Account Control attribute.
-            </summary>
-            <param name="flag">A flag from the predefined UserAccountControl flags.</param>
-            <returns>True if set, false otherwise.</returns>
-        </member>
-        <member name="M:Galactic.ActiveDirectory.User.RemoveUserAccountControlFlag(Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl)">
-            <summary>
-            Removes a flag from the user's User Account Control attribute.
-            </summary>
-            <param name="flag">A flag from the predefined UserAccountControl flags.</param>
-            <returns>True if removed, false otherwise.</returns>
-        </member>
-        <member name="M:Galactic.ActiveDirectory.User.Equals(Galactic.ActiveDirectory.User,Galactic.ActiveDirectory.User)">
-            <summary>
-            Checks whether x and y are equal (using GUIDs).
-            </summary>
-            <param name="x">The first User to check.</param>
-            <param name="y">The second User to check against.</param>
-            <returns>True if the objects are equal, false otherwise.</returns>
-        </member>
-        <member name="M:Galactic.ActiveDirectory.User.GetHashCode(Galactic.ActiveDirectory.User)">
-            <summary>
-            Generates a hash code for the User supplied.
-            </summary>
-            <param name="obj">The User to generate a hash code for.</param>
-            <returns>An integer hash code for the object.</returns>
-        </member>
-        <member name="M:Galactic.ActiveDirectory.User.CompareTo(Galactic.ActiveDirectory.User)">
-            <summary>
-            Compares this User to another User.
-            </summary>
-            <param name="other">The other User to compare this one to.</param>
-            <returns>-1 if the object supplied comes before this one in the sort order, 0 if they occur at the same position, 1 if the object supplied comes after this one in the sort order</returns>
         </member>
         <member name="P:Galactic.ActiveDirectory.User.BadPasswordCount">
             <summary>
@@ -1204,6 +1112,98 @@
             Gets the user's computed UserAccountControl property.
             A return value of 0 means it wasn't computed.
             </summary>
+        </member>
+        <member name="M:Galactic.ActiveDirectory.User.#ctor(Galactic.ActiveDirectory.ActiveDirectory,System.Guid)">
+            <summary>
+            Gets a user object from Active Directory with the supplied GUID.
+            </summary>
+            <param name="ad">An Active Directory object used to query and manipulate the user.</param>
+            <param name="guid">The GUID of the user.</param>
+        </member>
+        <member name="M:Galactic.ActiveDirectory.User.#ctor(Galactic.ActiveDirectory.ActiveDirectory,System.DirectoryServices.Protocols.SearchResultEntry)">
+            <summary>
+            Gets a user object from a supplied search result entry.
+            </summary>
+            <param name="ad">An Active Directory object used to manipulate the user.</param>
+            <param name="entry">The SearchResultEntry object containing attributes necessary to populate the object.</param>
+        </member>
+        <member name="M:Galactic.ActiveDirectory.User.Create(Galactic.ActiveDirectory.ActiveDirectory,System.String,System.String,System.Collections.Generic.List{System.DirectoryServices.Protocols.DirectoryAttribute})">
+            <summary>
+            Creates a new user within Active Directory given it's proposed name, the distinguished name of the OU to place it in, and other optional attributes.
+            </summary>
+            <param name="ad">An Active Directory object used to create the user.</param>
+            <param name="sAMAccountName">The proposed SAM Account name for the user.</param>
+            <param name="ouDn">The distinguished name for the OU to place the user within.</param>
+            <param name="additionalAttributes">Optional: Additional attribute values to set when creating the user.</param>
+            <returns>The newly created user object.</returns>
+        </member>
+        <member name="M:Galactic.ActiveDirectory.User.Disable">
+            <summary>
+            Disables the user's account for authentication if it is enabled.
+            </summary>
+            <returns>True if the account is disabled successfully or was not enabled. False if the account could not be disabled.</returns>
+        </member>
+        <member name="M:Galactic.ActiveDirectory.User.Enable">
+            <summary>
+            Enables the user's account for authentication if it is disabled.
+            </summary>
+            <returns>True if the account is enabled successfully or was not disabled. False if the account could not be enabled.</returns>
+        </member>
+        <member name="M:Galactic.ActiveDirectory.User.GetAllUsers(Galactic.ActiveDirectory.ActiveDirectory)">
+            <summary>
+            Gets all users in the Active Directory.
+            </summary>
+            <param name="ad">The Active Directory to retrieve users from.</param>
+            <returns>A list of all users in the Active Directory.</returns>
+        </member>
+        <member name="M:Galactic.ActiveDirectory.User.SetPassword(System.String)">
+            <summary>
+            Sets the password of the user.
+            </summary>
+            <param name="password">The new password to use for the user.</param>
+            <returns>True if the password was set, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.ActiveDirectory.User.Unlock">
+            <summary>
+            Unlocks the user's account if it is locked.
+            </summary>
+            <returns>True if the account is unlocked successfully or was not locked. False if the account could not be unlocked.</returns>
+        </member>
+        <member name="M:Galactic.ActiveDirectory.User.SetUserAccountControlFlag(Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl)">
+            <summary>
+            Sets a flag in the user's User Account Control attribute.
+            </summary>
+            <param name="flag">A flag from the predefined UserAccountControl flags.</param>
+            <returns>True if set, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.ActiveDirectory.User.RemoveUserAccountControlFlag(Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl)">
+            <summary>
+            Removes a flag from the user's User Account Control attribute.
+            </summary>
+            <param name="flag">A flag from the predefined UserAccountControl flags.</param>
+            <returns>True if removed, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.ActiveDirectory.User.Equals(Galactic.ActiveDirectory.User,Galactic.ActiveDirectory.User)">
+            <summary>
+            Checks whether x and y are equal (using GUIDs).
+            </summary>
+            <param name="x">The first User to check.</param>
+            <param name="y">The second User to check against.</param>
+            <returns>True if the objects are equal, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.ActiveDirectory.User.GetHashCode(Galactic.ActiveDirectory.User)">
+            <summary>
+            Generates a hash code for the User supplied.
+            </summary>
+            <param name="obj">The User to generate a hash code for.</param>
+            <returns>An integer hash code for the object.</returns>
+        </member>
+        <member name="M:Galactic.ActiveDirectory.User.CompareTo(Galactic.ActiveDirectory.User)">
+            <summary>
+            Compares this User to another User.
+            </summary>
+            <param name="other">The other User to compare this one to.</param>
+            <returns>-1 if the object supplied comes before this one in the sort order, 0 if they occur at the same position, 1 if the object supplied comes after this one in the sort order</returns>
         </member>
     </members>
 </doc>

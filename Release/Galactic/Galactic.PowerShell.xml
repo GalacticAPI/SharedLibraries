@@ -9,6 +9,16 @@
             An interface for classes that implement PowerShell scripting functionality.
             </summary>
         </member>
+        <member name="P:Galactic.PowerShell.IPowerShellScript.Results">
+            <summary>
+            The results of the Powershell Script call.
+            </summary>
+        </member>
+        <member name="P:Galactic.PowerShell.IPowerShellScript.RunspacePool">
+            <summary>
+            A specific Runspace pool used to invoke pipelines for this PowerShell Script. (Optional)
+            </summary>
+        </member>
         <member name="M:Galactic.PowerShell.IPowerShellScript.RunAsynchronously(System.String,Galactic.PowerShell.PowerShell.ProcessResults,System.Collections.Generic.Dictionary{System.String,System.Object},System.Management.Automation.PSDataCollection{System.String},System.Collections.Generic.KeyValuePair{System.String,System.Object}[])">
             <summary>
             Runs a PowerShell script/command asynchronously.
@@ -37,16 +47,6 @@
             <param name="propertyName">The name of the property in the result object to verify.</param>
             <param name="value">The value to match against.</param>
             <returns>True if the property value matches the supplied value. False otherwise.</returns>
-        </member>
-        <member name="P:Galactic.PowerShell.IPowerShellScript.Results">
-            <summary>
-            The results of the Powershell Script call.
-            </summary>
-        </member>
-        <member name="P:Galactic.PowerShell.IPowerShellScript.RunspacePool">
-            <summary>
-            A specific Runspace pool used to invoke pipelines for this PowerShell Script. (Optional)
-            </summary>
         </member>
         <member name="T:Galactic.PowerShell.PowerShell">
             <summary>
@@ -97,6 +97,34 @@
             <summary>
             Defines the name of the ProcessResults callback delegate variable in the script state dictionary.
             </summary>
+        </member>
+        <member name="T:Galactic.PowerShell.PowerShell.ProcessResults">
+            <summary>
+            Processes the results of a script invocation.
+            </summary>
+            <param name="stateValues">A collection of named state values that should are passed through the script invocation.</param>
+            <param name="results">A collection of the results returned from the script's execution.</param>
+        </member>
+        <member name="T:Galactic.PowerShell.PowerShell.PowerShellScriptState">
+            <summary>
+            Contains program state that can be passed through an asyncronous invocation of a PowerShell script.
+            </summary>
+        </member>
+        <member name="P:Galactic.PowerShell.PowerShell.PowerShellScriptState.Script">
+            <summary>
+            The PowerShell script object that originated the invocation.
+            </summary>
+        </member>
+        <member name="P:Galactic.PowerShell.PowerShell.PowerShellScriptState.StateVariables">
+            <summary>
+            A dictionary of variables that are attached to the state before script invocation.
+            </summary>
+        </member>
+        <member name="M:Galactic.PowerShell.PowerShell.PowerShellScriptState.#ctor(System.Management.Automation.PowerShell)">
+            <summary>
+            Creates a new PowerShell script state object, with the supplied originating script.
+            </summary>
+            <param name="script">The PowerShell object that originated the invocation.</param>
         </member>
         <member name="M:Galactic.PowerShell.PowerShell.LogException(System.Exception,Galactic.EventLog.EventLog)">
             <summary>
@@ -155,34 +183,6 @@
             <param name="parameterList">An array of key/value objects defining additional parameters to supply to the PowerShell script.</param>
             <returns>A collection of PSObjects that are the result of the script/command run. Null if an error occurred while processing the command / script.</returns>
         </member>
-        <member name="T:Galactic.PowerShell.PowerShell.ProcessResults">
-            <summary>
-            Processes the results of a script invocation.
-            </summary>
-            <param name="stateValues">A collection of named state values that should are passed through the script invocation.</param>
-            <param name="results">A collection of the results returned from the script's execution.</param>
-        </member>
-        <member name="T:Galactic.PowerShell.PowerShell.PowerShellScriptState">
-            <summary>
-            Contains program state that can be passed through an asyncronous invocation of a PowerShell script.
-            </summary>
-        </member>
-        <member name="M:Galactic.PowerShell.PowerShell.PowerShellScriptState.#ctor(System.Management.Automation.PowerShell)">
-            <summary>
-            Creates a new PowerShell script state object, with the supplied originating script.
-            </summary>
-            <param name="script">The PowerShell object that originated the invocation.</param>
-        </member>
-        <member name="P:Galactic.PowerShell.PowerShell.PowerShellScriptState.Script">
-            <summary>
-            The PowerShell script object that originated the invocation.
-            </summary>
-        </member>
-        <member name="P:Galactic.PowerShell.PowerShell.PowerShellScriptState.StateVariables">
-            <summary>
-            A dictionary of variables that are attached to the state before script invocation.
-            </summary>
-        </member>
         <member name="T:Galactic.PowerShell.PowerShellScript">
             <summary>
             A class that provides the ability to run and verify the results from
@@ -193,6 +193,21 @@
         <member name="F:Galactic.PowerShell.PowerShellScript.results">
             <summary>
             The results of the Powershell Script call.
+            </summary>
+        </member>
+        <member name="P:Galactic.PowerShell.PowerShellScript.Log">
+            <summary>
+            The event log that will receive events from this logger.
+            </summary>
+        </member>
+        <member name="P:Galactic.PowerShell.PowerShellScript.Results">
+            <summary>
+            The results of the Powershell Script call.
+            </summary>
+        </member>
+        <member name="P:Galactic.PowerShell.PowerShellScript.RunspacePool">
+            <summary>
+            A specific Runspace pool used to invoke pipelines for this PowerShell Script. (Optional)
             </summary>
         </member>
         <member name="M:Galactic.PowerShell.PowerShellScript.#ctor(Galactic.EventLog.EventLog,System.Management.Automation.Runspaces.RunspacePool)">
@@ -247,21 +262,6 @@
             <param name="propertyName">The name of the property in the result object to verify.</param>
             <param name="value">The value to match against.</param>
             <returns>True if the property value matches the supplied value. False otherwise.</returns>
-        </member>
-        <member name="P:Galactic.PowerShell.PowerShellScript.Log">
-            <summary>
-            The event log that will receive events from this logger.
-            </summary>
-        </member>
-        <member name="P:Galactic.PowerShell.PowerShellScript.Results">
-            <summary>
-            The results of the Powershell Script call.
-            </summary>
-        </member>
-        <member name="P:Galactic.PowerShell.PowerShellScript.RunspacePool">
-            <summary>
-            A specific Runspace pool used to invoke pipelines for this PowerShell Script. (Optional)
-            </summary>
         </member>
     </members>
 </doc>

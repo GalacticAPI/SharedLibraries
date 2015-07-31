@@ -9,164 +9,6 @@
             A utility class for manipulating directories on the file system.
             </summary>
         </member>
-        <member name="M:Galactic.FileSystem.Directory.AddAccessRule(System.String,System.Security.AccessControl.DirectorySecurity@,System.Security.AccessControl.FileSystemAccessRule,System.Boolean)">
-            <summary>
-            Adds an access rule to the directory at the supplied path.
-            </summary>
-            <param name="path">The path to the directory to add the rule to.</param>
-            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
-            <param name="rule">The rule to add to the directory.</param>
-            <param name="commitChanges">Indicates whether changes should be commited to this directory. Useful when combining multiple commands.</param>
-            <returns>True if the rule was added. False if the directory does not exist, the rule is null, or the process does not have access to
-            the specified path, or does not have sufficient access to change the ACL entry of the directory, or the operating system is not Windows
-            2000 or later.</returns>
-        </member>
-        <member name="M:Galactic.FileSystem.Directory.BlockInheritance(System.String,System.Security.AccessControl.DirectorySecurity@,System.Boolean,System.Boolean)">
-            <summary>
-            Blocks inheritance on this directory.
-            </summary>
-            <param name="path">The path to the directory to block inheritance on.</param>
-            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
-            <param name="addInheritedPermissions">If true, copies the directory's inherited permissions as explicit permissions on the directory.</param>
-            <param name="commitChanges">Indicates whether changes should be commited to this entry. Useful when combining multiple commands.</param>
-            <returns>True if inheritance was blocked on the directory, false if the directory does not exist, or inheritance could not be
-            blocked.</returns>
-        </member>
-        <member name="M:Galactic.FileSystem.Directory.Clone(System.String,System.String)">
-            <summary>
-            Clones a directory to a new location. Does not copy any files or folders beneath it.
-            </summary>
-            <param name="path">The path of the directory to clone.</param>
-            <param name="newPath">The destination path to clone the directory to.</param>
-            <returns>True if the directory was cloned. False otherwise.</returns>
-        </member>
-        <member name="M:Galactic.FileSystem.Directory.CommitChanges(System.String,System.Security.AccessControl.DirectorySecurity@)">
-            <summary>
-            Commits any pending changes to the directory specified by the supplied path.
-            </summary>
-            <param name="path">The path to the directory to commit changes on.</param>
-            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
-            <returns>True if the changes were commited. False if the directory does not exist,
-            or the current process does not have sufficient access to the specified path, or the
-            current operating system in not Windows 2000 or later.</returns>
-        </member>
-        <member name="M:Galactic.FileSystem.Directory.Create(System.String)">
-            <summary>
-            Creates a directory at the specified path.
-            </summary>
-            <param name="path">The path of the directory to create.</param>
-            <returns>True if the directory was created or already exists.
-            False if an error occured and the directory could not be created.</returns>
-        </member>
-        <member name="M:Galactic.FileSystem.Directory.Delete(System.String,System.Boolean)">
-            <summary>
-            Deletes a directory at the specified path.
-            </summary>
-            <param name="path">The path of the directory to delete.</param>
-            <param name="recursive">Recursively delete the files an subfolders of the directory.</param>
-            <returns>True if the directory was deleted or did not exist, false if an error occured
-            and the directory could not be deleted.</returns>
-        </member>
-        <member name="M:Galactic.FileSystem.Directory.Exists(System.String)">
-            <summary>
-            Checks whether the directory at the specified path exists on the file system.
-            </summary>
-            <param name="path">The path to the directory to check.</param>
-            <returns>True if it exists, false otherwise.</returns>
-        </member>
-        <member name="M:Galactic.FileSystem.Directory.GetListing(System.String,System.Boolean)">
-            <summary>
-            Gets a list of the contents of a directory at the specified path.
-            </summary>
-            <param name="path">The path of the directory to get a list of the contents of.</param>
-            <param name="getSubDirs">Whether to obtain a list of the contents of all subdirectories as well.</param>
-            <returns>An array of strings with the names of directories and files under the supplied path.
-            Null if the path is invalid, does not exist, or the current process does not have permission
-            to get the directory listing.</returns>
-        </member>
-        <member name="M:Galactic.FileSystem.Directory.GetSecurityObject(System.String)">
-            <summary>
-            Gets the DirectorySecurity object for the directory specified by the supplied path.
-            </summary>
-            <param name="path">The path to the directory to retrieve the security object for.</param>
-            <returns>The security object for the directory specified. Null if the directory does not exist,
-            an I/O Error occurred, the current operating system is not Windows 2000 or later,
-            the path specified is read-only, or the process does not have permission to complete the operation.</returns>
-        </member>
-        <member name="M:Galactic.FileSystem.Directory.GiveAccess(System.DirectoryServices.DirectoryEntry,System.String,System.Security.AccessControl.DirectorySecurity@,System.Security.AccessControl.FileSystemRights,System.Boolean,System.Boolean,System.Boolean)">
-            <summary>
-            Gives access to the entry supplied on the target directory.
-            </summary>
-            <param name="entry">The entry to give access.</param>
-            <param name="path">The path to the directory to have access granted on.</param>
-            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
-            <param name="rights">The access rights to grant on the target directory.</param>
-            <param name="applyToSubfolders">Indicates whether this directory's permissions apply to subfolders beneath it.</param>
-            <param name="applyToFiles">Indicates whether this directory's permissions apply to files beneath it.</param>
-            <param name="commitChanges">Indicates whether changes should be commited to this directory. Useful when combining multiple commands.</param>
-            <returns>True if access was granted. False otherwise.</returns>
-        </member>
-        <member name="M:Galactic.FileSystem.Directory.GiveAccess(Galactic.FileSystem.Directory.AccessRights,System.DirectoryServices.DirectoryEntry,System.String,System.Security.AccessControl.DirectorySecurity@,System.Boolean,System.Boolean,System.Boolean)">
-            <summary>
-            Gives the supplied data access rights to the entry supplied on the target directory.
-            </summary>
-            <param name="rights">The rights to apply to the target directory.</param>
-            <param name="entry">The entry to give data access.</param>
-            <param name="path">The path to the directory to have access granted on.</param>
-            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
-            <param name="applyToSubfolders">Indicates whether this directory's permissions apply to subfolders beneath it.</param>
-            <param name="applyToFiles">Indicates whether this directory's permissions apply to files beneath it.</param>
-            <param name="commitChanges">Indicates whether changes should be commited to this directory. Useful when combining multiple commands.</param>
-            <returns>True if access was granted. False otherwise.</returns>
-        </member>
-        <member name="M:Galactic.FileSystem.Directory.GiveAccess(Galactic.FileSystem.Directory.AccessRights,System.DirectoryServices.DirectoryEntry,System.String,System.Security.AccessControl.DirectorySecurity@,System.Boolean)">
-            <summary>
-            Gives the supplied data access rights to the entry supplied on the target directory.
-            Applies inherited permissions to folders and files beneath the target directory.
-            </summary>
-            <param name="rights">The rights to apply to the target directory.</param>
-            <param name="entry">The entry to give data access.</param>
-            <param name="path">The path to the directory to have access granted on.</param>
-            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
-            <param name="commitChanges">Indicates whether changes should be commited to this directory. Useful when combining multiple commands.</param>
-            <returns>True if access was granted. False otherwise.</returns>
-        </member>
-        <member name="M:Galactic.FileSystem.Directory.Move(System.String,System.String)">
-            <summary>
-            Moves a directory to a new location.
-            </summary>
-            <param name="path">The path of the directory to move.</param>
-            <param name="newPath">The path to the new location to move the directory.</param>
-            <returns>True if the directory was moved. False otherwise.</returns>
-        </member>
-        <member name="M:Galactic.FileSystem.Directory.RemoveAllAccessRules(System.String,System.Security.AccessControl.DirectorySecurity@,System.Boolean)">
-            <summary>
-            Removes all access rules from the supplied directory.
-            </summary>
-            <param name="path">The path to the directory to remove all access rules from.</param>
-            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
-            <param name="commitChanges">Indicates whether changes should be commited to this directory. Useful when combining multiple commands.</param>
-            <returns>True if all rules were removed. False if an error occurred.</returns>
-        </member>
-        <member name="M:Galactic.FileSystem.Directory.RemoveAllExplicitAccessRules(System.String,System.Security.AccessControl.DirectorySecurity@,System.Boolean)">
-            <summary>
-            Removes all explicit access rules from the supplied directory.
-            </summary>
-            <param name="path">The path to the directory to have access removed on.</param>
-            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
-            <param name="commitChanges">Indicates whether changes should be commited to this directory. Useful when combining multiple commands.</param>
-            <returns>True if access was removed. False otherwise.</returns>
-        </member>
-        <member name="M:Galactic.FileSystem.Directory.SetOwner(System.String,System.Security.AccessControl.DirectorySecurity@,System.DirectoryServices.DirectoryEntry,System.Boolean)">
-            <summary>
-            Sets the owner of a directory.
-            </summary>
-            <param name="path">The path to the directory to have the ownership set on.</param>
-            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
-            <param name="owner">The directy entry that should take ownership of the entry.</param>
-            <param name="commitChanges">Indicates whether changes should be commited to this entry. Useful when combining multiple commands.</param>
-            <returns>True if the ownership could be set. False otherwise.</returns>
-        </member>
         <member name="T:Galactic.FileSystem.Directory.AccessRights">
             <summary>
             Valid access rights that may be applied to directories.
@@ -217,9 +59,248 @@
             Traverse folder / execute file permissions.
             </summary>
         </member>
+        <member name="M:Galactic.FileSystem.Directory.AddAccessRule(System.String,System.Security.AccessControl.DirectorySecurity@,System.Security.AccessControl.FileSystemAccessRule,System.Boolean)">
+            <summary>
+            Adds an access rule to the directory at the supplied path.
+            </summary>
+            <param name="path">The path to the directory to add the rule to.</param>
+            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
+            <param name="rule">The rule to add to the directory.</param>
+            <param name="commitChanges">Indicates whether changes should be commited to this directory. Useful when combining multiple commands.</param>
+            <returns>True if the rule was added. False if the directory does not exist, the rule is null, or the process does not have access to
+            the specified path, or does not have sufficient access to change the ACL entry of the directory, or the operating system is not Windows
+            2000 or later.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.BlockInheritance(System.String,System.Security.AccessControl.DirectorySecurity@,System.Boolean,System.Boolean)">
+            <summary>
+            Blocks inheritance on this directory.
+            </summary>
+            <param name="path">The path to the directory to block inheritance on.</param>
+            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
+            <param name="addInheritedPermissions">If true, copies the directory's inherited permissions as explicit permissions on the directory.</param>
+            <param name="commitChanges">Indicates whether changes should be commited to this entry. Useful when combining multiple commands.</param>
+            <returns>True if inheritance was blocked on the directory, false if the directory does not exist, or inheritance could not be
+            blocked.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.Clone(System.String,System.String)">
+            <summary>
+            Clones a directory to a new location. Does not copy any files or folders beneath it.
+            </summary>
+            <param name="path">The path of the directory to clone.</param>
+            <param name="newPath">The destination path to clone the directory to.</param>
+            <returns>True if the directory was cloned. False otherwise.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.CommitChanges(System.String,System.Security.AccessControl.DirectorySecurity@)">
+            <summary>
+            Commits any pending changes to the directory specified by the supplied path.
+            </summary>
+            <param name="path">The path to the directory to commit changes on.</param>
+            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
+            <returns>True if the changes were commited. False if the directory does not exist,
+            or the current process does not have sufficient access to the specified path, or the
+            current operating system in not Windows 2000 or later.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.Copy(System.String,System.String,System.Boolean)">
+            <summary>
+            Copies a directory to a new location including all files and folders beneath it.
+            Creates a new directory if necessary.
+            </summary>
+            <param name="path">The path of the directory to copy.</param>
+            <param name="newPath">The destination path to copy the directory to.</param>
+            <param name="overwrite">Whether to overwrite any existing files in the directory being copied to.</param>
+            <returns>True if the directory was copied. False otherwise.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.Create(System.String)">
+            <summary>
+            Creates a directory at the specified path.
+            </summary>
+            <param name="path">The path of the directory to create.</param>
+            <returns>True if the directory was created or already exists.
+            False if an error occured and the directory could not be created.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.Delete(System.String,System.Boolean)">
+            <summary>
+            Deletes a directory at the specified path.
+            </summary>
+            <param name="path">The path of the directory to delete.</param>
+            <param name="recursive">Recursively delete the files an subfolders of the directory.</param>
+            <returns>True if the directory was deleted or did not exist, false if an error occured
+            and the directory could not be deleted.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.Exists(System.String)">
+            <summary>
+            Checks whether the directory at the specified path exists on the file system.
+            </summary>
+            <param name="path">The path to the directory to check.</param>
+            <returns>True if it exists, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.GetListing(System.String,System.Boolean)">
+            <summary>
+            Gets a list of the contents of a directory at the specified path.
+            </summary>
+            <param name="path">The path of the directory to get a list of the contents of.</param>
+            <param name="getSubDirs">Whether to obtain a list of the contents of all subdirectories as well.</param>
+            <returns>An array of strings with the names of directories and files under the supplied path.
+            Null if the path is invalid, does not exist, or the current process does not have permission
+            to get the directory listing.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.GetSizeInBytes(System.String)">
+            <summary>
+            Gets the size of a directory's contents in bytes.
+            </summary>
+            <param name="path">The path to the directory.</param>
+            <returns>The size of the directory's contents in bytes, or a negative file size if there was error retrieving this information.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.GetSecurityObject(System.String)">
+            <summary>
+            Gets the DirectorySecurity object for the directory specified by the supplied path.
+            </summary>
+            <param name="path">The path to the directory to retrieve the security object for.</param>
+            <returns>The security object for the directory specified. Null if the directory does not exist,
+            an I/O Error occurred, the current operating system is not Windows 2000 or later,
+            the path specified is read-only, or the process does not have permission to complete the operation.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.GiveAccess(System.Byte[],System.String,System.Security.AccessControl.DirectorySecurity@,System.Security.AccessControl.FileSystemRights,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Gives access to the account with the supplied security identifier on the target directory.
+            </summary>
+            <param name="accountSid">The security identifier (SID) of the account that should be given access.</param>
+            <param name="path">The path to the directory to have access granted on.</param>
+            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
+            <param name="rights">The access rights to grant on the target directory.</param>
+            <param name="applyToSubfolders">Indicates whether this directory's permissions apply to subfolders beneath it.</param>
+            <param name="applyToFiles">Indicates whether this directory's permissions apply to files beneath it.</param>
+            <param name="commitChanges">Indicates whether changes should be commited to this directory. Useful when combining multiple commands.</param>
+            <returns>True if access was granted. False otherwise.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.GiveAccess(System.DirectoryServices.DirectoryEntry,System.String,System.Security.AccessControl.DirectorySecurity@,System.Security.AccessControl.FileSystemRights,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Gives access to the entry supplied on the target directory.
+            </summary>
+            <param name="entry">The entry to give access.</param>
+            <param name="path">The path to the directory to have access granted on.</param>
+            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
+            <param name="rights">The access rights to grant on the target directory.</param>
+            <param name="applyToSubfolders">Indicates whether this directory's permissions apply to subfolders beneath it.</param>
+            <param name="applyToFiles">Indicates whether this directory's permissions apply to files beneath it.</param>
+            <param name="commitChanges">Indicates whether changes should be commited to this directory. Useful when combining multiple commands.</param>
+            <returns>True if access was granted. False otherwise.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.GiveAccess(Galactic.FileSystem.Directory.AccessRights,System.Byte[],System.String,System.Security.AccessControl.DirectorySecurity@,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Gives the supplied data access rights to the account with the supplied security identifier on the target directory.
+            </summary>
+            <param name="rights">The rights to apply to the target directory.</param>
+            <param name="accountSid">The security identifier (SID) of the account that should be given access.</param>
+            <param name="path">The path to the directory to have access granted on.</param>
+            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
+            <param name="applyToSubfolders">Indicates whether this directory's permissions apply to subfolders beneath it.</param>
+            <param name="applyToFiles">Indicates whether this directory's permissions apply to files beneath it.</param>
+            <param name="commitChanges">Indicates whether changes should be commited to this directory. Useful when combining multiple commands.</param>
+            <returns>True if access was granted. False otherwise.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.GiveAccess(Galactic.FileSystem.Directory.AccessRights,System.DirectoryServices.DirectoryEntry,System.String,System.Security.AccessControl.DirectorySecurity@,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Gives the supplied data access rights to the entry supplied on the target directory.
+            </summary>
+            <param name="rights">The rights to apply to the target directory.</param>
+            <param name="entry">The entry to give data access.</param>
+            <param name="path">The path to the directory to have access granted on.</param>
+            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
+            <param name="applyToSubfolders">Indicates whether this directory's permissions apply to subfolders beneath it.</param>
+            <param name="applyToFiles">Indicates whether this directory's permissions apply to files beneath it.</param>
+            <param name="commitChanges">Indicates whether changes should be commited to this directory. Useful when combining multiple commands.</param>
+            <returns>True if access was granted. False otherwise.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.GiveAccess(Galactic.FileSystem.Directory.AccessRights,System.Byte[],System.String,System.Security.AccessControl.DirectorySecurity@,System.Boolean)">
+            <summary>
+            Gives the supplied data access rights to the account with the supplied security
+            identifier on the target directory. Applies inherited permissions to folders and
+            files beneath the target directory.
+            </summary>
+            <param name="rights">The rights to apply to the target directory.</param>
+            <param name="accountSid">The security identifier (SID) of the account that should be given access.</param>
+            <param name="path">The path to the directory to have access granted on.</param>
+            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
+            <param name="commitChanges">Indicates whether changes should be commited to this directory. Useful when combining multiple commands.</param>
+            <returns>True if access was granted. False otherwise.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.GiveAccess(Galactic.FileSystem.Directory.AccessRights,System.DirectoryServices.DirectoryEntry,System.String,System.Security.AccessControl.DirectorySecurity@,System.Boolean)">
+            <summary>
+            Gives the supplied data access rights to the entry supplied on the target directory.
+            Applies inherited permissions to folders and files beneath the target directory.
+            </summary>
+            <param name="rights">The rights to apply to the target directory.</param>
+            <param name="entry">The entry to give data access.</param>
+            <param name="path">The path to the directory to have access granted on.</param>
+            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
+            <param name="commitChanges">Indicates whether changes should be commited to this directory. Useful when combining multiple commands.</param>
+            <returns>True if access was granted. False otherwise.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.Move(System.String,System.String)">
+            <summary>
+            Moves a directory to a new location.
+            </summary>
+            <param name="path">The path of the directory to move.</param>
+            <param name="newPath">The path to the new location to move the directory.</param>
+            <returns>True if the directory was moved. False otherwise.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.RemoveAllAccessRules(System.String,System.Security.AccessControl.DirectorySecurity@,System.Boolean)">
+            <summary>
+            Removes all access rules from the supplied directory.
+            </summary>
+            <param name="path">The path to the directory to remove all access rules from.</param>
+            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
+            <param name="commitChanges">Indicates whether changes should be commited to this directory. Useful when combining multiple commands.</param>
+            <returns>True if all rules were removed. False if an error occurred.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.RemoveAllExplicitAccessRules(System.String,System.Security.AccessControl.DirectorySecurity@,System.Boolean)">
+            <summary>
+            Removes all explicit access rules from the supplied directory.
+            </summary>
+            <param name="path">The path to the directory to have access removed on.</param>
+            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
+            <param name="commitChanges">Indicates whether changes should be commited to this directory. Useful when combining multiple commands.</param>
+            <returns>True if access was removed. False otherwise.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.SetOwner(System.String,System.Security.AccessControl.DirectorySecurity@,System.Byte[],System.Boolean)">
+            <summary>
+            Sets the owner of a directory.
+            </summary>
+            <param name="path">The path to the directory to have the ownership set on.</param>
+            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
+            <param name="ownerSid">The security identifier (SID) of the account that should take ownership of the entry.</param>
+            <param name="commitChanges">Indicates whether changes should be commited to this entry. Useful when combining multiple commands.</param>
+            <returns>True if the ownership could be set. False otherwise.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.Directory.SetOwner(System.String,System.Security.AccessControl.DirectorySecurity@,System.DirectoryServices.DirectoryEntry,System.Boolean)">
+            <summary>
+            Sets the owner of a directory.
+            </summary>
+            <param name="path">The path to the directory to have the ownership set on.</param>
+            <param name="security">The DirectorySecurity object of the directory that will be changed.</param>
+            <param name="owner">The directy entry that should take ownership of the entry.</param>
+            <param name="commitChanges">Indicates whether changes should be commited to this entry. Useful when combining multiple commands.</param>
+            <returns>True if the ownership could be set. False otherwise.</returns>
+        </member>
         <member name="T:Galactic.FileSystem.File">
             <summary>
             A utility class for manipulating files on the file system.
+            </summary>
+        </member>
+        <member name="P:Galactic.FileSystem.File.Path">
+            <summary>
+            The path to the file on the file system.
+            </summary>
+        </member>
+        <member name="P:Galactic.FileSystem.File.ReadOnly">
+            <summary>
+            Whether the file is opened as read-only.
+            </summary>
+        </member>
+        <member name="P:Galactic.FileSystem.File.Security">
+            <summary>
+            The FileSecurity object for this file.
             </summary>
         </member>
         <member name="M:Galactic.FileSystem.File.#ctor(System.String,System.Boolean,System.Boolean)">
@@ -243,6 +324,15 @@
             <summary>
             Closes this file.
             </summary>
+        </member>
+        <member name="M:Galactic.FileSystem.File.Copy(System.String,System.String,System.Boolean)">
+            <summary>
+            Copies a file to a new location.
+            </summary>
+            <param name="path">The path of the file to move.</param>
+            <param name="newPath">The destination path to copy the file to.</param>
+            <param name="overwrite">Whether to overwrite the contents of a file if it already exists.</param>
+            <returns>True if the file was copied. False otherwise.</returns>
         </member>
         <member name="M:Galactic.FileSystem.File.Create(System.String)">
             <summary>
@@ -313,6 +403,13 @@
             <returns>The security object for the file specified. Null if the file does not exist,
             an I/O error occurred, or the process does not have the permissions required to
             complete the operation.</returns>
+        </member>
+        <member name="M:Galactic.FileSystem.File.GetSizeInBytes(System.String)">
+            <summary>
+            Gets the size of a file in bytes.
+            </summary>
+            <param name="path">The path to the file.</param>
+            <returns>The size of the file in bytes, or a negative file size if there was error retrieving this information.</returns>
         </member>
         <member name="M:Galactic.FileSystem.File.Move(System.String)">
             <summary>
@@ -416,21 +513,6 @@
             <param name="stream">The file stream to write to.</param>
             <param name="line">The line of text to write.</param>
             <returns>True if the line was written, false otherwise.</returns>
-        </member>
-        <member name="P:Galactic.FileSystem.File.Path">
-            <summary>
-            The path to the file on the file system.
-            </summary>
-        </member>
-        <member name="P:Galactic.FileSystem.File.ReadOnly">
-            <summary>
-            Whether the file is opened as read-only.
-            </summary>
-        </member>
-        <member name="P:Galactic.FileSystem.File.Security">
-            <summary>
-            The FileSecurity object for this file.
-            </summary>
         </member>
     </members>
 </doc>

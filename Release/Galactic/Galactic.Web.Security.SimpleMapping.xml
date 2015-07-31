@@ -9,6 +9,18 @@
             A role provider for ASP.NET applications that maps users to roles in a configuration item file.
             </summary>
         </member>
+        <member name="P:Galactic.Web.Security.SimpleMapping.SimpleMappingRoleProvider.ApplicationName">
+            <summary>
+            The name of the application using the role information specified in the configuration file (Web.config).
+            The ApplicationName is stored in the data source with related user information and used when querying for user information.
+            This property is read-write and defaults to the ApplicationPath if not specified explicitly.
+            </summary>
+        </member>
+        <member name="P:Galactic.Web.Security.SimpleMapping.SimpleMappingRoleProvider.MaxRoleNameLength">
+            <summary>
+            The maximum number of characters that a role name may contain.
+            </summary>
+        </member>
         <member name="M:Galactic.Web.Security.SimpleMapping.SimpleMappingRoleProvider.Initialize(System.String,System.Collections.Specialized.NameValueCollection)">
             <summary>
             Takes as input the name of the provider and a NameValueCollection of configuration settings.
@@ -96,18 +108,6 @@
             </summary>
             <param name="roleName">The name of the role to search for in the data source.</param>
             <returns>true if the role name already exists in the data source for the configured applicationName; otherwise, false.</returns>
-        </member>
-        <member name="P:Galactic.Web.Security.SimpleMapping.SimpleMappingRoleProvider.ApplicationName">
-            <summary>
-            The name of the application using the role information specified in the configuration file (Web.config).
-            The ApplicationName is stored in the data source with related user information and used when querying for user information.
-            This property is read-write and defaults to the ApplicationPath if not specified explicitly.
-            </summary>
-        </member>
-        <member name="P:Galactic.Web.Security.SimpleMapping.SimpleMappingRoleProvider.MaxRoleNameLength">
-            <summary>
-            The maximum number of characters that a role name may contain.
-            </summary>
         </member>
     </members>
 </doc>

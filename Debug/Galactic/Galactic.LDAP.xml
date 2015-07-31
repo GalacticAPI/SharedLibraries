@@ -19,6 +19,22 @@
             The default size of pages returned when making large queries.
             </summary>
         </member>
+        <member name="P:Galactic.LDAP.LDAP.NamingContexts">
+            <summary>
+            The Naming Contexts (The base DNs that this server hosts.) for the LDAP server as defined in the RootDSE entry.
+            </summary>
+        </member>
+        <member name="P:Galactic.LDAP.LDAP.AlternateServers">
+            <summary>
+            A list of other servers that can fulfill LDAP requests if the one we're connected to becomes unavailable.
+            May be null if there are no other servers available.
+            </summary>
+        </member>
+        <member name="P:Galactic.LDAP.LDAP.RootDSE">
+            <summary>
+            The rootDSE entry for the connected LDAP server.
+            </summary>
+        </member>
         <member name="M:Galactic.LDAP.LDAP.#ctor(System.Collections.Generic.List{System.String},System.Int32,System.DirectoryServices.Protocols.AuthType,System.String,System.Security.SecureString,System.String)">
             <summary>
             Establishes a connection with an LDAP server that can be used to query or modify its contents.
@@ -148,22 +164,6 @@
             <param name="distinguishedName">The distinguished name of the object where searches will begin. (Typically an OU or the base DN of the directory.)</param>
             <param name="scope">(Optional) The scope to use while searching. Defaults to Subtree. (Typically Base, just the object with the DN specified; OneLevel, just the child objects of the base object; or Subtree, the base object and all child objects)</param>
             <returns>True if the search base and scope were set, false otherwise.</returns>
-        </member>
-        <member name="P:Galactic.LDAP.LDAP.NamingContexts">
-            <summary>
-            The Naming Contexts (The base DNs that this server hosts.) for the LDAP server as defined in the RootDSE entry.
-            </summary>
-        </member>
-        <member name="P:Galactic.LDAP.LDAP.AlternateServers">
-            <summary>
-            A list of other servers that can fulfill LDAP requests if the one we're connected to becomes unavailable.
-            May be null if there are no other servers available.
-            </summary>
-        </member>
-        <member name="P:Galactic.LDAP.LDAP.RootDSE">
-            <summary>
-            The rootDSE entry for the connected LDAP server.
-            </summary>
         </member>
     </members>
 </doc>

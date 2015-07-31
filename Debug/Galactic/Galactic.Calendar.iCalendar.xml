@@ -10,6 +10,11 @@
             Uses the DDay.iCal library. http://www.ddaysoftware.com/Pages/Projects/DDay.iCal/
             </summary>
         </member>
+        <member name="P:Galactic.Calendar.iCalendar.iCalendarUtility.CalendarNames">
+            <summary>
+            A list of the names of calendars available via the calendar provider.
+            </summary>
+        </member>
         <member name="M:Galactic.Calendar.iCalendar.iCalendarUtility.#ctor">
             <summary>
             Default constructor.
@@ -72,11 +77,6 @@
             <param name="calendar">The calendar object to convert.</param>
             <exception cref="T:System.ArgumentNullException">Thrown if a calendar is not provided.</exception>
             <returns>The converted IICalendar, or null if the calendar couldn't be converted.</returns>
-        </member>
-        <member name="P:Galactic.Calendar.iCalendar.iCalendarUtility.CalendarNames">
-            <summary>
-            A list of the names of calendars available via the calendar provider.
-            </summary>
         </member>
     </members>
 </doc>

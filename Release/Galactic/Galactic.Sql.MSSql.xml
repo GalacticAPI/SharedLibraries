@@ -21,6 +21,16 @@
             Used to create nvarchar parameter values of greater than MSSqlUtility.MAX_VARCHAR_LENGTH.
             </summary>
         </member>
+        <member name="P:Galactic.Sql.MSSql.MSStoredProcedure.Connection">
+            <summary>
+            The connection to the database.
+            </summary>
+        </member>
+        <member name="P:Galactic.Sql.MSSql.MSStoredProcedure.Command">
+            <summary>
+            The command to be sent to the database.
+            </summary>
+        </member>
         <member name="M:Galactic.Sql.MSSql.MSStoredProcedure.#ctor(System.String,System.String,Galactic.EventLog.EventLog)">
             <summary>
             Creates a stored procedure.
@@ -112,19 +122,24 @@
             <param name="name">The name of the parameter.</param>
             <returns>The parameter name with a @ prepended.</returns>
         </member>
-        <member name="P:Galactic.Sql.MSSql.MSStoredProcedure.Connection">
-            <summary>
-            The connection to the database.
-            </summary>
-        </member>
-        <member name="P:Galactic.Sql.MSSql.MSStoredProcedure.Command">
-            <summary>
-            The command to be sent to the database.
-            </summary>
-        </member>
         <member name="T:Galactic.Sql.MSSql.MSSqlUtility">
             <summary>
             Provides various utility methods for use with Microsoft SQL databases.
+            </summary>
+        </member>
+        <member name="P:Galactic.Sql.MSSql.MSSqlUtility.MAX_NCHAR_LENGTH">
+            <summary>
+            The maximum length of a NCHAR field in the database.
+            </summary>
+        </member>
+        <member name="P:Galactic.Sql.MSSql.MSSqlUtility.MAX_NVARCHAR_LENGTH">
+            <summary>
+            The maximum length of a NVARCHAR field in the database.
+            </summary>
+        </member>
+        <member name="P:Galactic.Sql.MSSql.MSSqlUtility.MAX_VARCHAR_LENGTH">
+            <summary>
+            The maximum length of a VARCHAR field in the database.
             </summary>
         </member>
         <member name="M:Galactic.Sql.MSSql.MSSqlUtility.BuildConnectionString(System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)">
@@ -159,21 +174,6 @@
             <param name="connectionString">The connection string of the database to execute the script against.</param>
             <param name="log">The event log to log execptions to. May be null for no logging.</param>
             <returns>A list of rows of data returned from the query.</returns>
-        </member>
-        <member name="P:Galactic.Sql.MSSql.MSSqlUtility.MAX_NCHAR_LENGTH">
-            <summary>
-            The maximum length of a NCHAR field in the database.
-            </summary>
-        </member>
-        <member name="P:Galactic.Sql.MSSql.MSSqlUtility.MAX_NVARCHAR_LENGTH">
-            <summary>
-            The maximum length of a NVARCHAR field in the database.
-            </summary>
-        </member>
-        <member name="P:Galactic.Sql.MSSql.MSSqlUtility.MAX_VARCHAR_LENGTH">
-            <summary>
-            The maximum length of a VARCHAR field in the database.
-            </summary>
         </member>
     </members>
 </doc>

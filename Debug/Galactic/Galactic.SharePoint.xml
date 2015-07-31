@@ -66,56 +66,6 @@
             A class representing a Document within SharePoint.
             </summary>
         </member>
-        <member name="M:Galactic.SharePoint.SharePointListItem.#ctor(Microsoft.SharePoint.Client.ListItem)">
-            <summary>
-            Creates a SharePointListItem object from the underlying ListItem object.
-            </summary>
-            <param name="listItem">The base ListItem object representing this list item.</param>
-            <exception cref="T:System.ArgumentNullException">Thrown if a list item is not supplied.</exception>
-        </member>
-        <member name="M:Galactic.SharePoint.SharePointListItem.Delete">
-            <summary>
-            Deletes the item from the server.
-            </summary>
-            <returns>True if the item was deleted from the server, false if the item did not exist on the server,
-            or there was an error deleting it.</returns>
-        </member>
-        <member name="M:Galactic.SharePoint.SharePointListItem.GetLookupFieldValue(System.String)">
-            <summary>
-            Gets the value contained in a lookup field.
-            </summary>
-            <param name="fieldName">The name of the lookup field to get the value of.</param>
-            <returns>A KeyValuePair with the key equal to the ID of the lookup value, and the value equal to its value.
-            An pair with a negative ID is returned if the value could not be retrieved, or the field name was invalid.</returns>
-        </member>
-        <member name="M:Galactic.SharePoint.SharePointListItem.ToSharePointDocument">
-            <summary>
-            Converts this SharePointListItem to a SharePointDocument object.
-            </summary>
-            <returns>The SharePointDocument object corresponding to this list item.</returns>
-        </member>
-        <member name="P:Galactic.SharePoint.SharePointListItem.ListItem">
-            <summary>
-            A SharePoint ListItem object representing this SharePointListItem.
-            </summary>
-        </member>
-        <member name="P:Galactic.SharePoint.SharePointListItem.Fields">
-            <summary>
-            A list of all fields defined in the list item.
-            </summary>
-        </member>
-        <member name="P:Galactic.SharePoint.SharePointListItem.Id">
-            <summary>
-            The list item's identifier.
-            </summary>
-        </member>
-        <member name="M:Galactic.SharePoint.SharePointDocument.#ctor(Microsoft.SharePoint.Client.ListItem)">
-            <summary>
-            Creates a SharePointDocument object from the underlying ListItem object.
-            </summary>
-            <param name="listItem">The base ListItem object representing this document.</param>
-            <exception cref="T:System.ArgumentNullException">Thrown if a list item is not supplied.</exception>
-        </member>
         <member name="P:Galactic.SharePoint.SharePointDocument.CreationTime">
             <summary>
             The date and time the document was created.
@@ -146,81 +96,21 @@
             The name of the document.
             </summary>
         </member>
-        <member name="M:Galactic.SharePoint.SharePointList.#ctor(Microsoft.SharePoint.Client.List,Microsoft.SharePoint.Client.ListItemCollection)">
+        <member name="M:Galactic.SharePoint.SharePointDocument.#ctor(Microsoft.SharePoint.Client.ListItem)">
             <summary>
-            Creates a SharePointList object from the underlying List object.
+            Creates a SharePointDocument object from the underlying ListItem object.
             </summary>
-            <param name="list">The base List object representing this list.</param>
-            <param name="listItemCollection">A collection of ListItems that represents the items currently queried from the list.</param>
-            <exception cref="T:System.ArgumentNullException">Thrown if a list or listCollection is not supplied.</exception>
+            <param name="listItem">The base ListItem object representing this document.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if a list item is not supplied.</exception>
         </member>
-        <member name="M:Galactic.SharePoint.SharePointList.Add(Galactic.SharePoint.SharePointListItem)">
+        <member name="P:Galactic.SharePoint.SharePointDocumentLibrary.Documents">
             <summary>
-            Adds an item to the list.
-            </summary>
-            <param name="item">The item to add.</param>
-        </member>
-        <member name="M:Galactic.SharePoint.SharePointList.Clear">
-            <summary>
-            Deletes all currently loaded items from the list.
+            The documents in the list
             </summary>
         </member>
-        <member name="M:Galactic.SharePoint.SharePointList.Contains(Galactic.SharePoint.SharePointListItem)">
+        <member name="P:Galactic.SharePoint.SharePointDocumentLibrary.Folder">
             <summary>
-            Determines whether the supplied item is in the list.
-            </summary>
-            <param name="item">The item to search for.</param>
-            <returns>True if the item is in the list, false otherwise.</returns>
-        </member>
-        <member name="M:Galactic.SharePoint.SharePointList.CopyTo(Galactic.SharePoint.SharePointListItem[],System.Int32)">
-            <summary>
-            Copies the items in the list to an array, starting at the supplied index.
-            </summary>
-            <param name="array">The array to copy the items into.</param>
-            <param name="arrayIndex">The index within the array to place the copied items at.</param>
-        </member>
-        <member name="M:Galactic.SharePoint.SharePointList.Remove(Galactic.SharePoint.SharePointListItem)">
-            <summary>
-            Removes an item from the list.
-            </summary>
-            <param name="item">The item to remove.</param>
-            <returns>True if the item could be removed, false otherwise.</returns>
-        </member>
-        <member name="M:Galactic.SharePoint.SharePointList.GetEnumerator">
-            <summary>
-            Returns an enumerator that iterates through the list.
-            </summary>
-            <returns>An enumerator that iterates through the list.</returns>
-        </member>
-        <member name="M:Galactic.SharePoint.SharePointList.System#Collections#IEnumerable#GetEnumerator">
-            <summary>
-            Returns an enumerator that iterates through the list.
-            </summary>
-            <returns>An enumerator that iterates through the list.</returns>
-        </member>
-        <member name="P:Galactic.SharePoint.SharePointList.Count">
-            <summary>
-            Gets the number of items in the list.
-            </summary>
-        </member>
-        <member name="P:Galactic.SharePoint.SharePointList.IsReadOnly">
-            <summary>
-            Indicates whether the list is read-only.
-            </summary>
-        </member>
-        <member name="P:Galactic.SharePoint.SharePointList.Items">
-            <summary>
-            The items in the list
-            </summary>
-        </member>
-        <member name="P:Galactic.SharePoint.SharePointList.LastItemDeleted">
-            <summary>
-            The date and time that the last item was deleted from the list.
-            </summary>
-        </member>
-        <member name="P:Galactic.SharePoint.SharePointList.LastItemModified">
-            <summary>
-            The date and time that the last item was modified in the list.
+            The SharePointFolder object for library's contents.
             </summary>
         </member>
         <member name="M:Galactic.SharePoint.SharePointDocumentLibrary.#ctor(Microsoft.SharePoint.Client.List,Microsoft.SharePoint.Client.ListItemCollection)">
@@ -283,19 +173,14 @@
             </summary>
             <returns>An enumerator that iterates through the library.</returns>
         </member>
-        <member name="P:Galactic.SharePoint.SharePointDocumentLibrary.Documents">
-            <summary>
-            The documents in the list
-            </summary>
-        </member>
-        <member name="P:Galactic.SharePoint.SharePointDocumentLibrary.Folder">
-            <summary>
-            The SharePointFolder object for library's contents.
-            </summary>
-        </member>
         <member name="T:Galactic.SharePoint.SharePointFolder">
             <summary>
             A class representing a folder within SharePoint.
+            </summary>
+        </member>
+        <member name="P:Galactic.SharePoint.SharePointFolder.Url">
+            <summary>
+            The server relative URL of the folder.
             </summary>
         </member>
         <member name="M:Galactic.SharePoint.SharePointFolder.#ctor(Microsoft.SharePoint.Client.Folder)">
@@ -317,14 +202,134 @@
             when uploading the file to the folder in SharePoint.</param>
             <returns>True if the file could be uploaded, false otherwise.</returns>
         </member>
-        <member name="P:Galactic.SharePoint.SharePointFolder.Url">
+        <member name="P:Galactic.SharePoint.SharePointList.Count">
             <summary>
-            The server relative URL of the folder.
+            Gets the number of items in the list.
             </summary>
+        </member>
+        <member name="P:Galactic.SharePoint.SharePointList.IsReadOnly">
+            <summary>
+            Indicates whether the list is read-only.
+            </summary>
+        </member>
+        <member name="P:Galactic.SharePoint.SharePointList.Items">
+            <summary>
+            The items in the list
+            </summary>
+        </member>
+        <member name="P:Galactic.SharePoint.SharePointList.LastItemDeleted">
+            <summary>
+            The date and time that the last item was deleted from the list.
+            </summary>
+        </member>
+        <member name="P:Galactic.SharePoint.SharePointList.LastItemModified">
+            <summary>
+            The date and time that the last item was modified in the list.
+            </summary>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointList.#ctor(Microsoft.SharePoint.Client.List,Microsoft.SharePoint.Client.ListItemCollection)">
+            <summary>
+            Creates a SharePointList object from the underlying List object.
+            </summary>
+            <param name="list">The base List object representing this list.</param>
+            <param name="listItemCollection">A collection of ListItems that represents the items currently queried from the list.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if a list or listCollection is not supplied.</exception>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointList.Add(Galactic.SharePoint.SharePointListItem)">
+            <summary>
+            Adds an item to the list.
+            </summary>
+            <param name="item">The item to add.</param>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointList.Clear">
+            <summary>
+            Deletes all currently loaded items from the list.
+            </summary>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointList.Contains(Galactic.SharePoint.SharePointListItem)">
+            <summary>
+            Determines whether the supplied item is in the list.
+            </summary>
+            <param name="item">The item to search for.</param>
+            <returns>True if the item is in the list, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointList.CopyTo(Galactic.SharePoint.SharePointListItem[],System.Int32)">
+            <summary>
+            Copies the items in the list to an array, starting at the supplied index.
+            </summary>
+            <param name="array">The array to copy the items into.</param>
+            <param name="arrayIndex">The index within the array to place the copied items at.</param>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointList.Remove(Galactic.SharePoint.SharePointListItem)">
+            <summary>
+            Removes an item from the list.
+            </summary>
+            <param name="item">The item to remove.</param>
+            <returns>True if the item could be removed, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointList.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the list.
+            </summary>
+            <returns>An enumerator that iterates through the list.</returns>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointList.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the list.
+            </summary>
+            <returns>An enumerator that iterates through the list.</returns>
+        </member>
+        <member name="P:Galactic.SharePoint.SharePointListItem.ListItem">
+            <summary>
+            A SharePoint ListItem object representing this SharePointListItem.
+            </summary>
+        </member>
+        <member name="P:Galactic.SharePoint.SharePointListItem.Fields">
+            <summary>
+            A list of all fields defined in the list item.
+            </summary>
+        </member>
+        <member name="P:Galactic.SharePoint.SharePointListItem.Id">
+            <summary>
+            The list item's identifier.
+            </summary>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointListItem.#ctor(Microsoft.SharePoint.Client.ListItem)">
+            <summary>
+            Creates a SharePointListItem object from the underlying ListItem object.
+            </summary>
+            <param name="listItem">The base ListItem object representing this list item.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if a list item is not supplied.</exception>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointListItem.Delete">
+            <summary>
+            Deletes the item from the server.
+            </summary>
+            <returns>True if the item was deleted from the server, false if the item did not exist on the server,
+            or there was an error deleting it.</returns>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointListItem.GetLookupFieldValue(System.String)">
+            <summary>
+            Gets the value contained in a lookup field.
+            </summary>
+            <param name="fieldName">The name of the lookup field to get the value of.</param>
+            <returns>A KeyValuePair with the key equal to the ID of the lookup value, and the value equal to its value.
+            An pair with a negative ID is returned if the value could not be retrieved, or the field name was invalid.</returns>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointListItem.ToSharePointDocument">
+            <summary>
+            Converts this SharePointListItem to a SharePointDocument object.
+            </summary>
+            <returns>The SharePointDocument object corresponding to this list item.</returns>
         </member>
         <member name="T:Galactic.SharePoint.SharePointUser">
             <summary>
             A class representing a user on a SharePoint system.
+            </summary>
+        </member>
+        <member name="P:Galactic.SharePoint.SharePointUser.UserName">
+            <summary>
+            The username of the user.
             </summary>
         </member>
         <member name="M:Galactic.SharePoint.SharePointUser.#ctor(Microsoft.SharePoint.Client.User)">
@@ -333,11 +338,6 @@
             </summary>
             <param name="user">The base User object representing this user.</param>
             <exception cref="T:System.ArgumentNullException">Thrown if a user is not supplied.</exception>
-        </member>
-        <member name="P:Galactic.SharePoint.SharePointUser.UserName">
-            <summary>
-            The username of the user.
-            </summary>
         </member>
     </members>
 </doc>
