@@ -1091,6 +1091,11 @@
             The user's telephone number.
             </summary>
         </member>
+        <member name="P:Galactic.ActiveDirectory.User.SecurityIdentifier">
+            <summary>
+            The user's security identifier (SID).
+            </summary>
+        </member>
         <member name="P:Galactic.ActiveDirectory.User.StreetAddress">
             <summary>
             The user's street address.
