@@ -35,7 +35,7 @@
             The rootDSE entry for the connected LDAP server.
             </summary>
         </member>
-        <member name="M:Galactic.LDAP.LDAP.#ctor(System.Collections.Generic.List{System.String},System.Int32,System.DirectoryServices.Protocols.AuthType,System.String,System.Security.SecureString,System.String)">
+        <member name="M:Galactic.LDAP.LDAP.#ctor(System.Collections.Generic.List{System.String},System.Int32,System.DirectoryServices.Protocols.AuthType,System.String,System.Security.SecureString,System.String,System.Boolean)">
             <summary>
             Establishes a connection with an LDAP server that can be used to query or modify its contents.
             <param name="servers">A list of servers by fully qualified domain name, host name, ip address, or null.</param>
@@ -44,6 +44,7 @@
             <param name="userName">(Optional) The user name to use when connecting to the LDAP server.</param>
             <param name="password">(Optional) The password to use with the user name provided to connect to the LDAP server.</param>
             <param name="domainName">(Optional) The domain or computer name associated with the user credentials provided.</param>
+            <param name="useLogonCredentials">(Optional) If enabled, the LDAP connection will use the logon credentials from the current session. Disabled by default.</param>
             </summary>
         </member>
         <member name="M:Galactic.LDAP.LDAP.Dispose">

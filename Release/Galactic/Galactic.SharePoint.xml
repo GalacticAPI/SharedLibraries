@@ -16,6 +16,14 @@
             Closes the client connection to the server and frees up resources.
             </summary>
         </member>
+        <member name="M:Galactic.SharePoint.SharePointClient.DownloadFileByUrl(System.String,System.String)">
+            <summary>
+            Downloads a file from the SharePoint server with the specified relative URL.
+            </summary>
+            <param name="relativeUrl">The relative URL of the file to retrieve from the base of the web application containing it.</param>
+            <param name="downloadPath">The path to the directory that the file should be downloaded to.</param>
+            <returns>True if the file was downloaded, false otherwise.</returns>
+        </member>
         <member name="M:Galactic.SharePoint.SharePointClient.GetDocumentLibraryByTitle(System.String,System.String)">
             <summary>
             Populates a SharePointDocumentLibrary object from the contents of SharePoint Document Library with the supplied title on the server.
@@ -241,6 +249,14 @@
             </summary>
             <param name="item">The item to add.</param>
         </member>
+        <member name="M:Galactic.SharePoint.SharePointList.Add(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Adds a list item to the list.
+            </summary>
+            <param name="name">The name of the item to add.</param>
+            <param name="fields">A dictionary of names and values of the fields of the list item.</param>
+            <returns>The SharePointList item that was added to the list, or null if there was an error adding it.</returns>
+        </member>
         <member name="M:Galactic.SharePoint.SharePointList.Clear">
             <summary>
             Deletes all currently loaded items from the list.
@@ -321,6 +337,14 @@
             Converts this SharePointListItem to a SharePointDocument object.
             </summary>
             <returns>The SharePointDocument object corresponding to this list item.</returns>
+        </member>
+        <member name="M:Galactic.SharePoint.SharePointListItem.UpdateField(System.String,System.Object)">
+            <summary>
+            Updates the a field within a SharePointListItem with the specified value.
+            </summary>
+            <param name="fieldName">The name of the field to update.</param>
+            <param name="fieldValue">The value to assign to the field.</param>
+            <returns>True if the item was updated, false otherwise.</returns>
         </member>
         <member name="T:Galactic.SharePoint.SharePointUser">
             <summary>
