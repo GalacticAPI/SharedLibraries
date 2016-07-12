@@ -546,6 +546,22 @@
             <param name="distinguishedName">The distinguished name of the object where searches will begin. (Typically an OU or the base DN of the directory.)</param>
             <returns>True if the search base was set, false otherwise.</returns>
         </member>
+        <member name="M:Galactic.ActiveDirectory.ActiveDirectory.ToInterval(System.DateTime)">
+            <summary>
+            Gets a Interval value of the supplied DateTime.
+            Interval attributes are stored as Windows File Time strings with the number of 100-nanosecond intervals that have elapsed since 12:00 midnight, January 1, 1601 AD, UTC.
+            </summary>
+            <param name="date">The DateTime object to convert into an Interval value.</param>
+            <returns>The Interval (string) value of the supplied DateTime, or null if it could not be converted.</returns>
+        </member>
+        <member name="M:Galactic.ActiveDirectory.ActiveDirectory.ToInterval(System.UInt64)">
+            <summary>
+            Gets a Interval value of the supplied UInt64.
+            Interval attributes are stored as Windows File Time strings with the number of 100-nanosecond intervals that have elapsed since 12:00 midnight, January 1, 1601 AD, UTC.
+            </summary>
+            <param name="unsigned">The UInt64 to convert into an Interval value.</param>
+            <returns>The Interval (string) value of the supplied Uint64, or null if it could not be converted.</returns>
+        </member>
         <member name="M:Galactic.ActiveDirectory.ActiveDirectory.UserAccountControlContains(System.Int64,Galactic.ActiveDirectory.ActiveDirectory.UserAccountControl)">
             <summary>
             Tests whether an integer contains a UserAccountControl flag.
@@ -923,6 +939,13 @@
         <member name="M:Galactic.ActiveDirectory.SecurityPrincipal.AddToGroup(System.Guid)">
             <summary>
             Adds this principal to the supplied group.
+            </summary>
+            <param name="guid">The GUID of the group to add the principal to.</param>
+            <returns>True if the principal was added, false otherwise.</returns>
+        </member>
+        <member name="M:Galactic.ActiveDirectory.SecurityPrincipal.RemoveFromGroup(System.Guid)">
+            <summary>
+            Removes this principal from the supplied group.
             </summary>
             <param name="guid">The GUID of the group to add the principal to.</param>
             <returns>True if the principal was added, false otherwise.</returns>
