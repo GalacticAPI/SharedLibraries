@@ -51,6 +51,15 @@
             <param name="log">(Optional) The event log to log exceptions to. May be null for no logging.</param>
             <param name="readOnly">Whether the configuration item should be opened for reading only. Default: true</param>
         </member>
+        <member name="M:Galactic.Configuration.ConfigurationItem.Create(System.String,System.String)">
+            <summary>
+            Creates a new configuration file that can then be loaded normally.
+            Note: This will NOT overwrite an existing file.
+            </summary>
+            <param name="folderPath">The path of the folder to create the configuration item.</param>
+            <param name="name">The name of the configuration item to create.</param>
+            <returns>True if the file was created or already exists, false if an error prevented it from being created.</returns>
+        </member>
         <member name="M:Galactic.Configuration.ConfigurationItem.Delete">
             <summary>
             Deletes the configuration item.
